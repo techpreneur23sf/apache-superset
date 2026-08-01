@@ -1,0 +1,45 @@
+{
+  "repo": "techpreneur23sf/apache-superset",
+  "runs": {},
+  "schema_version": 1,
+  "tasks": {
+    "2": {
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "ci_status": null,
+      "created_at": 1785628617,
+      "dispatched_at": 1785628617,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [
+        {
+          "at": 1785628617,
+          "from": "queued",
+          "reason": "session 081c24c00d994ca3a8df78813277c419 created",
+          "to": "dispatched"
+        }
+      ],
+      "issue_class": "deprecation",
+      "issue_number": 2,
+      "issue_title": "Replace pytz with zoneinfo in the alert/report cron window, preserving DST behaviour",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": "081c24c00d994ca3a8df78813277c419",
+      "session_status": "new",
+      "session_status_detail": null,
+      "session_url": "https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419",
+      "state": "dispatched",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "superset/tasks/cron_util.py"
+      ],
+      "waiting_ticks": 0
+    }
+  },
+  "updated_at": 1785628618
+}
