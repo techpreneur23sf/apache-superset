@@ -17,6 +17,12 @@
           "from": "queued",
           "reason": "session 081c24c00d994ca3a8df78813277c419 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785628715,
+          "from": "dispatched",
+          "reason": "session is working",
+          "to": "running"
         }
       ],
       "issue_class": "deprecation",
@@ -29,10 +35,10 @@
       "pr_url": null,
       "review_status": null,
       "session_id": "081c24c00d994ca3a8df78813277c419",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "working",
       "session_url": "https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419",
-      "state": "dispatched",
+      "state": "running",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -41,5 +47,5 @@
       "waiting_ticks": 0
     }
   },
-  "updated_at": 1785628618
+  "updated_at": 1785628716
 }
