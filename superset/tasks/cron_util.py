@@ -17,11 +17,11 @@
 
 import logging
 from collections.abc import Iterator
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone as dt_timezone, tzinfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from croniter import croniter, CroniterBadDateError
 from flask import current_app
-from pytz import timezone as pytz_timezone, UnknownTimeZoneError
 
 logger = logging.getLogger(__name__)
 
@@ -31,12 +31,12 @@ def cron_schedule_window(
 ) -> Iterator[datetime]:
     window_size = current_app.config["ALERT_REPORTS_CRON_WINDOW_SIZE"]
     try:
-        tz = pytz_timezone(timezone)
-    except UnknownTimeZoneError:
+        tz: tzinfo = ZoneInfo(timezone)
+    except (ZoneInfoNotFoundError, ValueError):
         # fallback to default timezone
-        tz = pytz_timezone("UTC")
+        tz = dt_timezone.utc
         logger.warning("Timezone %s was invalid. Falling back to 'UTC'", timezone)
-    utc = pytz_timezone("UTC")
+    utc = dt_timezone.utc
     # convert the current time to the user's local time for comparison
     time_now = triggered_at.astimezone(tz)
     start_at = time_now - timedelta(seconds=window_size / 2)
