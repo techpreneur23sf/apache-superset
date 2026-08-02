@@ -67,7 +67,7 @@
       "touch_scope": [
         "superset/utils/dates.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "12": {
       "acus_consumed": 0.0,
@@ -171,7 +171,7 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "16": {
       "acus_consumed": 0.0,
@@ -304,15 +304,15 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "3": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "red",
       "created_at": 1785629739,
       "dispatched_at": 1785629740,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -326,29 +326,60 @@
           "from": "dispatched",
           "reason": "session is working",
           "to": "running"
+        },
+        {
+          "at": 1785629947,
+          "from": "running",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785629951,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "deprecation",
       "issue_number": 3,
       "issue_title": "Drop pytz from the report schemas and email notification timezone handling",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 25,
+      "pr_opened_at": 1785629947,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
+      "review_status": "pending",
       "session_id": "b79c2813999c483bb4dc09b2c64d3161",
       "session_status": "running",
-      "session_status_detail": "working",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
-      "state": "running",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "superset/reports/schemas.py",
+          "superset/reports/notifications/email.py"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
+        "summary": "Replaced pytz with stdlib zoneinfo in superset/reports/schemas.py (module-level TIMEZONES = tuple(sorted(available_timezones())) used by both OneOf validators, keeping choices deterministic) and superset/reports/notifications/email.py (pytz.timezone(\"UTC\") -> ZoneInfo(\"UTC\")). zoneinfo's set is a strict superset of pytz.all_timezones (597 vs 599, no removals). Targeted unit tests and ruff pass. The PR's only CI check ('verify', the swarm workflow) fails with RuntimeError: DEVIN_API_KEY and DEVIN_ORG_ID are required in live mode \u2014 a missing-repo-secret infra failure unrelated to this diff.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "python -m pytest tests/unit_tests/reports/schemas_test.py -q (34 passed)",
+          "python -m pytest tests/unit_tests/reports/ -q (145 passed)",
+          "ruff check superset/reports/schemas.py superset/reports/notifications/email.py (All checks passed)",
+          "python -c \"import importlib.util; p=importlib.util.find_spec('superset.reports.schemas').origin; assert 'pytz' not in open(p).read(); print('ok')\" (ok)"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "superset/reports/schemas.py",
         "superset/reports/notifications/email.py"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "4": {
       "acus_consumed": 0.0,
@@ -413,7 +444,7 @@
       "touch_scope": [
         "superset/models/helpers.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "5": {
       "acus_consumed": 0.0,
@@ -482,7 +513,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "6": {
       "acus_consumed": 0.0,
@@ -536,7 +567,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "9": {
       "acus_consumed": 0.0,
@@ -607,8 +638,8 @@
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     }
   },
-  "updated_at": 1785629848
+  "updated_at": 1785629957
 }
