@@ -1,0 +1,58 @@
+{
+  "acus_on_merged_tasks": 0,
+  "acus_per_merged_pr": null,
+  "acus_per_pr_opened": 0.0,
+  "acus_total": 0.0,
+  "autonomy_rate": 0.0,
+  "by_class": {
+    "code-quality": {
+      "acus": 0.0,
+      "merge_rate": 0.0,
+      "merged": 0,
+      "pr": 2,
+      "total": 3
+    },
+    "dep-bump-major": {
+      "acus": 0.0,
+      "merge_rate": 0.0,
+      "merged": 0,
+      "pr": 0,
+      "total": 2
+    },
+    "dep-bump-patch": {
+      "acus": 0.0,
+      "merge_rate": 0.0,
+      "merged": 0,
+      "pr": 1,
+      "total": 2
+    },
+    "deprecation": {
+      "acus": 0.0,
+      "merge_rate": 0.0,
+      "merged": 0,
+      "pr": 4,
+      "total": 4
+    }
+  },
+  "counts": {
+    "abandoned": 0,
+    "dispatched": 8,
+    "failed": 0,
+    "in_flight": 0,
+    "merged": 0,
+    "needs_human": 1,
+    "prs_opened": 7,
+    "queued": 3,
+    "tasks": 11,
+    "wont_fix": 0
+  },
+  "failures": {},
+  "median_issue_to_pr_hours": 0.07,
+  "merge_rate": 0.0,
+  "pr_rate": 0.875,
+  "states": {
+    "needs_human": 1,
+    "queued": 3,
+    "review_pending": 7
+  }
+}
