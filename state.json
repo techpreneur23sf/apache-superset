@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785635201,
+  "updated_at": 1785635226,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -332,24 +332,24 @@
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
-        "outcome": "fixed",
-        "summary": "Replaced typing.Dict/List/Tuple with builtin generics in the three modules and removed the now-unused typing imports (Union kept in slackv2.py, which lacks `from __future__ import annotations`). ruff check passes and all three modules import cleanly inside create_app(). The one failing CI check was the issue's bare-import verification command, which fails identically on unmodified master; the maintainer confirmed the verification contract was at fault, corrected it (swarm verify now green), and merged the PR.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "superset/daos/chart.py",
           "superset/reports/notifications/slackv2.py",
           "superset/mcp_service/chart/validation/runtime/format_validator.py"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
+        "summary": "Replaced typing.Dict/List/Tuple with builtin generics in the three modules and removed the now-unused typing imports (Union kept in slackv2.py, which lacks `from __future__ import annotations`). ruff check passes and all three modules import cleanly inside create_app(). The one failing CI check was the issue's bare-import verification command, which fails identically on unmodified master; the maintainer confirmed the verification contract was at fault, corrected it (swarm verify now green), and merged the PR.",
+        "tests_added": 0,
         "verification_commands_run": [
           "ruff check superset/daos/chart.py superset/reports/notifications/slackv2.py superset/mcp_service/chart/validation/runtime/format_validator.py",
           "python -c \"from superset.app import create_app; create_app(); import superset.daos.chart, superset.reports.notifications.slackv2, superset.mcp_service.chart.validation.runtime.format_validator; print('IMPORT_OK')\"",
           "git stash && python -c \"import superset.daos.chart, superset.reports.notifications.slackv2\" (confirmed same failure on master)"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -395,8 +395,8 @@
         {
           "at": 1785635196,
           "from": "needs_human",
-          "to": "merged",
-          "reason": "pull request merged by a human"
+          "reason": "pull request merged by a human",
+          "to": "merged"
         }
       ]
     },
@@ -954,20 +954,20 @@
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
-        "outcome": "fixed",
-        "summary": "Bumped mcp 1.24.0 -> 1.28.1 in requirements/development.txt (transitive pin via fastmcp-slim). mcp is not named in any requirements/*.in, so no .in change was needed; no code changes required. Verification grep returns only the new pin.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "requirements/development.txt"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
+        "summary": "Bumped mcp 1.24.0 -> 1.28.1 in requirements/development.txt (transitive pin via fastmcp-slim). mcp is not named in any requirements/*.in, so no .in change was needed; no code changes required. Verification grep returns only the new pin.",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^mcp==' requirements/"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -1019,14 +1019,14 @@
         {
           "at": 1785635184,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         },
         {
           "at": 1785635187,
           "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge'"
+          "reason": "satisfies tier 'auto_merge'",
+          "to": "merged"
         }
       ]
     },
@@ -1050,20 +1050,20 @@
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
-        "outcome": "fixed",
-        "summary": "Bumped pip pin from 25.1.1 to 26.1.2 in requirements/development.txt to remediate PYSEC-2026-1795 and 9 aliased advisories. pip is not named in any requirements/*.in file (it appears only as a transitive pin via apache-superset), so no .in change was required; pip is a tool, not an imported library, so there are no call sites to update. Diff is a single line.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "requirements/development.txt"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
+        "summary": "Bumped pip pin from 25.1.1 to 26.1.2 in requirements/development.txt to remediate PYSEC-2026-1795 and 9 aliased advisories. pip is not named in any requirements/*.in file (it appears only as a transitive pin via apache-superset), so no .in change was required; pip is a tool, not an imported library, so there are no call sites to update. Diff is a single line.",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^pip==' requirements/"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -1115,14 +1115,14 @@
         {
           "at": 1785635190,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         },
         {
           "at": 1785635193,
           "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge_on_clean_review'"
+          "reason": "satisfies tier 'auto_merge_on_clean_review'",
+          "to": "merged"
         }
       ]
     },
