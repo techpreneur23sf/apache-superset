@@ -47,7 +47,7 @@
     "failed": 0,
     "in_flight": 1,
     "merged": 4,
-    "needs_human": 7,
+    "needs_human": 9,
     "prs_opened": 13,
     "queued": 2,
     "tasks": 17,
@@ -60,9 +60,8 @@
   "states": {
     "dispatched": 1,
     "merged": 4,
-    "needs_human": 7,
+    "needs_human": 9,
     "queued": 2,
-    "review_clean": 1,
-    "review_pending": 2
+    "review_clean": 1
   }
 }
