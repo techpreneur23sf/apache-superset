@@ -6,10 +6,10 @@
     "1": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "none",
       "created_at": 1785629020,
       "dispatched_at": 1785629022,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -17,33 +17,62 @@
           "from": "queued",
           "reason": "session b9384faa460e4d96a7ea7e6a5d6db896 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785629262,
+          "from": "dispatched",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785629264,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "deprecation",
       "issue_number": 1,
       "issue_title": "Replace pytz with the stdlib zoneinfo in superset/utils/dates.py",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 20,
+      "pr_opened_at": 1785629262,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/20",
+      "review_status": "pending",
       "session_id": "b9384faa460e4d96a7ea7e6a5d6db896",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/b9384faa460e4d96a7ea7e6a5d6db896",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "superset/utils/dates.py"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/20",
+        "summary": "Removed pytz from superset/utils/dates.py: dttm.astimezone(pytz.utc) -> datetime.timezone.utc, and pytz.utc.localize(EPOCH) -> EPOCH.replace(tzinfo=timezone.utc) (attach, not convert, so no local-offset shift). EPOCH left naive; naive branch untouched. No other files changed. Both verification commands pass (168 tests; epoch asserts print ok) and ruff is clean.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "python -m pytest tests/unit_tests/models/helpers_test.py tests/unit_tests/utils/test_date_parsing.py -q",
+          "python -c \"from datetime import datetime, timezone, timedelta; from superset.utils.dates import datetime_to_epoch; assert datetime_to_epoch(datetime(2020,1,1)) == 1577836800000.0; assert datetime_to_epoch(datetime(2020,1,1,tzinfo=timezone(timedelta(hours=5)))) == 1577818800000.0; print('ok')\"",
+          "ruff check superset/utils/dates.py"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "superset/utils/dates.py"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "13": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "none",
       "created_at": 1785629020,
       "dispatched_at": 1785629020,
       "ever_waited_for_user": false,
@@ -54,23 +83,56 @@
           "from": "queued",
           "reason": "session f3f377a33e4a4d18bf973b13968842c8 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785629265,
+          "from": "dispatched",
+          "reason": "session is working",
+          "to": "running"
+        },
+        {
+          "at": 1785629265,
+          "from": "running",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785629267,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "dep-bump-patch",
       "issue_number": 13,
       "issue_title": "[high] jaraco-context 6.0.1 \u2192 6.1.0: PYSEC-2026-1469 (+1 more)",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 19,
+      "pr_opened_at": 1785629265,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/19",
+      "review_status": "pending",
       "session_id": "f3f377a33e4a4d18bf973b13968842c8",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "working",
       "session_url": "https://app.devin.ai/sessions/f3f377a33e4a4d18bf973b13968842c8",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "requirements/development.txt"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/19",
+        "summary": "Bumped jaraco-context from 6.0.1 to 6.1.0 in requirements/development.txt to remediate PYSEC-2026-1469 / GHSA-58pv-8j8x-9vj2. Package is a transitive dep (via keyring) and absent from all requirements/*.in files, so no .in change needed. Diff limited to the single pin. Verification command passed. PR #19 opened against master with 'Closes #13'.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "grep -rn '^jaraco-context==' requirements/"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "requirements/development.txt",
@@ -112,7 +174,7 @@
     "2": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "green",
       "created_at": 1785628617,
       "dispatched_at": 1785628617,
       "ever_waited_for_user": true,
@@ -178,15 +240,15 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "4": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "none",
       "created_at": 1785629020,
       "dispatched_at": 1785629024,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -194,36 +256,64 @@
           "from": "queued",
           "reason": "session 0c13b096a4bf4075ab3f52d1a0b18f40 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785629270,
+          "from": "dispatched",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785629272,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "deprecation",
       "issue_number": 4,
       "issue_title": "Use datetime.timezone.utc instead of pytz.utc in model helpers",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 21,
+      "pr_opened_at": 1785629270,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
+      "review_status": "pending",
       "session_id": "0c13b096a4bf4075ab3f52d1a0b18f40",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/0c13b096a4bf4075ab3f52d1a0b18f40",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "superset/models/helpers.py"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
+        "summary": "Removed the pytz import from superset/models/helpers.py and replaced pytz.utc in changed_on_utc with datetime.timezone.utc. Since changed_on is naive UTC, the new code attaches UTC via replace(tzinfo=timezone.utc) before astimezone instead of reinterpreting the naive value in local time; aware values keep prior behavior. Output verified byte-identical for naive UTC input. Unit tests and ruff pass.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "python -m pytest tests/unit_tests/models/helpers_test.py -q",
+          "ruff check superset/models/helpers.py"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "superset/models/helpers.py"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "5": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "none",
       "created_at": 1785629020,
       "dispatched_at": 1785629026,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -231,30 +321,60 @@
           "from": "queued",
           "reason": "session 9038f48fd0764477b708bd5b0b75a4c8 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785629273,
+          "from": "dispatched",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785629275,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "code-quality",
       "issue_number": 5,
       "issue_title": "Modernise typing imports to PEP 585 builtin generics in three modules",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 22,
+      "pr_opened_at": 1785629273,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
+      "review_status": "pending",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "superset/daos/chart.py",
+          "superset/reports/notifications/slackv2.py",
+          "superset/mcp_service/chart/validation/runtime/format_validator.py"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
+        "summary": "Replaced typing.Dict/List/Tuple annotations with builtin generics in superset/daos/chart.py, superset/reports/notifications/slackv2.py and superset/mcp_service/chart/validation/runtime/format_validator.py, removing the now-unused typing imports (Union kept in slackv2.py, which has no `from __future__ import annotations`). ruff check passes on all three files. The bare import command from the issue fails identically on master (\"App not initialized yet\"), so imports were verified inside create_app(), where all three modules import cleanly.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "ruff check superset/daos/chart.py superset/reports/notifications/slackv2.py superset/mcp_service/chart/validation/runtime/format_validator.py",
+          "python -c \"from superset.app import create_app; create_app(); import superset.daos.chart, superset.reports.notifications.slackv2, superset.mcp_service.chart.validation.runtime.format_validator; print('IMPORT_OK')\""
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "superset/daos/chart.py",
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "9": {
       "acus_consumed": 0.0,
@@ -270,6 +390,12 @@
           "from": "queued",
           "reason": "session 29ab115a7eb04aed848fc159d86683f2 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785629277,
+          "from": "dispatched",
+          "reason": "session is working",
+          "to": "running"
         }
       ],
       "issue_class": "code-quality",
@@ -282,10 +408,10 @@
       "pr_url": null,
       "review_status": null,
       "session_id": "29ab115a7eb04aed848fc159d86683f2",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "working",
       "session_url": "https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2",
-      "state": "dispatched",
+      "state": "running",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -294,5 +420,5 @@
       "waiting_ticks": 0
     }
   },
-  "updated_at": 1785629029
+  "updated_at": 1785629277
 }
