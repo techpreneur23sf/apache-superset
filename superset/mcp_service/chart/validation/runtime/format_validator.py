@@ -21,7 +21,6 @@ Format-type compatibility validation to prevent misleading data presentation.
 
 import logging
 import re
-from typing import List, Tuple
 
 from superset.mcp_service.chart.schemas import ColumnRef, XYChartConfig
 
@@ -61,7 +60,7 @@ class FormatTypeValidator:
     @staticmethod
     def validate_format_compatibility(
         config: XYChartConfig,
-    ) -> Tuple[bool, List[str] | None]:
+    ) -> tuple[bool, list[str] | None]:
         """
         Validate that axis formats are appropriate for the data types.
 
@@ -89,8 +88,8 @@ class FormatTypeValidator:
 
     @staticmethod
     def _validate_y_axis_format(
-        format_string: str, y_columns: List[ColumnRef]
-    ) -> List[str]:
+        format_string: str, y_columns: list[ColumnRef]
+    ) -> list[str]:
         """Validate Y-axis format against the metrics."""
         warnings = []
 
@@ -110,8 +109,8 @@ class FormatTypeValidator:
 
     @staticmethod
     def _check_currency_format_issues(
-        format_string: str, y_columns: List[ColumnRef]
-    ) -> List[str]:
+        format_string: str, y_columns: list[ColumnRef]
+    ) -> list[str]:
         """Check for currency format issues."""
         warnings = []
         if FormatTypeValidator._is_currency_format(format_string):
@@ -127,8 +126,8 @@ class FormatTypeValidator:
 
     @staticmethod
     def _check_percentage_format_issues(
-        format_string: str, y_columns: List[ColumnRef]
-    ) -> List[str]:
+        format_string: str, y_columns: list[ColumnRef]
+    ) -> list[str]:
         """Check for percentage format issues."""
         warnings = []
         if FormatTypeValidator._is_percentage_format(format_string):
@@ -146,8 +145,8 @@ class FormatTypeValidator:
 
     @staticmethod
     def _check_decimal_format_issues(
-        format_string: str, y_columns: List[ColumnRef]
-    ) -> List[str]:
+        format_string: str, y_columns: list[ColumnRef]
+    ) -> list[str]:
         """Check for decimal format issues."""
         warnings = []
         if "." in format_string and any(char.isdigit() for char in format_string):
@@ -165,7 +164,7 @@ class FormatTypeValidator:
         return warnings
 
     @staticmethod
-    def _validate_x_axis_format(format_string: str, x_column: ColumnRef) -> List[str]:
+    def _validate_x_axis_format(format_string: str, x_column: ColumnRef) -> list[str]:
         """Validate X-axis format appropriateness."""
         warnings = []
 

@@ -18,7 +18,6 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime
-from typing import Dict, List
 
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from sqlalchemy import or_, select
@@ -110,7 +109,7 @@ class ChartDAO(BaseDAO[Slice]):
         return query
 
     @classmethod
-    def get_filterable_columns_and_operators(cls) -> Dict[str, List[str]]:
+    def get_filterable_columns_and_operators(cls) -> dict[str, list[str]]:
         filterable = super().get_filterable_columns_and_operators()
         # Add custom fields for charts
         filterable.update(CHART_CUSTOM_FIELDS)
