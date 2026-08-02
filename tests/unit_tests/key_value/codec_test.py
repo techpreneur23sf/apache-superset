@@ -14,14 +14,21 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+import os
+import pickle
 from contextlib import nullcontext
+from datetime import datetime, timezone
 from typing import Any
+from uuid import UUID
 
 import pytest
 from marshmallow import Schema
 
 from superset.dashboards.permalink.schemas import DashboardPermalinkSchema
-from superset.key_value.exceptions import KeyValueCodecEncodeException
+from superset.key_value.exceptions import (
+    KeyValueCodecDecodeException,
+    KeyValueCodecEncodeException,
+)
 from superset.key_value.types import (
     BinaryKeyValueCodec,
     JsonKeyValueCodec,
@@ -115,12 +122,59 @@ def test_marshmallow_codec(schema: Schema, input_: Any, expected_result: Any):
                 "baz": {1, 2, 3},
             },
         ),
+        (
+            {
+                "uuid": UUID("7b4a1b1a-1c1a-4a0a-9c3a-1b1a1c1a4a0a"),
+                "when": datetime(2023, 5, 1, 12, 3, tzinfo=timezone.utc),
+                "complex": complex(1, 1),
+                "frozen": frozenset({1, 2}),
+            },
+            {
+                "uuid": UUID("7b4a1b1a-1c1a-4a0a-9c3a-1b1a1c1a4a0a"),
+                "when": datetime(2023, 5, 1, 12, 3, tzinfo=timezone.utc),
+                "complex": complex(1, 1),
+                "frozen": frozenset({1, 2}),
+            },
+        ),
     ],
 )
 def test_pickle_codec(input_: Any, expected_result: Any):
     codec = PickleKeyValueCodec()
     encoded_value = codec.encode(input_)
     assert expected_result == codec.decode(encoded_value)
+
+
+class Exploit:
+    """Payload whose reconstruction would shell out to `os.system`."""
+
+    def __init__(self, command: str):
+        self.command = command
+
+    def __reduce__(self):
+        return os.system, (self.command,)
+
+
+@pytest.mark.parametrize(
+    "module,name",
+    [
+        ("os", "system"),
+        ("subprocess", "check_output"),
+        ("builtins", "eval"),
+    ],
+)
+def test_pickle_codec_rejects_disallowed_globals(module: str, name: str):
+    # protocol 0 GLOBAL opcode, i.e. a bare reference to `module.name`
+    payload = f"c{module}\n{name}\n.".encode()
+    with pytest.raises(KeyValueCodecDecodeException):
+        PickleKeyValueCodec().decode(payload)
+
+
+def test_pickle_codec_rejects_command_execution_payload(tmp_path):
+    marker = tmp_path / "pwned"
+    payload = pickle.dumps(Exploit(f"touch {marker}"))
+    with pytest.raises(KeyValueCodecDecodeException):
+        PickleKeyValueCodec().decode(payload)
+    assert not marker.exists()
 
 
 def test_binary_codec_encode():
