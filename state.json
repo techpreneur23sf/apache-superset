@@ -110,20 +110,13 @@
     },
     "11": {
       "acus_consumed": 0.0,
-      "attempts": 1,
+      "attempts": 0,
       "ci_status": null,
-      "created_at": 1785630544,
-      "dispatched_at": 1785630544,
+      "created_at": 1785630543,
+      "dispatched_at": null,
       "ever_waited_for_user": false,
       "failure_category": null,
-      "history": [
-        {
-          "at": 1785630544,
-          "from": "queued",
-          "reason": "session 18d3351346b547c3a074d0e7c3ffc0fe created",
-          "to": "dispatched"
-        }
-      ],
+      "history": [],
       "issue_class": "dep-bump-patch",
       "issue_number": 11,
       "issue_title": "[high] paramiko 3.5.1: PYSEC-2026-2858 (+1 more)",
@@ -133,11 +126,11 @@
       "pr_state": null,
       "pr_url": null,
       "review_status": null,
-      "session_id": "18d3351346b547c3a074d0e7c3ffc0fe",
-      "session_status": "new",
+      "session_id": null,
+      "session_status": null,
       "session_status_detail": null,
-      "session_url": "https://app.devin.ai/sessions/18d3351346b547c3a074d0e7c3ffc0fe",
-      "state": "dispatched",
+      "session_url": null,
+      "state": "queued",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -720,15 +713,15 @@
       "acus_consumed": 0.0,
       "attempts": 1,
       "ci_status": null,
-      "created_at": 1785630547,
-      "dispatched_at": 1785630547,
+      "created_at": 1785630543,
+      "dispatched_at": 1785630545,
       "ever_waited_for_user": false,
       "failure_category": null,
       "history": [
         {
-          "at": 1785630547,
+          "at": 1785630545,
           "from": "queued",
-          "reason": "session cb2799c898be44069ee8819c1f3c3af0 created",
+          "reason": "session 3664c20672b8483699fd0572c2d431fb created",
           "to": "dispatched"
         }
       ],
@@ -741,10 +734,10 @@
       "pr_state": null,
       "pr_url": null,
       "review_status": null,
-      "session_id": "cb2799c898be44069ee8819c1f3c3af0",
+      "session_id": "3664c20672b8483699fd0572c2d431fb",
       "session_status": "new",
       "session_status_detail": null,
-      "session_url": "https://app.devin.ai/sessions/cb2799c898be44069ee8819c1f3c3af0",
+      "session_url": "https://app.devin.ai/sessions/3664c20672b8483699fd0572c2d431fb",
       "state": "dispatched",
       "structured_output": null,
       "terminal_at": null,
@@ -825,5 +818,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785630548
+  "updated_at": 1785630549
 }
