@@ -221,7 +221,7 @@
       "ci_status": null,
       "created_at": 1785629739,
       "dispatched_at": 1785636082,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -242,11 +242,27 @@
       "pr_url": null,
       "review_status": null,
       "session_id": "36b45643222b4302802d5daebbaa7359",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359",
       "state": "dispatched",
-      "structured_output": null,
+      "structured_output": {
+        "blockers": [
+          "setuptools >=82 removes pkg_resources; nodeenv==1.8.0 and sqlalchemy-redshift<0.9 import it at module load",
+          "Remediation requires dependency changes outside the declared touch scope (nodeenv, sqlalchemy-redshift/SQLAlchemy 2.0)"
+        ],
+        "confidence": "high",
+        "files_changed": [],
+        "human_review_reason": "Advisory fix version (83.0.0) is mutually exclusive with the repo's intentional setuptools<81 pin for pkg_resources consumers; a human must decide whether to accept breakage, bump out-of-scope deps, or waive the finding (the advisory only affects sdist MANIFEST.in exclusion on macOS APFS/HFS+, not Superset runtime).",
+        "outcome": "wont_fix",
+        "pr_url": null,
+        "summary": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "grep -rn '^setuptools==' requirements/"
+        ],
+        "verification_passed": false
+      },
       "terminal_at": null,
       "touch_scope": [
         "requirements/base.txt",
@@ -254,7 +270,7 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "13": {
       "acus_consumed": 0.0,
@@ -1256,5 +1272,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785636083
+  "updated_at": 1785636509
 }
