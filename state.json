@@ -67,7 +67,7 @@
       "touch_scope": [
         "superset/utils/dates.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "12": {
       "acus_consumed": 0.0,
@@ -108,7 +108,7 @@
       "ci_status": "none",
       "created_at": 1785629020,
       "dispatched_at": 1785629020,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -147,7 +147,7 @@
       "review_status": "pending",
       "session_id": "f3f377a33e4a4d18bf973b13968842c8",
       "session_status": "running",
-      "session_status_detail": "working",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/f3f377a33e4a4d18bf973b13968842c8",
       "state": "review_pending",
       "structured_output": {
@@ -171,7 +171,7 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "16": {
       "acus_consumed": 0.0,
@@ -238,7 +238,7 @@
     "2": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "green",
+      "ci_status": "none",
       "created_at": 1785628617,
       "dispatched_at": 1785628617,
       "ever_waited_for_user": true,
@@ -304,7 +304,7 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "3": {
       "acus_consumed": 0.0,
@@ -320,6 +320,12 @@
           "from": "queued",
           "reason": "session b79c2813999c483bb4dc09b2c64d3161 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785629841,
+          "from": "dispatched",
+          "reason": "session is working",
+          "to": "running"
         }
       ],
       "issue_class": "deprecation",
@@ -332,10 +338,10 @@
       "pr_url": null,
       "review_status": null,
       "session_id": "b79c2813999c483bb4dc09b2c64d3161",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "working",
       "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
-      "state": "dispatched",
+      "state": "running",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -407,7 +413,7 @@
       "touch_scope": [
         "superset/models/helpers.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "5": {
       "acus_consumed": 0.0,
@@ -476,7 +482,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "6": {
       "acus_consumed": 0.0,
@@ -484,7 +490,7 @@
       "ci_status": null,
       "created_at": 1785629739,
       "dispatched_at": 1785629742,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -504,25 +510,41 @@
       "pr_url": null,
       "review_status": null,
       "session_id": "2708236784de43acb71bbc9a34a16d9a",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/2708236784de43acb71bbc9a34a16d9a",
       "state": "dispatched",
-      "structured_output": null,
+      "structured_output": {
+        "blockers": [
+          "Removing the backend flag would disable drill-to-detail in the UI because the frontend gates on the same key via isFeatureEnabled; fixing that requires frontend edits, forbidden by acceptance criteria."
+        ],
+        "confidence": "high",
+        "files_changed": [],
+        "human_review_reason": "Issue scope is too narrow: safe retirement requires a combined backend + frontend change (removing isFeatureEnabled(FeatureFlag.DrillToDetail) gates and the enum member).",
+        "outcome": "partial",
+        "pr_url": null,
+        "summary": "No backend consumer of DRILL_TO_DETAIL exists beyond the flag map, but it is a live frontend gate: FeatureFlag.DrillToDetail = 'DRILL_TO_DETAIL' is checked via isFeatureEnabled in ChartRenderer.tsx, ChartContextMenu.tsx, SliceHeaderControls/index.tsx and PivotTableChart.tsx. The map is shipped to the client via get_feature_flags(), so deleting the key makes isFeatureEnabled false and silently disables drill-to-detail for all users, including default-True ones. Safe retirement needs frontend edits, which the criteria forbid. No changes made, no PR.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "grep -rn 'DRILL_TO_DETAIL' superset/ tests/ docs/",
+          "grep -rn 'FeatureFlag.DrillToDetail' superset-frontend/src superset-frontend/packages superset-frontend/plugins"
+        ],
+        "verification_passed": false
+      },
       "terminal_at": null,
       "touch_scope": [
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "9": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "none",
       "created_at": 1785629020,
       "dispatched_at": 1785629027,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -536,29 +558,57 @@
           "from": "dispatched",
           "reason": "session is working",
           "to": "running"
+        },
+        {
+          "at": 1785629845,
+          "from": "running",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785629847,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "code-quality",
       "issue_number": 9,
       "issue_title": "Cover the naive/aware boundary in session invalidation with explicit tests",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 23,
+      "pr_opened_at": 1785629845,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
+      "review_status": "pending",
       "session_id": "29ab115a7eb04aed848fc159d86683f2",
       "session_status": "running",
-      "session_status_detail": "working",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2",
-      "state": "running",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "tests/unit_tests/security/test_session_invalidation.py"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
+        "summary": "Added parametrized unit tests pinning the naive/aware UTC boundary in session_invalidation: a process_tz fixture sets TZ to non-UTC zones (LA, Kolkata, Berlin, Chatham) via time.tzset, and asserts naive-UTC and aware-UTC inputs yield identical epoch seconds and identical is_session_invalidated boundaries. No production module changed. Opened PR #23 with 'Closes #9'.",
+        "tests_added": 4,
+        "verification_commands_run": [
+          "python -m pytest tests/unit_tests/security -q",
+          "ruff check tests/unit_tests/security/test_session_invalidation.py"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     }
   },
-  "updated_at": 1785629743
+  "updated_at": 1785629848
 }
