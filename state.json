@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785635226,
+  "updated_at": 1785635962,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -408,7 +408,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "state": "needs_human",
+      "state": "failed",
       "session_id": "2708236784de43acb71bbc9a34a16d9a",
       "session_url": "https://app.devin.ai/sessions/2708236784de43acb71bbc9a34a16d9a",
       "session_status": "suspended",
@@ -441,8 +441,8 @@
       "created_at": 1785629739,
       "dispatched_at": 1785629742,
       "pr_opened_at": null,
-      "terminal_at": 1785630363,
-      "failure_category": null,
+      "terminal_at": 1785635958,
+      "failure_category": "no_pr",
       "last_error": null,
       "waiting_ticks": 5,
       "ever_waited_for_user": true,
@@ -458,6 +458,12 @@
           "from": "dispatched",
           "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
           "to": "needs_human"
+        },
+        {
+          "at": 1785635958,
+          "from": "needs_human",
+          "to": "failed",
+          "reason": "session ended (suspended) without a pull request"
         }
       ]
     },
@@ -774,7 +780,7 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "state": "dispatched",
+      "state": "failed",
       "session_id": "18d3351346b547c3a074d0e7c3ffc0fe",
       "session_url": "https://app.devin.ai/sessions/18d3351346b547c3a074d0e7c3ffc0fe",
       "session_status": "suspended",
@@ -808,8 +814,8 @@
       "created_at": 1785630544,
       "dispatched_at": 1785630544,
       "pr_opened_at": null,
-      "terminal_at": null,
-      "failure_category": null,
+      "terminal_at": 1785635956,
+      "failure_category": "no_pr",
       "last_error": null,
       "waiting_ticks": 0,
       "ever_waited_for_user": false,
@@ -819,6 +825,12 @@
           "from": "queued",
           "reason": "session 18d3351346b547c3a074d0e7c3ffc0fe created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785635956,
+          "from": "dispatched",
+          "to": "failed",
+          "reason": "session ended (suspended) without a pull request"
         }
       ]
     },
@@ -1174,7 +1186,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
       "pr_number": 27,
       "pr_state": "merged",
-      "merged_by": null,
+      "merged_by": "swarm",
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
