@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785636731,
+  "updated_at": 1785636896,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -844,7 +844,7 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "state": "dispatched",
+      "state": "needs_human",
       "session_id": "36b45643222b4302802d5daebbaa7359",
       "session_url": "https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359",
       "session_status": "running",
@@ -877,10 +877,10 @@
       "created_at": 1785629739,
       "dispatched_at": 1785636082,
       "pr_opened_at": null,
-      "terminal_at": null,
+      "terminal_at": 1785636891,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 2,
+      "waiting_ticks": 3,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -888,6 +888,12 @@
           "from": "queued",
           "reason": "session 36b45643222b4302802d5daebbaa7359 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785636891,
+          "from": "dispatched",
+          "to": "needs_human",
+          "reason": "session idle in waiting_for_user; terminated to stop ACU drain"
         }
       ]
     },
