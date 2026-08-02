@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785633882,
+  "updated_at": 1785634064,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -354,7 +354,7 @@
       "terminal_at": 1785633821,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 7,
+      "waiting_ticks": 8,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -957,7 +957,7 @@
       "terminal_at": 1785633874,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 2,
+      "waiting_ticks": 3,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -981,14 +981,14 @@
         {
           "at": 1785633874,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         },
         {
           "at": 1785633874,
           "from": "review_clean",
-          "to": "needs_human",
-          "reason": "class 'dep-bump-patch' matches no policy tier; human review"
+          "reason": "class 'dep-bump-patch' matches no policy tier; human review",
+          "to": "needs_human"
         }
       ]
     },
@@ -1034,7 +1034,7 @@
       "terminal_at": 1785633877,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 2,
+      "waiting_ticks": 3,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -1058,14 +1058,14 @@
         {
           "at": 1785633877,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         },
         {
           "at": 1785633877,
           "from": "review_clean",
-          "to": "needs_human",
-          "reason": "class 'dep-bump-major' matches no policy tier; human review"
+          "reason": "class 'dep-bump-major' matches no policy tier; human review",
+          "to": "needs_human"
         }
       ]
     },
