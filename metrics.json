@@ -40,7 +40,7 @@
     "failed": 0,
     "in_flight": 0,
     "merged": 3,
-    "needs_human": 4,
+    "needs_human": 1,
     "prs_opened": 7,
     "queued": 3,
     "tasks": 11,
@@ -52,8 +52,8 @@
   "pr_rate": 0.875,
   "states": {
     "merged": 3,
-    "needs_human": 4,
+    "needs_human": 1,
     "queued": 3,
-    "review_clean": 1
+    "review_pending": 4
   }
 }
