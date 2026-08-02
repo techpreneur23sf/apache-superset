@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785633417,
+  "updated_at": 1785633427,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -515,8 +515,8 @@
         {
           "at": 1785633412,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         }
       ]
     },
@@ -588,8 +588,8 @@
         {
           "at": 1785633415,
           "from": "review_pending",
-          "to": "needs_human",
-          "reason": "Devin Review raised 1 finding(s)"
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ]
     },
@@ -739,8 +739,8 @@
         {
           "at": 1785633401,
           "from": "review_pending",
-          "to": "needs_human",
-          "reason": "Devin Review raised 1 finding(s)"
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ]
     },
@@ -961,20 +961,20 @@
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
-        "outcome": "fixed",
-        "summary": "Bumped python-multipart 0.0.29 -> 0.0.31 in requirements/development.txt (transitive dep via fastmcp-slim/mcp; not present in any .in file), resolving PYSEC-2026-3036 and 7 aliased advisories. Minimal one-line diff. Verification command passed; CI green (verify + swarm verify).",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "requirements/development.txt"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
+        "summary": "Bumped python-multipart 0.0.29 -> 0.0.31 in requirements/development.txt (transitive dep via fastmcp-slim/mcp; not present in any .in file), resolving PYSEC-2026-3036 and 7 aliased advisories. Minimal one-line diff. Verification command passed; CI green (verify + swarm verify).",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^python-multipart==' requirements/"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -1008,14 +1008,14 @@
         {
           "at": 1785633404,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         },
         {
           "at": 1785633407,
           "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge'"
+          "reason": "satisfies tier 'auto_merge'",
+          "to": "merged"
         }
       ]
     }
