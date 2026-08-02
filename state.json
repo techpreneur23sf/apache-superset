@@ -75,6 +75,46 @@
       ],
       "waiting_ticks": 5
     },
+    "11": {
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "ci_status": null,
+      "created_at": 1785630544,
+      "dispatched_at": 1785630544,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [
+        {
+          "at": 1785630544,
+          "from": "queued",
+          "reason": "session 18d3351346b547c3a074d0e7c3ffc0fe created",
+          "to": "dispatched"
+        }
+      ],
+      "issue_class": "dep-bump-patch",
+      "issue_number": 11,
+      "issue_title": "[high] paramiko 3.5.1: PYSEC-2026-2858 (+1 more)",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": "18d3351346b547c3a074d0e7c3ffc0fe",
+      "session_status": "new",
+      "session_status_detail": null,
+      "session_url": "https://app.devin.ai/sessions/18d3351346b547c3a074d0e7c3ffc0fe",
+      "state": "dispatched",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "requirements/base.txt",
+        "requirements/development.txt",
+        "requirements/base.in",
+        "requirements/development.in"
+      ],
+      "waiting_ticks": 0
+    },
     "12": {
       "acus_consumed": 0.0,
       "attempts": 0,
@@ -678,5 +718,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785630532
+  "updated_at": 1785630545
 }
