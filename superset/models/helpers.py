@@ -45,7 +45,6 @@ import dateutil.parser
 import humanize
 import numpy as np
 import pandas as pd
-import pytz
 import sqlalchemy as sa
 import yaml
 from flask import current_app as app, g
@@ -760,8 +759,11 @@ class AuditMixinNullable(AuditMixin):
 
     @renders("changed_on")
     def changed_on_utc(self) -> str:
-        # Convert naive datetime to UTC
-        return self.changed_on.astimezone(pytz.utc).strftime("%Y-%m-%dT%H:%M:%S.%f%z")
+        # `changed_on` is stored as a naive datetime in UTC
+        changed_on = self.changed_on
+        if changed_on.tzinfo is None:
+            changed_on = changed_on.replace(tzinfo=timezone.utc)
+        return changed_on.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f%z")
 
     def _format_time_humanized(self, timestamp: datetime) -> str:
         locale = str(get_locale())
