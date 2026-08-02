@@ -6,7 +6,7 @@
     "1": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "green",
       "created_at": 1785629020,
       "dispatched_at": 1785629022,
       "ever_waited_for_user": true,
@@ -67,7 +67,7 @@
       "touch_scope": [
         "superset/utils/dates.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "12": {
       "acus_consumed": 0.0,
@@ -105,7 +105,7 @@
     "13": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "green",
       "created_at": 1785629020,
       "dispatched_at": 1785629020,
       "ever_waited_for_user": true,
@@ -171,7 +171,7 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "16": {
       "acus_consumed": 0.0,
@@ -238,7 +238,7 @@
     "2": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "green",
       "created_at": 1785628617,
       "dispatched_at": 1785628617,
       "ever_waited_for_user": true,
@@ -304,7 +304,7 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "3": {
       "acus_consumed": 0.0,
@@ -355,16 +355,19 @@
       "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
       "state": "review_pending",
       "structured_output": {
-        "blockers": [],
+        "blockers": [
+          "swarm verify reports 2/3: `python -c \"import superset.reports.schemas as s; ...\"` raises 'App not initialized yet. Please call init_app first' \u2014 pre-existing on master (verified by stashing the diff), not caused by this change",
+          "The repo's `verify` GitHub Action fails with 'DEVIN_API_KEY and DEVIN_ORG_ID are required in live mode' (missing repo secrets), unrelated to this diff"
+        ],
         "confidence": "high",
         "files_changed": [
           "superset/reports/schemas.py",
           "superset/reports/notifications/email.py"
         ],
-        "human_review_reason": null,
+        "human_review_reason": "The issue's second verification command is unsatisfiable as written (module cannot be imported standalone on master either); a human may want to amend that check.",
         "outcome": "fixed",
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
-        "summary": "Replaced pytz with stdlib zoneinfo in superset/reports/schemas.py (module-level TIMEZONES = tuple(sorted(available_timezones())) used by both OneOf validators, keeping choices deterministic) and superset/reports/notifications/email.py (pytz.timezone(\"UTC\") -> ZoneInfo(\"UTC\")). zoneinfo's set is a strict superset of pytz.all_timezones (597 vs 599, no removals). Targeted unit tests and ruff pass. The PR's only CI check ('verify', the swarm workflow) fails with RuntimeError: DEVIN_API_KEY and DEVIN_ORG_ID are required in live mode \u2014 a missing-repo-secret infra failure unrelated to this diff.",
+        "summary": "pytz replaced with stdlib zoneinfo: schemas.py now uses module-level TIMEZONES = tuple(sorted(available_timezones())) for both OneOf validators (deterministic choices/error message); email.py uses ZoneInfo(\"UTC\"). zoneinfo's set is a strict superset of pytz.all_timezones (597 vs 599, zero removals). schemas_test.py (34) and all tests/unit_tests/reports (145) pass; ruff clean. The issue's 2nd verification command fails identically on master (module not importable outside a Flask app), so an equivalent source-level pytz check was used; explained in a PR comment.",
         "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/reports/schemas_test.py -q (34 passed)",
@@ -379,12 +382,12 @@
         "superset/reports/schemas.py",
         "superset/reports/notifications/email.py"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "4": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "green",
       "created_at": 1785629020,
       "dispatched_at": 1785629024,
       "ever_waited_for_user": true,
@@ -444,12 +447,12 @@
       "touch_scope": [
         "superset/models/helpers.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "5": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "red",
       "created_at": 1785629020,
       "dispatched_at": 1785629026,
       "ever_waited_for_user": true,
@@ -489,21 +492,24 @@
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
       "state": "review_pending",
       "structured_output": {
-        "blockers": [],
+        "blockers": [
+          "CI 'swarm verify' bare-import check fails pre-existing on master (needs a Flask app context); cannot pass without out-of-scope changes"
+        ],
         "confidence": "high",
         "files_changed": [
           "superset/daos/chart.py",
           "superset/reports/notifications/slackv2.py",
           "superset/mcp_service/chart/validation/runtime/format_validator.py"
         ],
-        "human_review_reason": null,
+        "human_review_reason": "Decide whether the pre-existing bare-import verification command failure (fails on master too) should block merge.",
         "outcome": "fixed",
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
-        "summary": "Replaced typing.Dict/List/Tuple annotations with builtin generics in superset/daos/chart.py, superset/reports/notifications/slackv2.py and superset/mcp_service/chart/validation/runtime/format_validator.py, removing the now-unused typing imports (Union kept in slackv2.py, which has no `from __future__ import annotations`). ruff check passes on all three files. The bare import command from the issue fails identically on master (\"App not initialized yet\"), so imports were verified inside create_app(), where all three modules import cleanly.",
+        "summary": "Replaced typing.Dict/List/Tuple with builtin generics in the three modules and removed the now-unused typing imports (Union kept in slackv2.py, which lacks `from __future__ import annotations`). ruff check passes; all three modules import cleanly inside create_app(). CI 'swarm verify' reports 2/3: the issue's bare `python -c \"import superset.daos.chart, ...\"` fails with 'App not initialized yet. Please call init_app first' \u2014 reproduced identically on unmodified master locally, so it is pre-existing and unrelated to this diff.",
         "tests_added": 0,
         "verification_commands_run": [
           "ruff check superset/daos/chart.py superset/reports/notifications/slackv2.py superset/mcp_service/chart/validation/runtime/format_validator.py",
-          "python -c \"from superset.app import create_app; create_app(); import superset.daos.chart, superset.reports.notifications.slackv2, superset.mcp_service.chart.validation.runtime.format_validator; print('IMPORT_OK')\""
+          "python -c \"from superset.app import create_app; create_app(); import superset.daos.chart, superset.reports.notifications.slackv2, superset.mcp_service.chart.validation.runtime.format_validator; print('IMPORT_OK')\"",
+          "git stash && python -c \"import superset.daos.chart, superset.reports.notifications.slackv2\" (confirmed same failure on master)"
         ],
         "verification_passed": true
       },
@@ -513,7 +519,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "6": {
       "acus_consumed": 0.0,
@@ -529,6 +535,12 @@
           "from": "queued",
           "reason": "session 2708236784de43acb71bbc9a34a16d9a created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785630363,
+          "from": "dispatched",
+          "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
+          "to": "needs_human"
         }
       ],
       "issue_class": "code-quality",
@@ -544,7 +556,7 @@
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/2708236784de43acb71bbc9a34a16d9a",
-      "state": "dispatched",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [
           "Removing the backend flag would disable drill-to-detail in the UI because the frontend gates on the same key via isFeatureEnabled; fixing that requires frontend edits, forbidden by acceptance criteria."
@@ -562,17 +574,17 @@
         ],
         "verification_passed": false
       },
-      "terminal_at": null,
+      "terminal_at": 1785630363,
       "touch_scope": [
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "9": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "none",
+      "ci_status": "green",
       "created_at": 1785629020,
       "dispatched_at": 1785629027,
       "ever_waited_for_user": true,
@@ -638,8 +650,8 @@
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     }
   },
-  "updated_at": 1785629957
+  "updated_at": 1785630365
 }
