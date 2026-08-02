@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785635962,
+  "updated_at": 1785636510,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -462,8 +462,8 @@
         {
           "at": 1785635958,
           "from": "needs_human",
-          "to": "failed",
-          "reason": "session ended (suspended) without a pull request"
+          "reason": "session ended (suspended) without a pull request",
+          "to": "failed"
         }
       ]
     },
@@ -829,8 +829,8 @@
         {
           "at": 1785635956,
           "from": "dispatched",
-          "to": "failed",
-          "reason": "session ended (suspended) without a pull request"
+          "reason": "session ended (suspended) without a pull request",
+          "to": "failed"
         }
       ]
     },
@@ -844,29 +844,52 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "state": "queued",
-      "session_id": null,
-      "session_url": null,
-      "session_status": null,
-      "session_status_detail": null,
+      "state": "dispatched",
+      "session_id": "36b45643222b4302802d5daebbaa7359",
+      "session_url": "https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359",
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
       "merged_by": null,
       "ci_status": null,
       "review_status": null,
-      "structured_output": null,
+      "structured_output": {
+        "pr_url": null,
+        "outcome": "wont_fix",
+        "summary": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened.",
+        "blockers": [
+          "setuptools >=82 removes pkg_resources; nodeenv==1.8.0 and sqlalchemy-redshift<0.9 import it at module load",
+          "Remediation requires dependency changes outside the declared touch scope (nodeenv, sqlalchemy-redshift/SQLAlchemy 2.0)"
+        ],
+        "confidence": "high",
+        "tests_added": 0,
+        "files_changed": [],
+        "human_review_reason": "Advisory fix version (83.0.0) is mutually exclusive with the repo's intentional setuptools<81 pin for pkg_resources consumers; a human must decide whether to accept breakage, bump out-of-scope deps, or waive the finding (the advisory only affects sdist MANIFEST.in exclusion on macOS APFS/HFS+, not Superset runtime).",
+        "verification_passed": false,
+        "verification_commands_run": [
+          "grep -rn '^setuptools==' requirements/"
+        ]
+      },
       "acus_consumed": 0.0,
-      "attempts": 0,
+      "attempts": 1,
       "created_at": 1785629739,
-      "dispatched_at": null,
+      "dispatched_at": 1785636082,
       "pr_opened_at": null,
       "terminal_at": null,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 0,
-      "ever_waited_for_user": false,
-      "history": []
+      "waiting_ticks": 1,
+      "ever_waited_for_user": true,
+      "history": [
+        {
+          "at": 1785636082,
+          "from": "queued",
+          "reason": "session 36b45643222b4302802d5daebbaa7359 created",
+          "to": "dispatched"
+        }
+      ]
     },
     "13": {
       "issue_number": 13,
