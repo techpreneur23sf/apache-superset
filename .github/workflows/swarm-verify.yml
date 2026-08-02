@@ -1,0 +1,70 @@
+# CI for swarm pull requests.
+#
+# Superset's own 45 workflows are disabled in this fork: they are far too large
+# for this budget and none of them gate the kind of change the swarm makes. The
+# gate here is the one the issue itself declared — see `swarm verify`.
+name: swarm verify
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: "PR number to verify"
+        required: true
+
+concurrency:
+  group: swarm-verify-${{ github.event.pull_request.number || inputs.pr }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+  statuses: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PR: ${{ github.event.pull_request.number || inputs.pr }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number || inputs.pr }}/merge
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install swarm
+        run: pip install --quiet "git+https://github.com/techpreneur23sf/devin-backlog-swarm@main"
+
+      - name: System libraries Superset's dev requirements build against
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq default-libmysqlclient-dev pkg-config libsasl2-dev libldap2-dev
+
+      - name: Cache the Superset dev environment
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: superset-venv-${{ runner.os }}-py311-${{ hashFiles('requirements/development.txt') }}
+
+      - name: Build the environment the issues promise
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          export PATH="$HOME/.local/bin:$PATH"
+          [ -d .venv ] || uv venv --python 3.11 .venv
+          uv pip install --python .venv/bin/python -r requirements/development.txt
+          uv pip install --python .venv/bin/python -e .
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+
+      - name: Run the linked issue's verification commands
+        env:
+          GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          SWARM_REPO: ${{ github.repository }}
+          SWARM_STATUS_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: swarm verify --pr "$PR" --post-status

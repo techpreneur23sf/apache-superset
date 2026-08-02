@@ -1,0 +1,53 @@
+# The nightly fan-out: pick what to work on, under concurrency and ACU caps.
+#
+# The scheduler decides; this file only supplies credentials and a run id. A
+# manual run can override the caps for a demo without editing policy.yaml.
+name: swarm nightly
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      max_sessions:
+        description: "Override max concurrent sessions"
+        required: false
+      dry_run:
+        description: "Plan only, dispatch nothing"
+        type: boolean
+        default: false
+
+concurrency:
+  group: swarm-nightly
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  fan-out:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: ghcr.io/techpreneur23sf/devin-backlog-swarm:main
+    steps:
+      - name: Fan out across the backlog
+        env:
+          DEVIN_API_KEY: ${{ secrets.DEVIN_API_KEY }}
+          DEVIN_ORG_ID: ${{ secrets.DEVIN_ORG_ID }}
+          GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN }}
+          SWARM_REPO: ${{ github.repository }}
+          SWARM_MAX_SESSIONS: ${{ inputs.max_sessions }}
+        run: >
+          swarm --run-id "nightly-${{ github.run_id }}"
+          nightly ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Morning digest
+        if: ${{ !inputs.dry_run }}
+        env:
+          DEVIN_API_KEY: ${{ secrets.DEVIN_API_KEY }}
+          DEVIN_ORG_ID: ${{ secrets.DEVIN_ORG_ID }}
+          GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN }}
+          SWARM_REPO: ${{ github.repository }}
+        run: swarm --run-id "nightly-${{ github.run_id }}" digest

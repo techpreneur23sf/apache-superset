@@ -1,0 +1,40 @@
+# The reconciler: the only place state advances.
+#
+# It polls on a schedule rather than reacting to webhooks because Devin session
+# state is not delivered by webhook, and because a poll is idempotent — a
+# missed tick costs latency, not correctness. Every transition it records comes
+# from an observed API response.
+name: swarm reconcile
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  pull_request_target:
+    types: [closed]
+
+concurrency:
+  group: swarm-reconcile
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: ghcr.io/techpreneur23sf/devin-backlog-swarm:main
+    steps:
+      - name: Advance every in-flight task and publish the dashboard
+        env:
+          DEVIN_API_KEY: ${{ secrets.DEVIN_API_KEY }}
+          DEVIN_ORG_ID: ${{ secrets.DEVIN_ORG_ID }}
+          GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN }}
+          SWARM_REPO: ${{ github.repository }}
+        run: >
+          swarm --run-id "reconcile-${{ github.run_id }}"
+          reconcile --publish

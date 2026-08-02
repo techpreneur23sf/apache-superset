@@ -1,0 +1,50 @@
+# Scanner intake: findings in, deduplicated issues out.
+#
+# Bring whatever scanner you already own — this workflow runs OSS ones because
+# they are free, but the adapter boundary is the finding, not the tool. Issues
+# are keyed on a finding fingerprint, so re-running never duplicates work.
+name: swarm scan
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+    inputs:
+      auto_label:
+        description: "Label new issues devin:auto (dispatches them immediately)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: swarm-scan
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install the swarm and the scanners
+        run: |
+          pip install --quiet "git+https://github.com/techpreneur23sf/devin-backlog-swarm@main" pip-audit
+          curl -sSfL https://github.com/google/osv-scanner/releases/download/v2.4.0/osv-scanner_linux_amd64 \
+            -o /usr/local/bin/osv-scanner
+          chmod +x /usr/local/bin/osv-scanner
+
+      - name: Scan and file deduplicated issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN }}
+          SWARM_REPO: ${{ github.repository }}
+        run: >
+          swarm scan --repo-dir . --tools osv-scanner,pip-audit
+          ${{ inputs.auto_label && '--auto-label' || '' }}
