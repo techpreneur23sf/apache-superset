@@ -3,7 +3,7 @@
   "acus_per_merged_pr": 0.0,
   "acus_per_pr_opened": 0.0,
   "acus_total": 0.0,
-  "autonomy_rate": 0.0,
+  "autonomy_rate": 0.091,
   "by_class": {
     "code-quality": {
       "acus": 0.0,
@@ -21,8 +21,8 @@
     },
     "dep-bump-patch": {
       "acus": 0.0,
-      "merge_rate": 0.3333333333333333,
-      "merged": 1,
+      "merge_rate": 0.6666666666666666,
+      "merged": 2,
       "pr": 2,
       "total": 3
     },
@@ -46,8 +46,8 @@
     "dispatched": 13,
     "failed": 0,
     "in_flight": 1,
-    "merged": 3,
-    "needs_human": 4,
+    "merged": 4,
+    "needs_human": 6,
     "prs_opened": 11,
     "queued": 2,
     "tasks": 15,
@@ -55,14 +55,13 @@
   },
   "failures": {},
   "median_issue_to_pr_hours": 0.07,
-  "merge_rate": 0.231,
+  "merge_rate": 0.308,
   "pr_rate": 0.846,
   "states": {
     "dispatched": 1,
-    "merged": 3,
-    "needs_human": 4,
+    "merged": 4,
+    "needs_human": 6,
     "queued": 2,
-    "review_clean": 1,
-    "review_pending": 4
+    "review_clean": 2
   }
 }
