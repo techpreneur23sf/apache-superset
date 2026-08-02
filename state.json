@@ -342,6 +342,18 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633874,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785633874,
+          "from": "review_clean",
+          "reason": "class 'dep-bump-patch' matches no policy tier; human review",
+          "to": "needs_human"
         }
       ],
       "issue_class": "dep-bump-patch",
@@ -352,12 +364,12 @@
       "pr_opened_at": 1785633812,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "707bafdd5c784128a86a09e1a2a36421",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -374,12 +386,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785633874,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "15": {
       "acus_consumed": 0.0,
@@ -407,6 +419,18 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633877,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785633877,
+          "from": "review_clean",
+          "reason": "class 'dep-bump-major' matches no policy tier; human review",
+          "to": "needs_human"
         }
       ],
       "issue_class": "dep-bump-major",
@@ -417,12 +441,12 @@
       "pr_opened_at": 1785633816,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "0ef4dac6345f41b19665e97ba8422f3a",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -439,12 +463,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785633877,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 1
+      "waiting_ticks": 2
     },
     "16": {
       "acus_consumed": 0.0,
@@ -836,24 +860,22 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
       "review_status": "clean",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
-      "session_status": "suspended",
-      "session_status_detail": "inactivity",
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
       "state": "needs_human",
       "structured_output": {
-        "blockers": [
-          "CI 'swarm verify' bare-import check fails pre-existing on master (needs a Flask app context); cannot pass without out-of-scope changes"
-        ],
+        "blockers": [],
         "confidence": "high",
         "files_changed": [
           "superset/daos/chart.py",
           "superset/reports/notifications/slackv2.py",
           "superset/mcp_service/chart/validation/runtime/format_validator.py"
         ],
-        "human_review_reason": "Decide whether the pre-existing bare-import verification command failure (fails on master too) should block merge.",
+        "human_review_reason": null,
         "outcome": "fixed",
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
-        "summary": "Replaced typing.Dict/List/Tuple with builtin generics in the three modules and removed the now-unused typing imports (Union kept in slackv2.py, which lacks `from __future__ import annotations`). ruff check passes; all three modules import cleanly inside create_app(). CI 'swarm verify' reports 2/3: the issue's bare `python -c \"import superset.daos.chart, ...\"` fails with 'App not initialized yet. Please call init_app first' \u2014 reproduced identically on unmodified master locally, so it is pre-existing and unrelated to this diff.",
+        "summary": "Replaced typing.Dict/List/Tuple with builtin generics in the three modules and removed the now-unused typing imports (Union kept in slackv2.py, which lacks `from __future__ import annotations`). ruff check passes and all three modules import cleanly inside create_app(). The one failing CI check was the issue's bare-import verification command, which fails identically on unmodified master; the maintainer confirmed the verification contract was at fault, corrected it (swarm verify now green), and merged the PR.",
         "tests_added": 0,
         "verification_commands_run": [
           "ruff check superset/daos/chart.py superset/reports/notifications/slackv2.py superset/mcp_service/chart/validation/runtime/format_validator.py",
@@ -868,7 +890,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 6
+      "waiting_ticks": 7
     },
     "6": {
       "acus_consumed": 0.0,
@@ -1156,5 +1178,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785633824
+  "updated_at": 1785633881
 }
