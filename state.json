@@ -29,6 +29,18 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630431,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785630434,
+          "from": "review_clean",
+          "reason": "satisfies tier 'auto_merge_on_clean_review'",
+          "to": "merged"
         }
       ],
       "issue_class": "deprecation",
@@ -37,14 +49,14 @@
       "last_error": null,
       "pr_number": 20,
       "pr_opened_at": 1785629262,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/20",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "b9384faa460e4d96a7ea7e6a5d6db896",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/b9384faa460e4d96a7ea7e6a5d6db896",
-      "state": "review_pending",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -63,11 +75,11 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785630434,
       "touch_scope": [
         "superset/utils/dates.py"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "12": {
       "acus_consumed": 0.0,
@@ -134,6 +146,18 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630437,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785630440,
+          "from": "review_clean",
+          "reason": "satisfies tier 'auto_merge'",
+          "to": "merged"
         }
       ],
       "issue_class": "dep-bump-patch",
@@ -142,14 +166,14 @@
       "last_error": null,
       "pr_number": 19,
       "pr_opened_at": 1785629265,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/19",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "f3f377a33e4a4d18bf973b13968842c8",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/f3f377a33e4a4d18bf973b13968842c8",
-      "state": "review_pending",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -166,12 +190,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785630440,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "16": {
       "acus_consumed": 0.0,
@@ -267,6 +291,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630443,
+          "from": "review_pending",
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ],
       "issue_class": "deprecation",
@@ -277,12 +307,12 @@
       "pr_opened_at": 1785628806,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
-      "review_status": "pending",
+      "review_status": "comments",
       "session_id": "081c24c00d994ca3a8df78813277c419",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -300,11 +330,11 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785630443,
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "waiting_ticks": 5
+      "waiting_ticks": 6
     },
     "3": {
       "acus_consumed": 0.0,
@@ -338,6 +368,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630445,
+          "from": "review_pending",
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ],
       "issue_class": "deprecation",
@@ -348,12 +384,12 @@
       "pr_opened_at": 1785629947,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
-      "review_status": "pending",
+      "review_status": "comments",
       "session_id": "b79c2813999c483bb4dc09b2c64d3161",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [
           "swarm verify reports 2/3: `python -c \"import superset.reports.schemas as s; ...\"` raises 'App not initialized yet. Please call init_app first' \u2014 pre-existing on master (verified by stashing the diff), not caused by this change",
@@ -377,12 +413,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785630445,
       "touch_scope": [
         "superset/reports/schemas.py",
         "superset/reports/notifications/email.py"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "4": {
       "acus_consumed": 0.0,
@@ -410,6 +446,18 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630448,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785630451,
+          "from": "review_clean",
+          "reason": "satisfies tier 'auto_merge_on_clean_review'",
+          "to": "merged"
         }
       ],
       "issue_class": "deprecation",
@@ -418,14 +466,14 @@
       "last_error": null,
       "pr_number": 21,
       "pr_opened_at": 1785629270,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "0c13b096a4bf4075ab3f52d1a0b18f40",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/0c13b096a4bf4075ab3f52d1a0b18f40",
-      "state": "review_pending",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -443,11 +491,11 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785630451,
       "touch_scope": [
         "superset/models/helpers.py"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "5": {
       "acus_consumed": 0.0,
@@ -475,6 +523,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630454,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
         }
       ],
       "issue_class": "code-quality",
@@ -485,12 +539,12 @@
       "pr_opened_at": 1785629273,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
-      "state": "review_pending",
+      "state": "review_clean",
       "structured_output": {
         "blockers": [
           "CI 'swarm verify' bare-import check fails pre-existing on master (needs a Flask app context); cannot pass without out-of-scope changes"
@@ -519,7 +573,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "6": {
       "acus_consumed": 0.0,
@@ -579,7 +633,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "9": {
       "acus_consumed": 0.0,
@@ -613,6 +667,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785630457,
+          "from": "review_pending",
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ],
       "issue_class": "code-quality",
@@ -623,12 +683,12 @@
       "pr_opened_at": 1785629845,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
-      "review_status": "pending",
+      "review_status": "comments",
       "session_id": "29ab115a7eb04aed848fc159d86683f2",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -646,12 +706,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785630457,
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     }
   },
-  "updated_at": 1785630365
+  "updated_at": 1785630458
 }
