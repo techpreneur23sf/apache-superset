@@ -14,14 +14,20 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+import os
+import pickle
 from contextlib import nullcontext
+from pathlib import Path
 from typing import Any
 
 import pytest
 from marshmallow import Schema
 
 from superset.dashboards.permalink.schemas import DashboardPermalinkSchema
-from superset.key_value.exceptions import KeyValueCodecEncodeException
+from superset.key_value.exceptions import (
+    KeyValueCodecDecodeException,
+    KeyValueCodecEncodeException,
+)
 from superset.key_value.types import (
     BinaryKeyValueCodec,
     JsonKeyValueCodec,
@@ -121,6 +127,25 @@ def test_pickle_codec(input_: Any, expected_result: Any):
     codec = PickleKeyValueCodec()
     encoded_value = codec.encode(input_)
     assert expected_result == codec.decode(encoded_value)
+
+
+class Exploit:  # pylint: disable=too-few-public-methods
+    """Pickles into a payload which shells out on load."""
+
+    def __init__(self, marker: Path):
+        self.marker = marker
+
+    def __reduce__(self) -> tuple[Any, tuple[str]]:
+        return os.system, (f"touch {self.marker}",)
+
+
+def test_pickle_codec_rejects_disallowed_global(tmp_path: Path):
+    marker = tmp_path / "pwned"
+    payload = pickle.dumps(Exploit(marker))
+    with pytest.raises(KeyValueCodecDecodeException):
+        PickleKeyValueCodec().decode(payload)
+
+    assert not marker.exists()
 
 
 def test_binary_codec_encode():
