@@ -7,22 +7,22 @@
   "by_class": {
     "code-quality": {
       "acus": 0.0,
-      "merge_rate": 0.0,
-      "merged": 0,
+      "merge_rate": 0.3333333333333333,
+      "merged": 1,
       "pr": 2,
       "total": 3
     },
     "dep-bump-major": {
       "acus": 0.0,
-      "merge_rate": 0.0,
-      "merged": 0,
+      "merge_rate": 0.25,
+      "merged": 1,
       "pr": 2,
       "total": 4
     },
     "dep-bump-patch": {
       "acus": 0.0,
-      "merge_rate": 0.5,
-      "merged": 2,
+      "merge_rate": 0.75,
+      "merged": 3,
       "pr": 3,
       "total": 4
     },
@@ -46,8 +46,10 @@
     "dispatched": 15,
     "failed": 0,
     "in_flight": 1,
-    "merged": 4,
-    "needs_human": 9,
+    "merged": 7,
+    "merged_autonomously": 1,
+    "merged_by_human": 1,
+    "needs_human": 6,
     "prs_opened": 13,
     "queued": 2,
     "tasks": 17,
@@ -55,12 +57,12 @@
   },
   "failures": {},
   "median_issue_to_pr_hours": 0.08,
-  "merge_rate": 0.267,
+  "merge_rate": 0.467,
   "pr_rate": 0.867,
   "states": {
     "dispatched": 1,
-    "merged": 4,
-    "needs_human": 9,
+    "merged": 7,
+    "needs_human": 6,
     "queued": 2,
     "review_clean": 1
   }
