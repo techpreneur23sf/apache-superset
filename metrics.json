@@ -14,8 +14,8 @@
     },
     "dep-bump-major": {
       "acus": 0.0,
-      "merge_rate": 0.25,
-      "merged": 1,
+      "merge_rate": 0.5,
+      "merged": 2,
       "pr": 3,
       "total": 4
     },
@@ -46,27 +46,27 @@
     "dispatched": 17,
     "failed": 2,
     "in_flight": 0,
-    "merged": 7,
+    "merged": 8,
     "merged_by_human": 1,
-    "merged_by_swarm": 3,
+    "merged_by_swarm": 4,
     "merged_without_human_input": 1,
-    "needs_human": 6,
+    "needs_human": 5,
     "prs_opened": 14,
     "queued": 0,
     "tasks": 17,
-    "wont_fix": 0
+    "wont_fix": 1
   },
   "failures": {
     "no_pr": 2
   },
   "median_issue_to_pr_hours": 0.08,
-  "merge_rate": 0.412,
+  "merge_rate": 0.471,
   "pr_rate": 0.824,
   "states": {
     "failed": 2,
-    "merged": 7,
-    "needs_human": 6,
+    "merged": 8,
+    "needs_human": 5,
     "review_clean": 1,
-    "review_pending": 1
+    "wont_fix": 1
   }
 }
