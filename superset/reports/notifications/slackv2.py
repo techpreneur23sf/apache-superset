@@ -17,7 +17,7 @@
 import logging
 from collections.abc import Callable, Sequence
 from io import IOBase
-from typing import List, Union
+from typing import Union
 
 import backoff
 from flask import g
@@ -105,7 +105,7 @@ class SlackV2Notification(SlackMixin, BaseNotification):  # pylint: disable=too-
 
     type = ReportRecipientType.SLACKV2
 
-    def _get_channels(self) -> List[str]:
+    def _get_channels(self) -> list[str]:
         """
         Get the recipient's channel(s).
         :returns: A list of channel ids: "EID676L"
