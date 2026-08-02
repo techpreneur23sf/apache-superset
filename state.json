@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785638690,
+  "updated_at": 1785638716,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -856,21 +856,21 @@
       "ci_status": null,
       "review_status": null,
       "structured_output": {
-        "pr_url": null,
-        "outcome": "wont_fix",
-        "summary": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened.",
         "blockers": [
           "setuptools >=82 removes pkg_resources; nodeenv==1.8.0 and sqlalchemy-redshift<0.9 import it at module load",
           "Remediation requires dependency changes outside the declared touch scope (nodeenv, sqlalchemy-redshift/SQLAlchemy 2.0)"
         ],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [],
         "human_review_reason": "Advisory fix version (83.0.0) is mutually exclusive with the repo's intentional setuptools<81 pin for pkg_resources consumers; a human must decide whether to accept breakage, bump out-of-scope deps, or waive the finding (the advisory only affects sdist MANIFEST.in exclusion on macOS APFS/HFS+, not Superset runtime).",
-        "verification_passed": false,
+        "outcome": "wont_fix",
+        "pr_url": null,
+        "summary": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened.",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^setuptools==' requirements/"
-        ]
+        ],
+        "verification_passed": false
       },
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -898,8 +898,8 @@
         {
           "at": 1785638679,
           "from": "needs_human",
-          "to": "wont_fix",
-          "reason": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened."
+          "reason": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened.",
+          "to": "wont_fix"
         }
       ]
     },
@@ -1193,21 +1193,21 @@
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/36",
-        "outcome": "fixed",
-        "summary": "Bumped pytest 7.4.4 -> 9.0.3 in requirements/development.txt (not present in any requirements/*.in). CI dependency resolution required also bumping pytest-asyncio 0.23.8 -> 1.3.0 (0.23.8 caps pytest<9). Verification grep clean and both CI checks green on PR #36.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "requirements/development.txt"
         ],
         "human_review_reason": "Diff includes a second pin (pytest-asyncio) beyond the issue's stated scope, required for the resolver to succeed.",
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/36",
+        "summary": "Bumped pytest 7.4.4 -> 9.0.3 in requirements/development.txt (not present in any requirements/*.in). CI dependency resolution required also bumping pytest-asyncio 0.23.8 -> 1.3.0 (0.23.8 caps pytest<9). Verification grep clean and both CI checks green on PR #36.",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^pytest==' requirements/",
           "uv pip install --python .venv/bin/python -r requirements/development.txt --dry-run"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -1241,14 +1241,14 @@
         {
           "at": 1785638682,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
+          "reason": "review clean",
+          "to": "review_clean"
         },
         {
           "at": 1785638684,
           "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge_on_clean_review'"
+          "reason": "satisfies tier 'auto_merge_on_clean_review'",
+          "to": "merged"
         }
       ]
     },
