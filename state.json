@@ -365,23 +365,35 @@
           "from": "needs_human",
           "reason": "unparked by an operator: parked by a policy-loading defect (empty policy in the container), fixed in devin-backlog-swarm#6",
           "to": "review_pending"
+        },
+        {
+          "at": 1785635184,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785635187,
+          "from": "review_clean",
+          "reason": "satisfies tier 'auto_merge'",
+          "to": "merged"
         }
       ],
       "issue_class": "dep-bump-patch",
       "issue_number": 14,
       "issue_title": "[high] mcp 1.24.0 \u2192 1.28.1: PYSEC-2026-3481 (+5 more)",
       "last_error": null,
-      "merged_by": null,
+      "merged_by": "swarm",
       "pr_number": 31,
       "pr_opened_at": 1785633812,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
       "review_status": "clean",
       "session_id": "707bafdd5c784128a86a09e1a2a36421",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421",
-      "state": "review_pending",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -398,12 +410,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": 1785633874,
+      "terminal_at": 1785635187,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "15": {
       "acus_consumed": 0.0,
@@ -449,23 +461,35 @@
           "from": "needs_human",
           "reason": "unparked by an operator: parked by a policy-loading defect (empty policy in the container), fixed in devin-backlog-swarm#6",
           "to": "review_pending"
+        },
+        {
+          "at": 1785635190,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785635193,
+          "from": "review_clean",
+          "reason": "satisfies tier 'auto_merge_on_clean_review'",
+          "to": "merged"
         }
       ],
       "issue_class": "dep-bump-major",
       "issue_number": 15,
       "issue_title": "[moderate] pip 25.1.1 \u2192 26.1.2: PYSEC-2026-1795 (+9 more)",
       "last_error": null,
-      "merged_by": null,
+      "merged_by": "swarm",
       "pr_number": 32,
       "pr_opened_at": 1785633816,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
       "review_status": "clean",
       "session_id": "0ef4dac6345f41b19665e97ba8422f3a",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a",
-      "state": "review_pending",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -482,12 +506,12 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": 1785633877,
+      "terminal_at": 1785635193,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "16": {
       "acus_consumed": 0.0,
@@ -872,23 +896,29 @@
           "from": "review_clean",
           "reason": "session reported blockers (always_human)",
           "to": "needs_human"
+        },
+        {
+          "at": 1785635196,
+          "from": "needs_human",
+          "reason": "pull request merged by a human",
+          "to": "merged"
         }
       ],
       "issue_class": "code-quality",
       "issue_number": 5,
       "issue_title": "Modernise typing imports to PEP 585 builtin generics in three modules",
       "last_error": null,
-      "merged_by": null,
+      "merged_by": "human",
       "pr_number": 22,
       "pr_opened_at": 1785629273,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
       "review_status": "clean",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
-      "state": "needs_human",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -909,13 +939,13 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": 1785633821,
+      "terminal_at": 1785635196,
       "touch_scope": [
         "superset/daos/chart.py",
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 9
+      "waiting_ticks": 10
     },
     "6": {
       "acus_consumed": 0.0,
@@ -1207,5 +1237,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785635155
+  "updated_at": 1785635200
 }
