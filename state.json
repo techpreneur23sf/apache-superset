@@ -69,6 +69,39 @@
       ],
       "waiting_ticks": 1
     },
+    "12": {
+      "acus_consumed": 0.0,
+      "attempts": 0,
+      "ci_status": null,
+      "created_at": 1785629739,
+      "dispatched_at": null,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [],
+      "issue_class": "dep-bump-major",
+      "issue_number": 12,
+      "issue_title": "[high] setuptools 80.9.0 \u2192 83.0.0: PYSEC-2026-3447 (+1 more)",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": null,
+      "session_status": null,
+      "session_status_detail": null,
+      "session_url": null,
+      "state": "queued",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "requirements/base.txt",
+        "requirements/development.txt",
+        "requirements/base.in",
+        "requirements/development.in"
+      ],
+      "waiting_ticks": 0
+    },
     "13": {
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -133,6 +166,37 @@
         ],
         "verification_passed": true
       },
+      "terminal_at": null,
+      "touch_scope": [
+        "requirements/development.txt",
+        "requirements/development.in"
+      ],
+      "waiting_ticks": 0
+    },
+    "16": {
+      "acus_consumed": 0.0,
+      "attempts": 0,
+      "ci_status": null,
+      "created_at": 1785629739,
+      "dispatched_at": null,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [],
+      "issue_class": "dep-bump-major",
+      "issue_number": 16,
+      "issue_title": "[high] pytest 7.4.4 \u2192 9.0.3: PYSEC-2026-1845 (+1 more)",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": null,
+      "session_status": null,
+      "session_status_detail": null,
+      "session_url": null,
+      "state": "queued",
+      "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
         "requirements/development.txt",
@@ -241,6 +305,44 @@
         "superset/tasks/cron_util.py"
       ],
       "waiting_ticks": 2
+    },
+    "3": {
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "ci_status": null,
+      "created_at": 1785629739,
+      "dispatched_at": 1785629740,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [
+        {
+          "at": 1785629740,
+          "from": "queued",
+          "reason": "session b79c2813999c483bb4dc09b2c64d3161 created",
+          "to": "dispatched"
+        }
+      ],
+      "issue_class": "deprecation",
+      "issue_number": 3,
+      "issue_title": "Drop pytz from the report schemas and email notification timezone handling",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": "b79c2813999c483bb4dc09b2c64d3161",
+      "session_status": "new",
+      "session_status_detail": null,
+      "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
+      "state": "dispatched",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "superset/reports/schemas.py",
+        "superset/reports/notifications/email.py"
+      ],
+      "waiting_ticks": 0
     },
     "4": {
       "acus_consumed": 0.0,
@@ -376,6 +478,44 @@
       ],
       "waiting_ticks": 1
     },
+    "6": {
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "ci_status": null,
+      "created_at": 1785629739,
+      "dispatched_at": 1785629742,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [
+        {
+          "at": 1785629742,
+          "from": "queued",
+          "reason": "session 2708236784de43acb71bbc9a34a16d9a created",
+          "to": "dispatched"
+        }
+      ],
+      "issue_class": "code-quality",
+      "issue_number": 6,
+      "issue_title": "Retire the deprecated DRILL_TO_DETAIL feature flag and its dead branches",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": "2708236784de43acb71bbc9a34a16d9a",
+      "session_status": "new",
+      "session_status_detail": null,
+      "session_url": "https://app.devin.ai/sessions/2708236784de43acb71bbc9a34a16d9a",
+      "state": "dispatched",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "superset/config.py",
+        "tests/integration_tests/superset_test_config.py"
+      ],
+      "waiting_ticks": 0
+    },
     "9": {
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -420,5 +560,5 @@
       "waiting_ticks": 0
     }
   },
-  "updated_at": 1785629277
+  "updated_at": 1785629743
 }
