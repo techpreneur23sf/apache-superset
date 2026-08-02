@@ -218,13 +218,20 @@
     },
     "17": {
       "acus_consumed": 0.0,
-      "attempts": 0,
+      "attempts": 1,
       "ci_status": null,
       "created_at": 1785629020,
-      "dispatched_at": null,
+      "dispatched_at": 1785630531,
       "ever_waited_for_user": false,
       "failure_category": null,
-      "history": [],
+      "history": [
+        {
+          "at": 1785630531,
+          "from": "queued",
+          "reason": "session c3952d6432bb459ea2cb14e2869a2176 created",
+          "to": "dispatched"
+        }
+      ],
       "issue_class": "dep-bump-patch",
       "issue_number": 17,
       "issue_title": "[high] python-multipart 0.0.29 \u2192 0.0.31: PYSEC-2026-3036 (+7 more)",
@@ -234,11 +241,11 @@
       "pr_state": null,
       "pr_url": null,
       "review_status": null,
-      "session_id": null,
-      "session_status": null,
+      "session_id": "c3952d6432bb459ea2cb14e2869a2176",
+      "session_status": "new",
       "session_status_detail": null,
-      "session_url": null,
-      "state": "queued",
+      "session_url": "https://app.devin.ai/sessions/c3952d6432bb459ea2cb14e2869a2176",
+      "state": "dispatched",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -671,5 +678,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785630489
+  "updated_at": 1785630532
 }
