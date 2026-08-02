@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785634919,
+  "updated_at": 1785635201,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -18,6 +18,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/20",
       "pr_number": 20,
       "pr_state": "merged",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "pending",
       "structured_output": {
@@ -90,6 +91,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
       "pr_number": 18,
       "pr_state": "open",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
@@ -168,6 +170,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
       "pr_number": 25,
       "pr_state": "open",
+      "merged_by": null,
       "ci_status": "red",
       "review_status": "comments",
       "structured_output": {
@@ -251,6 +254,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
       "pr_number": 21,
       "pr_state": "merged",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "pending",
       "structured_output": {
@@ -316,14 +320,15 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "state": "needs_human",
+      "state": "merged",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
       "pr_number": 22,
-      "pr_state": "open",
+      "pr_state": "merged",
+      "merged_by": "human",
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
@@ -351,10 +356,10 @@
       "created_at": 1785629020,
       "dispatched_at": 1785629026,
       "pr_opened_at": 1785629273,
-      "terminal_at": 1785633821,
+      "terminal_at": 1785635196,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 9,
+      "waiting_ticks": 10,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -386,6 +391,12 @@
           "from": "review_clean",
           "reason": "session reported blockers (always_human)",
           "to": "needs_human"
+        },
+        {
+          "at": 1785635196,
+          "from": "needs_human",
+          "to": "merged",
+          "reason": "pull request merged by a human"
         }
       ]
     },
@@ -405,6 +416,7 @@
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
+      "merged_by": null,
       "ci_status": null,
       "review_status": null,
       "structured_output": {
@@ -464,6 +476,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
       "pr_number": 29,
       "pr_state": "open",
+      "merged_by": null,
       "ci_status": "red",
       "review_status": "clean",
       "structured_output": {
@@ -539,6 +552,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/30",
       "pr_number": 30,
       "pr_state": "open",
+      "merged_by": null,
       "ci_status": "red",
       "review_status": "comments",
       "structured_output": {
@@ -612,6 +626,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
       "pr_number": 23,
       "pr_state": "open",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
@@ -692,6 +707,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/26",
       "pr_number": 26,
       "pr_state": "open",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
@@ -766,6 +782,7 @@
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
+      "merged_by": null,
       "ci_status": null,
       "review_status": null,
       "structured_output": {
@@ -823,6 +840,7 @@
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
+      "merged_by": null,
       "ci_status": null,
       "review_status": null,
       "structured_output": null,
@@ -854,6 +872,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/19",
       "pr_number": 19,
       "pr_state": "merged",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "pending",
       "structured_output": {
@@ -923,14 +942,15 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "state": "needs_human",
+      "state": "merged",
       "session_id": "707bafdd5c784128a86a09e1a2a36421",
       "session_url": "https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
       "pr_number": 31,
-      "pr_state": "open",
+      "pr_state": "merged",
+      "merged_by": "swarm",
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
@@ -954,10 +974,10 @@
       "created_at": 1785633530,
       "dispatched_at": 1785633531,
       "pr_opened_at": 1785633812,
-      "terminal_at": 1785633874,
+      "terminal_at": 1785635187,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 4,
+      "waiting_ticks": 5,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -989,6 +1009,24 @@
           "from": "review_clean",
           "reason": "class 'dep-bump-patch' matches no policy tier; human review",
           "to": "needs_human"
+        },
+        {
+          "at": 1785635153,
+          "from": "needs_human",
+          "reason": "unparked by an operator: parked by a policy-loading defect (empty policy in the container), fixed in devin-backlog-swarm#6",
+          "to": "review_pending"
+        },
+        {
+          "at": 1785635184,
+          "from": "review_pending",
+          "to": "review_clean",
+          "reason": "review clean"
+        },
+        {
+          "at": 1785635187,
+          "from": "review_clean",
+          "to": "merged",
+          "reason": "satisfies tier 'auto_merge'"
         }
       ]
     },
@@ -1000,14 +1038,15 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "state": "needs_human",
+      "state": "merged",
       "session_id": "0ef4dac6345f41b19665e97ba8422f3a",
       "session_url": "https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
       "pr_number": 32,
-      "pr_state": "open",
+      "pr_state": "merged",
+      "merged_by": "swarm",
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
@@ -1031,10 +1070,10 @@
       "created_at": 1785633528,
       "dispatched_at": 1785633528,
       "pr_opened_at": 1785633816,
-      "terminal_at": 1785633877,
+      "terminal_at": 1785635193,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 4,
+      "waiting_ticks": 5,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -1066,6 +1105,24 @@
           "from": "review_clean",
           "reason": "class 'dep-bump-major' matches no policy tier; human review",
           "to": "needs_human"
+        },
+        {
+          "at": 1785635155,
+          "from": "needs_human",
+          "reason": "unparked by an operator: parked by a policy-loading defect (empty policy in the container), fixed in devin-backlog-swarm#6",
+          "to": "review_pending"
+        },
+        {
+          "at": 1785635190,
+          "from": "review_pending",
+          "to": "review_clean",
+          "reason": "review clean"
+        },
+        {
+          "at": 1785635193,
+          "from": "review_clean",
+          "to": "merged",
+          "reason": "satisfies tier 'auto_merge_on_clean_review'"
         }
       ]
     },
@@ -1085,6 +1142,7 @@
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
+      "merged_by": null,
       "ci_status": null,
       "review_status": null,
       "structured_output": null,
@@ -1116,6 +1174,7 @@
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
       "pr_number": 27,
       "pr_state": "merged",
+      "merged_by": null,
       "ci_status": "green",
       "review_status": "clean",
       "structured_output": {
