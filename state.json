@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785637937,
+  "updated_at": 1785638690,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -844,11 +844,11 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "state": "needs_human",
+      "state": "wont_fix",
       "session_id": "36b45643222b4302802d5daebbaa7359",
       "session_url": "https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
@@ -877,7 +877,7 @@
       "created_at": 1785629739,
       "dispatched_at": 1785636082,
       "pr_opened_at": null,
-      "terminal_at": 1785636891,
+      "terminal_at": 1785638679,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 5,
@@ -894,6 +894,12 @@
           "from": "dispatched",
           "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
           "to": "needs_human"
+        },
+        {
+          "at": 1785638679,
+          "from": "needs_human",
+          "to": "wont_fix",
+          "reason": "setuptools cannot be bumped to 83.0.0 here. pkg_resources was removed in setuptools 82.0.0 (verified: the 83.0.0 wheel ships no pkg_resources/), while PYSEC-2026-3447 is only fixed in 83.0.0 \u2014 so no version satisfies both the advisory and the deliberate `setuptools<81` pin in requirements/base.in. nodeenv==1.8.0 (development.txt, pre-commit) and the redshift extra (sqlalchemy-redshift<0.9) import pkg_resources at module load. Remediating needs nodeenv and SQLAlchemy 2.0 / sqlalchemy-redshift changes outside the touch scope. No files changed, no PR opened."
         }
       ]
     },
@@ -1175,17 +1181,17 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "state": "review_pending",
+      "state": "merged",
       "session_id": "c6425b69f36546279a39dc7fc4212202",
       "session_url": "https://app.devin.ai/sessions/c6425b69f36546279a39dc7fc4212202",
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/36",
       "pr_number": 36,
-      "pr_state": "open",
-      "merged_by": null,
+      "pr_state": "merged",
+      "merged_by": "swarm",
       "ci_status": "green",
-      "review_status": "pending",
+      "review_status": "clean",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/36",
         "outcome": "fixed",
@@ -1208,10 +1214,10 @@
       "created_at": 1785629739,
       "dispatched_at": 1785637237,
       "pr_opened_at": 1785637929,
-      "terminal_at": null,
+      "terminal_at": 1785638684,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 1,
+      "waiting_ticks": 2,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -1223,14 +1229,26 @@
         {
           "at": 1785637929,
           "from": "dispatched",
-          "to": "pr_open",
-          "reason": "pull request opened"
+          "reason": "pull request opened",
+          "to": "pr_open"
         },
         {
           "at": 1785637931,
           "from": "pr_open",
-          "to": "review_pending",
-          "reason": "Devin Review requested"
+          "reason": "Devin Review requested",
+          "to": "review_pending"
+        },
+        {
+          "at": 1785638682,
+          "from": "review_pending",
+          "to": "review_clean",
+          "reason": "review clean"
+        },
+        {
+          "at": 1785638684,
+          "from": "review_clean",
+          "to": "merged",
+          "reason": "satisfies tier 'auto_merge_on_clean_review'"
         }
       ]
     },
