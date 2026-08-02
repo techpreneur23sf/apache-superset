@@ -674,7 +674,7 @@ pillow==12.3.0
     #   -c requirements/base-constraint.txt
     #   apache-superset
     #   matplotlib
-pip==25.1.1
+pip==26.1.2
     # via apache-superset
 platformdirs==4.3.8
     # via
