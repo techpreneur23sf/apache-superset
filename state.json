@@ -276,7 +276,7 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "13": {
       "acus_consumed": 0.0,
@@ -551,10 +551,10 @@
     "16": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "green",
       "created_at": 1785629739,
       "dispatched_at": 1785637237,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -562,6 +562,18 @@
           "from": "queued",
           "reason": "session c6425b69f36546279a39dc7fc4212202 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785637929,
+          "from": "dispatched",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785637931,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "dep-bump-major",
@@ -569,23 +581,39 @@
       "issue_title": "[high] pytest 7.4.4 \u2192 9.0.3: PYSEC-2026-1845 (+1 more)",
       "last_error": null,
       "merged_by": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 36,
+      "pr_opened_at": 1785637929,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/36",
+      "review_status": "pending",
       "session_id": "c6425b69f36546279a39dc7fc4212202",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/c6425b69f36546279a39dc7fc4212202",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "requirements/development.txt"
+        ],
+        "human_review_reason": "Diff includes a second pin (pytest-asyncio) beyond the issue's stated scope, required for the resolver to succeed.",
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/36",
+        "summary": "Bumped pytest 7.4.4 -> 9.0.3 in requirements/development.txt (not present in any requirements/*.in). CI dependency resolution required also bumping pytest-asyncio 0.23.8 -> 1.3.0 (0.23.8 caps pytest<9). Verification grep clean and both CI checks green on PR #36.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "grep -rn '^pytest==' requirements/",
+          "uv pip install --python .venv/bin/python -r requirements/development.txt --dry-run"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "17": {
       "acus_consumed": 0.0,
@@ -1285,5 +1313,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785637238
+  "updated_at": 1785637936
 }
