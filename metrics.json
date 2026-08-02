@@ -44,25 +44,28 @@
   "counts": {
     "abandoned": 0,
     "dispatched": 15,
-    "failed": 0,
-    "in_flight": 1,
+    "failed": 2,
+    "in_flight": 0,
     "merged": 7,
-    "merged_autonomously": 1,
     "merged_by_human": 1,
-    "needs_human": 6,
+    "merged_by_swarm": 3,
+    "merged_without_human_input": 1,
+    "needs_human": 5,
     "prs_opened": 13,
     "queued": 2,
     "tasks": 17,
     "wont_fix": 0
   },
-  "failures": {},
+  "failures": {
+    "no_pr": 2
+  },
   "median_issue_to_pr_hours": 0.08,
   "merge_rate": 0.467,
   "pr_rate": 0.867,
   "states": {
-    "dispatched": 1,
+    "failed": 2,
     "merged": 7,
-    "needs_human": 6,
+    "needs_human": 5,
     "queued": 2,
     "review_clean": 1
   }
