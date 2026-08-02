@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785630489,
+  "updated_at": 1785633116,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -82,16 +82,16 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "state": "review_pending",
+      "state": "needs_human",
       "session_id": "081c24c00d994ca3a8df78813277c419",
       "session_url": "https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
       "pr_number": 18,
       "pr_state": "open",
       "ci_status": "green",
-      "review_status": "pending",
+      "review_status": "comments",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
         "outcome": "fixed",
@@ -114,7 +114,7 @@
       "created_at": 1785628617,
       "dispatched_at": 1785628617,
       "pr_opened_at": 1785628806,
-      "terminal_at": null,
+      "terminal_at": 1785633101,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 7,
@@ -143,6 +143,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633101,
+          "from": "review_pending",
+          "to": "needs_human",
+          "reason": "Devin Review raised 1 finding(s)"
         }
       ]
     },
@@ -154,16 +160,16 @@
         "superset/reports/schemas.py",
         "superset/reports/notifications/email.py"
       ],
-      "state": "review_pending",
+      "state": "needs_human",
       "session_id": "b79c2813999c483bb4dc09b2c64d3161",
       "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
       "pr_number": 25,
       "pr_state": "open",
       "ci_status": "red",
-      "review_status": "pending",
+      "review_status": "comments",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
         "outcome": "fixed",
@@ -192,7 +198,7 @@
       "created_at": 1785629739,
       "dispatched_at": 1785629740,
       "pr_opened_at": 1785629947,
-      "terminal_at": null,
+      "terminal_at": 1785633103,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 4,
@@ -221,6 +227,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633103,
+          "from": "review_pending",
+          "to": "needs_human",
+          "reason": "Devin Review raised 1 finding(s)"
         }
       ]
     },
@@ -304,16 +316,16 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "state": "review_pending",
+      "state": "review_clean",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
       "pr_number": 22,
       "pr_state": "open",
       "ci_status": "red",
-      "review_status": "pending",
+      "review_status": "clean",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
         "outcome": "fixed",
@@ -364,6 +376,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633106,
+          "from": "review_pending",
+          "to": "review_clean",
+          "reason": "review clean"
         }
       ]
     },
@@ -378,8 +396,8 @@
       "state": "needs_human",
       "session_id": "2708236784de43acb71bbc9a34a16d9a",
       "session_url": "https://app.devin.ai/sessions/2708236784de43acb71bbc9a34a16d9a",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
@@ -427,6 +445,142 @@
         }
       ]
     },
+    "7": {
+      "issue_number": 7,
+      "issue_title": "Example import loads YAML metadata with the unsafe loader",
+      "issue_class": "security",
+      "touch_scope": [
+        "superset/examples/utils.py"
+      ],
+      "state": "review_pending",
+      "session_id": "f617079e216a4537bd4a15a07fa68a58",
+      "session_url": "https://app.devin.ai/sessions/f617079e216a4537bd4a15a07fa68a58",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
+      "pr_number": 29,
+      "pr_state": "open",
+      "ci_status": "red",
+      "review_status": "pending",
+      "structured_output": {
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
+        "outcome": "fixed",
+        "summary": "Replaced yaml.load(..., Loader=yaml.Loader) with yaml.safe_load in load_configs_from_directory (superset/examples/utils.py) and removed the # noqa: S506 suppression; SafeLoader still resolves the !!timestamp metadata.yaml uses. Added a regression test that fails on master ('DID NOT RAISE') plus one pinning timestamp/type-stripping. Verification command passes in CI (6 passed). The 'swarm verify' scope check fails with 'out of scope: tests/unit_tests/examples/utils_test.py' \u2014 the issue's touch_scope omits the test file that its own acceptance criteria require; noted in a PR comment.",
+        "blockers": [
+          "swarm verify scope check fails: issue #7 touch_scope lists only superset/examples/utils.py, but its acceptance criteria require a new test in tests/unit_tests/examples/utils_test.py. Not resolvable without dropping the required regression test; needs a human/issue-metadata fix."
+        ],
+        "confidence": "high",
+        "tests_added": 2,
+        "files_changed": [
+          "superset/examples/utils.py",
+          "tests/unit_tests/examples/utils_test.py"
+        ],
+        "human_review_reason": "Security-class change (never auto-merged) and the swarm scope check contradicts the issue's acceptance criteria about the test file.",
+        "verification_passed": true,
+        "verification_commands_run": [
+          "python -m pytest tests/unit_tests/examples/utils_test.py -q",
+          "python -m pytest tests/unit_tests/examples/utils_test.py -q -k python_object_tags (with fix reverted, to show the failing before-state)",
+          "ruff check superset/examples/utils.py tests/unit_tests/examples/utils_test.py"
+        ]
+      },
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "created_at": 1785630543,
+      "dispatched_at": 1785630544,
+      "pr_opened_at": 1785633107,
+      "terminal_at": null,
+      "failure_category": null,
+      "last_error": null,
+      "waiting_ticks": 0,
+      "ever_waited_for_user": false,
+      "history": [
+        {
+          "at": 1785630544,
+          "from": "queued",
+          "reason": "session f617079e216a4537bd4a15a07fa68a58 created",
+          "to": "dispatched"
+        },
+        {
+          "at": 1785633107,
+          "from": "dispatched",
+          "to": "pr_open",
+          "reason": "pull request opened"
+        },
+        {
+          "at": 1785633108,
+          "from": "pr_open",
+          "to": "review_pending",
+          "reason": "Devin Review requested"
+        }
+      ]
+    },
+    "8": {
+      "issue_number": 8,
+      "issue_title": "PickleKeyValueCodec deserialises stored values with unrestricted pickle",
+      "issue_class": "security",
+      "touch_scope": [
+        "superset/key_value/types.py"
+      ],
+      "state": "review_pending",
+      "session_id": "cb2799c898be44069ee8819c1f3c3af0",
+      "session_url": "https://app.devin.ai/sessions/cb2799c898be44069ee8819c1f3c3af0",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/30",
+      "pr_number": 30,
+      "pr_state": "open",
+      "ci_status": "red",
+      "review_status": "pending",
+      "structured_output": {
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/30",
+        "outcome": "fixed",
+        "summary": "PickleKeyValueCodec.decode now uses a RestrictedUnpickler with a module/name allow-list and raises KeyValueCodecDecodeException for disallowed globals; encode path and wire format unchanged. Regression test (os.system payload) fails without the fix. Verification command passes locally and in CI (11 passed). The 'swarm verify' scope gate fails because its touch_scope omits the test file the issue's acceptance criteria require.",
+        "blockers": [
+          "swarm verify scope gate lists only superset/key_value/types.py, so the required regression test in tests/unit_tests/key_value/codec_test.py is flagged out of scope"
+        ],
+        "confidence": "high",
+        "tests_added": 1,
+        "files_changed": [
+          "superset/key_value/types.py",
+          "tests/unit_tests/key_value/codec_test.py"
+        ],
+        "human_review_reason": "Security-class change: allow-list reflects the value types Superset stores today; deployments pickling custom types into the metastore cache would now fail to decode. Also the CI scope gate needs widening to include the test file.",
+        "verification_passed": true,
+        "verification_commands_run": [
+          "python -m pytest tests/unit_tests/key_value/codec_test.py -q"
+        ]
+      },
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "created_at": 1785630547,
+      "dispatched_at": 1785630547,
+      "pr_opened_at": 1785633110,
+      "terminal_at": null,
+      "failure_category": null,
+      "last_error": null,
+      "waiting_ticks": 0,
+      "ever_waited_for_user": false,
+      "history": [
+        {
+          "at": 1785630547,
+          "from": "queued",
+          "reason": "session cb2799c898be44069ee8819c1f3c3af0 created",
+          "to": "dispatched"
+        },
+        {
+          "at": 1785633110,
+          "from": "dispatched",
+          "to": "pr_open",
+          "reason": "pull request opened"
+        },
+        {
+          "at": 1785633112,
+          "from": "pr_open",
+          "to": "review_pending",
+          "reason": "Devin Review requested"
+        }
+      ]
+    },
     "9": {
       "issue_number": 9,
       "issue_title": "Cover the naive/aware boundary in session invalidation with explicit tests",
@@ -434,16 +588,16 @@
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "state": "review_pending",
+      "state": "needs_human",
       "session_id": "29ab115a7eb04aed848fc159d86683f2",
       "session_url": "https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
       "pr_number": 23,
       "pr_state": "open",
       "ci_status": "green",
-      "review_status": "pending",
+      "review_status": "comments",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
         "outcome": "fixed",
@@ -466,7 +620,7 @@
       "created_at": 1785629020,
       "dispatched_at": 1785629027,
       "pr_opened_at": 1785629845,
-      "terminal_at": null,
+      "terminal_at": 1785633115,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 5,
@@ -495,6 +649,137 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633115,
+          "from": "review_pending",
+          "to": "needs_human",
+          "reason": "Devin Review raised 1 finding(s)"
+        }
+      ]
+    },
+    "10": {
+      "issue_number": 10,
+      "issue_title": "[high] flask 2.3.3 \u2192 3.1.3: PYSEC-2026-2151 (+1 more)",
+      "issue_class": "dep-bump-major",
+      "touch_scope": [
+        "requirements/base.txt",
+        "requirements/development.txt",
+        "requirements/base.in",
+        "requirements/development.in"
+      ],
+      "state": "review_pending",
+      "session_id": "35034f9d8caa416980035490f2067435",
+      "session_url": "https://app.devin.ai/sessions/35034f9d8caa416980035490f2067435",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/26",
+      "pr_number": 26,
+      "pr_state": "open",
+      "ci_status": "green",
+      "review_status": "pending",
+      "structured_output": {
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/26",
+        "outcome": "fixed",
+        "summary": "Bumped flask 2.3.3 -> 3.1.3 in requirements/base.txt and requirements/development.txt (flask is not named in requirements/*.in, so no .in change needed). Diff limited to the two pins. Verification grep confirms both pins at 3.1.3. Note: major-version bump applied pin-only per touch scope; Superset call-site compatibility with Flask 3 not verified.",
+        "blockers": [],
+        "confidence": "medium",
+        "tests_added": 0,
+        "files_changed": [
+          "requirements/base.txt",
+          "requirements/development.txt"
+        ],
+        "human_review_reason": "Flask 2.x -> 3.x is a major bump; touch scope forbade code/call-site changes, so runtime compatibility is unverified.",
+        "verification_passed": true,
+        "verification_commands_run": [
+          "grep -rn '^flask==' requirements/"
+        ]
+      },
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "created_at": 1785630548,
+      "dispatched_at": 1785630549,
+      "pr_opened_at": 1785633091,
+      "terminal_at": null,
+      "failure_category": null,
+      "last_error": null,
+      "waiting_ticks": 0,
+      "ever_waited_for_user": false,
+      "history": [
+        {
+          "at": 1785630549,
+          "from": "queued",
+          "reason": "session 35034f9d8caa416980035490f2067435 created",
+          "to": "dispatched"
+        },
+        {
+          "at": 1785633091,
+          "from": "dispatched",
+          "to": "pr_open",
+          "reason": "pull request opened"
+        },
+        {
+          "at": 1785633094,
+          "from": "pr_open",
+          "to": "review_pending",
+          "reason": "Devin Review requested"
+        }
+      ]
+    },
+    "11": {
+      "issue_number": 11,
+      "issue_title": "[high] paramiko 3.5.1: PYSEC-2026-2858 (+1 more)",
+      "issue_class": "dep-bump-patch",
+      "touch_scope": [
+        "requirements/base.txt",
+        "requirements/development.txt",
+        "requirements/base.in",
+        "requirements/development.in"
+      ],
+      "state": "dispatched",
+      "session_id": "18d3351346b547c3a074d0e7c3ffc0fe",
+      "session_url": "https://app.devin.ai/sessions/18d3351346b547c3a074d0e7c3ffc0fe",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
+      "pr_url": null,
+      "pr_number": null,
+      "pr_state": null,
+      "ci_status": null,
+      "review_status": null,
+      "structured_output": {
+        "pr_url": null,
+        "outcome": "partial",
+        "summary": "paramiko==3.5.1 (base.txt, development.txt) is vulnerable to PYSEC-2026-2858/GHSA-r374-rxx8-8654. OSV last_affected=4.0.0, so the only fixed release is 5.0.0 (no safe 3.x/4.x). A minimal in-scope pin bump is impossible: pyproject.toml pins paramiko>=3.4.0,<4.0 ('4.0 removed DSSKey, still referenced by sshtunnel') and the .txt files are compiled from it. Fixing needs an out-of-scope pyproject change plus sshtunnel/DSSKey compat validation beyond the grep verification. Mis-classified as a patch bump; escalated to user.",
+        "blockers": [
+          "Only fixed version (5.0.0) is outside pyproject constraint paramiko>=3.4.0,<4.0",
+          "Upgrading past 4.0 risks sshtunnel DSSKey compatibility (maintainer-documented)",
+          "Fix requires changing pyproject.toml, outside the declared touch scope"
+        ],
+        "confidence": "high",
+        "tests_added": 0,
+        "files_changed": [],
+        "human_review_reason": "No non-vulnerable paramiko exists within the pyproject range (<4.0); only 5.0.0 fixes it, requiring an out-of-scope pyproject change and sshtunnel/DSSKey compatibility validation.",
+        "verification_passed": false,
+        "verification_commands_run": [
+          "grep -rn '^paramiko==' requirements/"
+        ]
+      },
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "created_at": 1785630544,
+      "dispatched_at": 1785630544,
+      "pr_opened_at": null,
+      "terminal_at": null,
+      "failure_category": null,
+      "last_error": null,
+      "waiting_ticks": 0,
+      "ever_waited_for_user": false,
+      "history": [
+        {
+          "at": 1785630544,
+          "from": "queued",
+          "reason": "session 18d3351346b547c3a074d0e7c3ffc0fe created",
+          "to": "dispatched"
         }
       ]
     },
@@ -647,28 +932,62 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "state": "queued",
-      "session_id": null,
-      "session_url": null,
-      "session_status": null,
-      "session_status_detail": null,
-      "pr_url": null,
-      "pr_number": null,
-      "pr_state": null,
-      "ci_status": null,
-      "review_status": null,
-      "structured_output": null,
+      "state": "review_pending",
+      "session_id": "c3952d6432bb459ea2cb14e2869a2176",
+      "session_url": "https://app.devin.ai/sessions/c3952d6432bb459ea2cb14e2869a2176",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
+      "pr_number": 27,
+      "pr_state": "open",
+      "ci_status": "green",
+      "review_status": "pending",
+      "structured_output": {
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
+        "outcome": "fixed",
+        "summary": "Bumped python-multipart 0.0.29 -> 0.0.31 in requirements/development.txt (transitive dep via fastmcp-slim/mcp; not present in any .in file), resolving PYSEC-2026-3036 and 7 aliased advisories. Minimal one-line diff. Verification command passed; CI green (verify + swarm verify).",
+        "blockers": [],
+        "confidence": "high",
+        "tests_added": 0,
+        "files_changed": [
+          "requirements/development.txt"
+        ],
+        "human_review_reason": null,
+        "verification_passed": true,
+        "verification_commands_run": [
+          "grep -rn '^python-multipart==' requirements/"
+        ]
+      },
       "acus_consumed": 0.0,
-      "attempts": 0,
+      "attempts": 1,
       "created_at": 1785629020,
-      "dispatched_at": null,
-      "pr_opened_at": null,
+      "dispatched_at": 1785630531,
+      "pr_opened_at": 1785633096,
       "terminal_at": null,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 0,
       "ever_waited_for_user": false,
-      "history": []
+      "history": [
+        {
+          "at": 1785630531,
+          "from": "queued",
+          "reason": "session c3952d6432bb459ea2cb14e2869a2176 created",
+          "to": "dispatched"
+        },
+        {
+          "at": 1785633096,
+          "from": "dispatched",
+          "to": "pr_open",
+          "reason": "pull request opened"
+        },
+        {
+          "at": 1785633097,
+          "from": "pr_open",
+          "to": "review_pending",
+          "reason": "Devin Review requested"
+        }
+      ]
     }
   },
   "runs": {}
