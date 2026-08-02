@@ -276,7 +276,7 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "13": {
       "acus_consumed": 0.0,
@@ -1278,5 +1278,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785636896
+  "updated_at": 1785637060
 }
