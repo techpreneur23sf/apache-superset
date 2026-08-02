@@ -101,6 +101,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633401,
+          "from": "review_pending",
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ],
       "issue_class": "dep-bump-major",
@@ -111,12 +117,12 @@
       "pr_opened_at": 1785633091,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/26",
-      "review_status": "pending",
+      "review_status": "comments",
       "session_id": "35034f9d8caa416980035490f2067435",
       "session_status": "suspended",
       "session_status_detail": "inactivity",
       "session_url": "https://app.devin.ai/sessions/35034f9d8caa416980035490f2067435",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [],
         "confidence": "medium",
@@ -134,7 +140,7 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785633401,
       "touch_scope": [
         "requirements/base.txt",
         "requirements/development.txt",
@@ -367,6 +373,18 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633404,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
+        },
+        {
+          "at": 1785633407,
+          "from": "review_clean",
+          "reason": "satisfies tier 'auto_merge'",
+          "to": "merged"
         }
       ],
       "issue_class": "dep-bump-patch",
@@ -375,14 +393,14 @@
       "last_error": null,
       "pr_number": 27,
       "pr_opened_at": 1785633096,
-      "pr_state": "open",
+      "pr_state": "merged",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/27",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "c3952d6432bb459ea2cb14e2869a2176",
       "session_status": "suspended",
       "session_status_detail": "inactivity",
       "session_url": "https://app.devin.ai/sessions/c3952d6432bb459ea2cb14e2869a2176",
-      "state": "review_pending",
+      "state": "merged",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -399,7 +417,7 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785633407,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
@@ -802,6 +820,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633412,
+          "from": "review_pending",
+          "reason": "review clean",
+          "to": "review_clean"
         }
       ],
       "issue_class": "security",
@@ -812,12 +836,12 @@
       "pr_opened_at": 1785633107,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "f617079e216a4537bd4a15a07fa68a58",
       "session_status": "suspended",
       "session_status_detail": "inactivity",
       "session_url": "https://app.devin.ai/sessions/f617079e216a4537bd4a15a07fa68a58",
-      "state": "review_pending",
+      "state": "review_clean",
       "structured_output": {
         "blockers": [
           "swarm verify scope check fails: issue #7 touch_scope lists only superset/examples/utils.py, but its acceptance criteria require a new test in tests/unit_tests/examples/utils_test.py. Not resolvable without dropping the required regression test; needs a human/issue-metadata fix."
@@ -871,6 +895,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785633415,
+          "from": "review_pending",
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ],
       "issue_class": "security",
@@ -881,12 +911,12 @@
       "pr_opened_at": 1785633110,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/30",
-      "review_status": "pending",
+      "review_status": "comments",
       "session_id": "cb2799c898be44069ee8819c1f3c3af0",
       "session_status": "suspended",
       "session_status_detail": "inactivity",
       "session_url": "https://app.devin.ai/sessions/cb2799c898be44069ee8819c1f3c3af0",
-      "state": "review_pending",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [
           "swarm verify scope gate lists only superset/key_value/types.py, so the required regression test in tests/unit_tests/key_value/codec_test.py is flagged out of scope"
@@ -906,7 +936,7 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785633415,
       "touch_scope": [
         "superset/key_value/types.py"
       ],
@@ -990,5 +1020,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785633116
+  "updated_at": 1785633416
 }
