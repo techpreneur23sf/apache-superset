@@ -16,6 +16,7 @@
 # under the License.
 from __future__ import annotations
 
+import io
 import json
 import pickle
 from abc import ABC, abstractmethod
@@ -84,12 +85,46 @@ class JsonKeyValueCodec(KeyValueCodec):
             raise KeyValueCodecDecodeException(str(ex)) from ex
 
 
+# Globals that may be reconstructed while unpickling a stored value. Plain
+# containers, strings and numbers are handled by the pickle opcodes themselves
+# and never reach `find_class`; these are the types whose reconstruction goes
+# through a global lookup.
+ALLOWED_PICKLE_GLOBALS: dict[str, frozenset[str]] = {
+    "builtins": frozenset(
+        {
+            "bytearray",
+            "complex",
+            "frozenset",
+            "set",
+        }
+    ),
+    "collections": frozenset({"Counter", "OrderedDict", "defaultdict", "deque"}),
+    "datetime": frozenset({"date", "datetime", "time", "timedelta", "timezone"}),
+    "decimal": frozenset({"Decimal"}),
+    "uuid": frozenset({"UUID"}),
+    "superset.utils.core": frozenset({"DatasourceType"}),
+}
+
+
+class RestrictedUnpickler(pickle.Unpickler):
+    """Unpickler that only reconstructs the types Superset stores."""
+
+    def find_class(self, module: str, name: str) -> Any:
+        if name not in ALLOWED_PICKLE_GLOBALS.get(module, frozenset()):
+            raise pickle.UnpicklingError(f"Unpickling of {module}.{name} is forbidden")
+
+        return super().find_class(module, name)
+
+
 class PickleKeyValueCodec(KeyValueCodec):
     def encode(self, value: dict[Any, Any]) -> bytes:
         return pickle.dumps(value)
 
     def decode(self, value: bytes) -> dict[Any, Any]:
-        return pickle.loads(value)  # noqa: S301
+        try:
+            return RestrictedUnpickler(io.BytesIO(value)).load()
+        except (pickle.UnpicklingError, AttributeError, EOFError, ImportError) as ex:
+            raise KeyValueCodecDecodeException(str(ex)) from ex
 
 
 class BinaryKeyValueCodec(KeyValueCodec):
