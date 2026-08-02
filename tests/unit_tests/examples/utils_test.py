@@ -16,10 +16,12 @@
 # under the License.
 """Tests for examples/utils.py - YAML config loading and content assembly."""
 
+from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import MagicMock, patch
 
+import pytest
 import yaml
 
 
@@ -151,6 +153,57 @@ def test_load_contents_replaces_sqlalchemy_examples_uri_placeholder():
         assert "databases/examples.yaml" in contents
         assert test_uri in contents["databases/examples.yaml"]
         assert "__SQLALCHEMY_EXAMPLES_URI__" not in contents["databases/examples.yaml"]
+
+
+@patch("superset.examples.utils.ImportExamplesCommand")
+def test_load_configs_from_directory_rejects_python_object_tags(mock_command_cls):
+    """Metadata parsing must not be able to construct arbitrary Python objects.
+
+    A metadata.yaml carrying a `!!python/object/apply` tag is a deserialisation
+    sink: with an object-constructing loader the tag is executed while parsing.
+    The loader must reject the document instead.
+    """
+    from superset.examples.utils import load_configs_from_directory
+
+    with TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        (root / "metadata.yaml").write_text(
+            "version: '1.0.0'\n"
+            "type: Dashboard\n"
+            "owner: !!python/object/apply:os.getcwd []\n"
+        )
+
+        with pytest.raises(yaml.YAMLError):
+            load_configs_from_directory(root)
+
+        mock_command_cls.assert_not_called()
+
+
+@patch("superset.examples.utils.ImportExamplesCommand")
+def test_load_configs_from_directory_parses_legitimate_metadata(mock_command_cls):
+    """Metadata the exporter legitimately produces must still parse.
+
+    The document carries an unquoted ISO timestamp and a "type" key that has to
+    be stripped before the contents are handed to ImportExamplesCommand.
+    """
+    from superset.examples.utils import load_configs_from_directory
+
+    with TemporaryDirectory() as tmpdir:
+        root = Path(tmpdir)
+        (root / "metadata.yaml").write_text(
+            "version: 1.0.0\ntype: Dashboard\ntimestamp: 2020-12-11T22:52:56.534241+00:00\n"  # noqa: E501
+        )
+
+        load_configs_from_directory(root)
+
+        contents = mock_command_cls.call_args[0][0]
+        metadata = yaml.safe_load(contents["metadata.yaml"])
+        assert "type" not in metadata
+        assert metadata["version"] == "1.0.0"
+        assert metadata["timestamp"] == datetime(
+            2020, 12, 11, 22, 52, 56, 534241, tzinfo=timezone.utc
+        )
+        mock_command_cls.return_value.run.assert_called_once()
 
 
 @patch("superset.examples.utils.ImportExamplesCommand")
