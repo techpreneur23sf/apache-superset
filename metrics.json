@@ -3,7 +3,7 @@
   "acus_per_merged_pr": 0.0,
   "acus_per_pr_opened": 0.0,
   "acus_total": 0.0,
-  "autonomy_rate": 0.071,
+  "autonomy_rate": 0.143,
   "by_class": {
     "code-quality": {
       "acus": 0.0,
@@ -49,7 +49,7 @@
     "merged": 8,
     "merged_by_human": 1,
     "merged_by_swarm": 4,
-    "merged_without_human_input": 1,
+    "merged_without_human_input": 2,
     "needs_human": 5,
     "prs_opened": 14,
     "queued": 0,
