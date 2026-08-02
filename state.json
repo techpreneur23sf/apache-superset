@@ -316,7 +316,7 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "waiting_ticks": 6
+      "waiting_ticks": 7
     },
     "3": {
       "acus_consumed": 0.0,
@@ -394,7 +394,7 @@
         "superset/reports/schemas.py",
         "superset/reports/notifications/email.py"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "4": {
       "acus_consumed": 0.0,
@@ -537,7 +537,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 5
+      "waiting_ticks": 6
     },
     "6": {
       "acus_consumed": 0.0,
@@ -597,7 +597,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     },
     "9": {
       "acus_consumed": 0.0,
@@ -668,8 +668,8 @@
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "waiting_ticks": 4
+      "waiting_ticks": 5
     }
   },
-  "updated_at": 1785630459
+  "updated_at": 1785630489
 }
