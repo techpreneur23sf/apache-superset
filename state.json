@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785636896,
+  "updated_at": 1785637061,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -880,7 +880,7 @@
       "terminal_at": 1785636891,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 3,
+      "waiting_ticks": 4,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -892,8 +892,8 @@
         {
           "at": 1785636891,
           "from": "dispatched",
-          "to": "needs_human",
-          "reason": "session idle in waiting_for_user; terminated to stop ACU drain"
+          "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
+          "to": "needs_human"
         }
       ]
     },
