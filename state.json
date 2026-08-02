@@ -217,13 +217,20 @@
     },
     "12": {
       "acus_consumed": 0.0,
-      "attempts": 0,
+      "attempts": 1,
       "ci_status": null,
       "created_at": 1785629739,
-      "dispatched_at": null,
+      "dispatched_at": 1785636082,
       "ever_waited_for_user": false,
       "failure_category": null,
-      "history": [],
+      "history": [
+        {
+          "at": 1785636082,
+          "from": "queued",
+          "reason": "session 36b45643222b4302802d5daebbaa7359 created",
+          "to": "dispatched"
+        }
+      ],
       "issue_class": "dep-bump-major",
       "issue_number": 12,
       "issue_title": "[high] setuptools 80.9.0 \u2192 83.0.0: PYSEC-2026-3447 (+1 more)",
@@ -234,11 +241,11 @@
       "pr_state": null,
       "pr_url": null,
       "review_status": null,
-      "session_id": null,
-      "session_status": null,
+      "session_id": "36b45643222b4302802d5daebbaa7359",
+      "session_status": "new",
       "session_status_detail": null,
-      "session_url": null,
-      "state": "queued",
+      "session_url": "https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359",
+      "state": "dispatched",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -1249,5 +1256,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785635961
+  "updated_at": 1785636083
 }
