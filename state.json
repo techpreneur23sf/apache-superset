@@ -391,7 +391,7 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "15": {
       "acus_consumed": 0.0,
@@ -468,7 +468,7 @@
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "16": {
       "acus_consumed": 0.0,
@@ -890,7 +890,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "waiting_ticks": 8
+      "waiting_ticks": 9
     },
     "6": {
       "acus_consumed": 0.0,
@@ -1178,5 +1178,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785634063
+  "updated_at": 1785634919
 }
