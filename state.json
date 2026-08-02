@@ -443,6 +443,12 @@
           "from": "review_clean",
           "reason": "class 'dep-bump-major' matches no policy tier; human review",
           "to": "needs_human"
+        },
+        {
+          "at": 1785635155,
+          "from": "needs_human",
+          "reason": "unparked by an operator: parked by a policy-loading defect (empty policy in the container), fixed in devin-backlog-swarm#6",
+          "to": "review_pending"
         }
       ],
       "issue_class": "dep-bump-major",
@@ -459,7 +465,7 @@
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a",
-      "state": "needs_human",
+      "state": "review_pending",
       "structured_output": {
         "blockers": [],
         "confidence": "high",
@@ -1201,5 +1207,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785635153
+  "updated_at": 1785635155
 }
