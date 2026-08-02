@@ -319,10 +319,10 @@
     "14": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "green",
       "created_at": 1785633530,
       "dispatched_at": 1785633531,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -330,37 +330,64 @@
           "from": "queued",
           "reason": "session 707bafdd5c784128a86a09e1a2a36421 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785633812,
+          "from": "dispatched",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785633814,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "dep-bump-patch",
       "issue_number": 14,
       "issue_title": "[high] mcp 1.24.0 \u2192 1.28.1: PYSEC-2026-3481 (+5 more)",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 31,
+      "pr_opened_at": 1785633812,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
+      "review_status": "pending",
       "session_id": "707bafdd5c784128a86a09e1a2a36421",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "requirements/development.txt"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/31",
+        "summary": "Bumped mcp 1.24.0 -> 1.28.1 in requirements/development.txt (transitive pin via fastmcp-slim). mcp is not named in any requirements/*.in, so no .in change was needed; no code changes required. Verification grep returns only the new pin.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "grep -rn '^mcp==' requirements/"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "15": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": null,
+      "ci_status": "green",
       "created_at": 1785633528,
       "dispatched_at": 1785633528,
-      "ever_waited_for_user": false,
+      "ever_waited_for_user": true,
       "failure_category": null,
       "history": [
         {
@@ -368,29 +395,56 @@
           "from": "queued",
           "reason": "session 0ef4dac6345f41b19665e97ba8422f3a created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785633816,
+          "from": "dispatched",
+          "reason": "pull request opened",
+          "to": "pr_open"
+        },
+        {
+          "at": 1785633817,
+          "from": "pr_open",
+          "reason": "Devin Review requested",
+          "to": "review_pending"
         }
       ],
       "issue_class": "dep-bump-major",
       "issue_number": 15,
       "issue_title": "[moderate] pip 25.1.1 \u2192 26.1.2: PYSEC-2026-1795 (+9 more)",
       "last_error": null,
-      "pr_number": null,
-      "pr_opened_at": null,
-      "pr_state": null,
-      "pr_url": null,
-      "review_status": null,
+      "pr_number": 32,
+      "pr_opened_at": 1785633816,
+      "pr_state": "open",
+      "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
+      "review_status": "pending",
       "session_id": "0ef4dac6345f41b19665e97ba8422f3a",
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_status": "running",
+      "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a",
-      "state": "dispatched",
-      "structured_output": null,
+      "state": "review_pending",
+      "structured_output": {
+        "blockers": [],
+        "confidence": "high",
+        "files_changed": [
+          "requirements/development.txt"
+        ],
+        "human_review_reason": null,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/32",
+        "summary": "Bumped pip pin from 25.1.1 to 26.1.2 in requirements/development.txt to remediate PYSEC-2026-1795 and 9 aliased advisories. pip is not named in any requirements/*.in file (it appears only as a transitive pin via apache-superset), so no .in change was required; pip is a tool, not an imported library, so there are no call sites to update. Diff is a single line.",
+        "tests_added": 0,
+        "verification_commands_run": [
+          "grep -rn '^pip==' requirements/"
+        ],
+        "verification_passed": true
+      },
       "terminal_at": null,
       "touch_scope": [
         "requirements/development.txt",
         "requirements/development.in"
       ],
-      "waiting_ticks": 0
+      "waiting_ticks": 1
     },
     "16": {
       "acus_consumed": 0.0,
@@ -735,7 +789,7 @@
     "5": {
       "acus_consumed": 0.0,
       "attempts": 1,
-      "ci_status": "red",
+      "ci_status": "green",
       "created_at": 1785629020,
       "dispatched_at": 1785629026,
       "ever_waited_for_user": true,
@@ -764,6 +818,12 @@
           "from": "review_pending",
           "reason": "review clean",
           "to": "review_clean"
+        },
+        {
+          "at": 1785633821,
+          "from": "review_clean",
+          "reason": "session reported blockers (always_human)",
+          "to": "needs_human"
         }
       ],
       "issue_class": "code-quality",
@@ -779,7 +839,7 @@
       "session_status": "suspended",
       "session_status_detail": "inactivity",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
-      "state": "review_clean",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [
           "CI 'swarm verify' bare-import check fails pre-existing on master (needs a Flask app context); cannot pass without out-of-scope changes"
@@ -802,7 +862,7 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": null,
+      "terminal_at": 1785633821,
       "touch_scope": [
         "superset/daos/chart.py",
         "superset/reports/notifications/slackv2.py",
@@ -1096,5 +1156,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785633532
+  "updated_at": 1785633824
 }
