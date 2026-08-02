@@ -1,0 +1,36 @@
+# Applying `devin:auto` to an issue starts a Devin session.
+#
+# Thin by design: everything below the container boundary lives in the solution
+# repo, so this file almost never changes. The job creates the session and
+# exits — it never waits for Devin.
+name: swarm dispatch
+
+on:
+  issues:
+    types: [labeled]
+
+concurrency:
+  group: swarm-dispatch-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  dispatch:
+    if: github.event.label.name == 'devin:auto' && github.event.sender.type != 'Bot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    container:
+      image: ghcr.io/techpreneur23sf/devin-backlog-swarm:main
+    steps:
+      - name: Dispatch
+        env:
+          DEVIN_API_KEY: ${{ secrets.DEVIN_API_KEY }}
+          DEVIN_ORG_ID: ${{ secrets.DEVIN_ORG_ID }}
+          GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN }}
+          SWARM_REPO: ${{ github.repository }}
+        run: >
+          swarm --run-id "label-${{ github.run_id }}"
+          dispatch --issue ${{ github.event.issue.number }}
