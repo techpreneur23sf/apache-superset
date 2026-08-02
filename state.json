@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785630458,
+  "updated_at": 1785630489,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -19,31 +19,31 @@
       "pr_number": 20,
       "pr_state": "merged",
       "ci_status": "green",
-      "review_status": "clean",
+      "review_status": "pending",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/20",
-        "outcome": "fixed",
-        "summary": "Removed pytz from superset/utils/dates.py: dttm.astimezone(pytz.utc) -> datetime.timezone.utc, and pytz.utc.localize(EPOCH) -> EPOCH.replace(tzinfo=timezone.utc) (attach, not convert, so no local-offset shift). EPOCH left naive; naive branch untouched. No other files changed. Both verification commands pass (168 tests; epoch asserts print ok) and ruff is clean.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "superset/utils/dates.py"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/20",
+        "summary": "PR #20 merged. Removed pytz from superset/utils/dates.py: dttm.astimezone(pytz.utc) -> datetime.timezone.utc, and pytz.utc.localize(EPOCH) -> EPOCH.replace(tzinfo=timezone.utc) (attach, not convert, so no local-offset shift). EPOCH left naive; naive branch untouched. No other files changed. Both verification commands passed (168 tests; epoch asserts ok) and ruff clean.",
+        "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/models/helpers_test.py tests/unit_tests/utils/test_date_parsing.py -q",
           "python -c \"from datetime import datetime, timezone, timedelta; from superset.utils.dates import datetime_to_epoch; assert datetime_to_epoch(datetime(2020,1,1)) == 1577836800000.0; assert datetime_to_epoch(datetime(2020,1,1,tzinfo=timezone(timedelta(hours=5)))) == 1577818800000.0; print('ok')\"",
           "ruff check superset/utils/dates.py"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629022,
       "pr_opened_at": 1785629262,
-      "terminal_at": 1785630434,
+      "terminal_at": 1785630450,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 5,
@@ -68,16 +68,10 @@
           "to": "review_pending"
         },
         {
-          "at": 1785630431,
+          "at": 1785630450,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
-        },
-        {
-          "at": 1785630434,
-          "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge_on_clean_review'"
+          "reason": "pull request merged",
+          "to": "merged"
         }
       ]
     },
@@ -88,7 +82,7 @@
       "touch_scope": [
         "superset/tasks/cron_util.py"
       ],
-      "state": "needs_human",
+      "state": "review_pending",
       "session_id": "081c24c00d994ca3a8df78813277c419",
       "session_url": "https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419",
       "session_status": "running",
@@ -97,7 +91,7 @@
       "pr_number": 18,
       "pr_state": "open",
       "ci_status": "green",
-      "review_status": "comments",
+      "review_status": "pending",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
         "outcome": "fixed",
@@ -120,10 +114,10 @@
       "created_at": 1785628617,
       "dispatched_at": 1785628617,
       "pr_opened_at": 1785628806,
-      "terminal_at": 1785630443,
+      "terminal_at": null,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 6,
+      "waiting_ticks": 7,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -149,12 +143,6 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
-        },
-        {
-          "at": 1785630443,
-          "from": "review_pending",
-          "to": "needs_human",
-          "reason": "Devin Review raised 1 finding(s)"
         }
       ]
     },
@@ -166,7 +154,7 @@
         "superset/reports/schemas.py",
         "superset/reports/notifications/email.py"
       ],
-      "state": "needs_human",
+      "state": "review_pending",
       "session_id": "b79c2813999c483bb4dc09b2c64d3161",
       "session_url": "https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161",
       "session_status": "running",
@@ -175,7 +163,7 @@
       "pr_number": 25,
       "pr_state": "open",
       "ci_status": "red",
-      "review_status": "comments",
+      "review_status": "pending",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
         "outcome": "fixed",
@@ -204,10 +192,10 @@
       "created_at": 1785629739,
       "dispatched_at": 1785629740,
       "pr_opened_at": 1785629947,
-      "terminal_at": 1785630445,
+      "terminal_at": null,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 3,
+      "waiting_ticks": 4,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -233,12 +221,6 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
-        },
-        {
-          "at": 1785630445,
-          "from": "review_pending",
-          "to": "needs_human",
-          "reason": "Devin Review raised 1 finding(s)"
         }
       ]
     },
@@ -253,38 +235,38 @@
       "session_id": "0c13b096a4bf4075ab3f52d1a0b18f40",
       "session_url": "https://app.devin.ai/sessions/0c13b096a4bf4075ab3f52d1a0b18f40",
       "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status_detail": "working",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
       "pr_number": 21,
       "pr_state": "merged",
       "ci_status": "green",
-      "review_status": "clean",
+      "review_status": "pending",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
-        "outcome": "fixed",
-        "summary": "Removed the pytz import from superset/models/helpers.py and replaced pytz.utc in changed_on_utc with datetime.timezone.utc. Since changed_on is naive UTC, the new code attaches UTC via replace(tzinfo=timezone.utc) before astimezone instead of reinterpreting the naive value in local time; aware values keep prior behavior. Output verified byte-identical for naive UTC input. Unit tests and ruff pass.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "superset/models/helpers.py"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/21",
+        "summary": "Removed the pytz import from superset/models/helpers.py and replaced pytz.utc in changed_on_utc with datetime.timezone.utc. Since changed_on is naive UTC, the new code attaches UTC via replace(tzinfo=timezone.utc) before astimezone instead of reinterpreting the naive value in local time; aware values keep prior behavior. Output verified byte-identical for naive UTC input. Unit tests and ruff pass.",
+        "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/models/helpers_test.py -q",
           "ruff check superset/models/helpers.py"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629024,
       "pr_opened_at": 1785629270,
-      "terminal_at": 1785630451,
+      "terminal_at": 1785630455,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 5,
+      "waiting_ticks": 4,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -306,16 +288,10 @@
           "to": "review_pending"
         },
         {
-          "at": 1785630448,
+          "at": 1785630455,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
-        },
-        {
-          "at": 1785630451,
-          "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge_on_clean_review'"
+          "reason": "pull request merged",
+          "to": "merged"
         }
       ]
     },
@@ -328,7 +304,7 @@
         "superset/reports/notifications/slackv2.py",
         "superset/mcp_service/chart/validation/runtime/format_validator.py"
       ],
-      "state": "review_clean",
+      "state": "review_pending",
       "session_id": "9038f48fd0764477b708bd5b0b75a4c8",
       "session_url": "https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8",
       "session_status": "running",
@@ -337,7 +313,7 @@
       "pr_number": 22,
       "pr_state": "open",
       "ci_status": "red",
-      "review_status": "clean",
+      "review_status": "pending",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/22",
         "outcome": "fixed",
@@ -368,7 +344,7 @@
       "terminal_at": null,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 5,
+      "waiting_ticks": 6,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -388,12 +364,6 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
-        },
-        {
-          "at": 1785630454,
-          "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
         }
       ]
     },
@@ -440,7 +410,7 @@
       "terminal_at": 1785630363,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 4,
+      "waiting_ticks": 5,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -464,7 +434,7 @@
       "touch_scope": [
         "tests/unit_tests/security/test_session_invalidation.py"
       ],
-      "state": "needs_human",
+      "state": "review_pending",
       "session_id": "29ab115a7eb04aed848fc159d86683f2",
       "session_url": "https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2",
       "session_status": "running",
@@ -473,7 +443,7 @@
       "pr_number": 23,
       "pr_state": "open",
       "ci_status": "green",
-      "review_status": "comments",
+      "review_status": "pending",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
         "outcome": "fixed",
@@ -496,10 +466,10 @@
       "created_at": 1785629020,
       "dispatched_at": 1785629027,
       "pr_opened_at": 1785629845,
-      "terminal_at": 1785630457,
+      "terminal_at": null,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 4,
+      "waiting_ticks": 5,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -525,12 +495,6 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
-        },
-        {
-          "at": 1785630457,
-          "from": "review_pending",
-          "to": "needs_human",
-          "reason": "Devin Review raised 1 finding(s)"
         }
       ]
     },
@@ -584,29 +548,29 @@
       "pr_number": 19,
       "pr_state": "merged",
       "ci_status": "green",
-      "review_status": "clean",
+      "review_status": "pending",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/19",
-        "outcome": "fixed",
-        "summary": "Bumped jaraco-context from 6.0.1 to 6.1.0 in requirements/development.txt to remediate PYSEC-2026-1469 / GHSA-58pv-8j8x-9vj2. Package is a transitive dep (via keyring) and absent from all requirements/*.in files, so no .in change needed. Diff limited to the single pin. Verification command passed. PR #19 opened against master with 'Closes #13'.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "requirements/development.txt"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/19",
+        "summary": "Bumped jaraco-context from 6.0.1 to 6.1.0 in requirements/development.txt to remediate PYSEC-2026-1469 / GHSA-58pv-8j8x-9vj2. Package is a transitive dep (via keyring) and absent from all requirements/*.in files, so no .in change needed. Diff limited to the single pin. Verification command passed. PR #19 opened against master with 'Closes #13'.",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^jaraco-context==' requirements/"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629020,
       "pr_opened_at": 1785629265,
-      "terminal_at": 1785630440,
+      "terminal_at": 1785630451,
       "failure_category": null,
       "last_error": null,
       "waiting_ticks": 4,
@@ -637,16 +601,10 @@
           "to": "review_pending"
         },
         {
-          "at": 1785630437,
+          "at": 1785630451,
           "from": "review_pending",
-          "to": "review_clean",
-          "reason": "review clean"
-        },
-        {
-          "at": 1785630440,
-          "from": "review_clean",
-          "to": "merged",
-          "reason": "satisfies tier 'auto_merge'"
+          "reason": "pull request merged",
+          "to": "merged"
         }
       ]
     },
