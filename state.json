@@ -316,6 +316,44 @@
       ],
       "waiting_ticks": 4
     },
+    "14": {
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "ci_status": null,
+      "created_at": 1785633530,
+      "dispatched_at": 1785633531,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [
+        {
+          "at": 1785633531,
+          "from": "queued",
+          "reason": "session 707bafdd5c784128a86a09e1a2a36421 created",
+          "to": "dispatched"
+        }
+      ],
+      "issue_class": "dep-bump-patch",
+      "issue_number": 14,
+      "issue_title": "[high] mcp 1.24.0 \u2192 1.28.1: PYSEC-2026-3481 (+5 more)",
+      "last_error": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": "707bafdd5c784128a86a09e1a2a36421",
+      "session_status": "new",
+      "session_status_detail": null,
+      "session_url": "https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421",
+      "state": "dispatched",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "requirements/development.txt",
+        "requirements/development.in"
+      ],
+      "waiting_ticks": 0
+    },
     "15": {
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -1058,5 +1096,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785633529
+  "updated_at": 1785633532
 }
