@@ -16,16 +16,14 @@
 # under the License.
 from datetime import datetime, timezone
 
-import pytz
-
 EPOCH = datetime(1970, 1, 1)
 
 
 def datetime_to_epoch(dttm: datetime) -> float:
     """Convert datetime to milliseconds to epoch"""
     if dttm.tzinfo:
-        dttm = dttm.astimezone(pytz.utc)
-        epoch_with_tz = pytz.utc.localize(EPOCH)
+        dttm = dttm.astimezone(timezone.utc)
+        epoch_with_tz = EPOCH.replace(tzinfo=timezone.utc)
         return (dttm - epoch_with_tz).total_seconds() * 1000
     return (dttm - EPOCH).total_seconds() * 1000
 
