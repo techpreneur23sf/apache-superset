@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785636510,
+  "updated_at": 1785636731,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -880,7 +880,7 @@
       "terminal_at": null,
       "failure_category": null,
       "last_error": null,
-      "waiting_ticks": 1,
+      "waiting_ticks": 2,
       "ever_waited_for_user": true,
       "history": [
         {
