@@ -15,10 +15,12 @@
 # specific language governing permissions and limitations
 # under the License.
 
+import time
 from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
+import pytest
 from sqlalchemy.exc import IntegrityError
 
 from superset.security.session_invalidation import (
@@ -76,6 +78,65 @@ def test_naive_epoch_is_treated_as_utc() -> None:
     just_after = aware.timestamp() + 1
     assert is_session_invalidated(login_at=just_before, invalidated_at=naive) is True
     assert is_session_invalidated(login_at=just_after, invalidated_at=naive) is False
+
+
+@pytest.fixture
+def process_tz(monkeypatch: pytest.MonkeyPatch):  # noqa: ANN201
+    """Set the process time zone via ``TZ`` for a test, restoring it after.
+
+    ``time.tzset`` mutates C-library state that ``monkeypatch`` cannot undo on
+    its own, so re-apply it once the env var is restored to avoid leaking the
+    zone into later tests.
+    """
+
+    def _set(tz: str) -> None:
+        monkeypatch.setenv("TZ", tz)
+        time.tzset()
+
+    yield _set
+    monkeypatch.undo()
+    time.tzset()
+
+
+# Zones with non-zero UTC offsets, including one east and one west of UTC and
+# one with a fractional-hour offset, so a naive value mistakenly read as local
+# time would visibly skew the epoch in either direction.
+@pytest.mark.parametrize(
+    "tz",
+    ["America/Los_Angeles", "Asia/Kolkata", "Europe/Berlin", "Pacific/Chatham"],
+)
+def test_naive_utc_matches_aware_utc_under_non_utc_tz(tz: str, process_tz) -> None:  # noqa: ANN001
+    """
+    The naive/aware boundary must not move with the process time zone.
+
+    ``sessions_invalidated_at`` is stored as a naive UTC ``DateTime``. Calling
+    ``.timestamp()`` on a naive datetime interprets it in the local zone, so if
+    ``_as_utc_timestamp`` did not force UTC the epoch would skew by the local
+    UTC offset under a non-UTC ``TZ`` — invalidating sessions early or never.
+    Pin that a naive-UTC input yields the same epoch as the equivalent aware-UTC
+    input, and that the ``is_session_invalidated`` boundary stays put, while
+    ``TZ`` is set to a non-UTC zone.
+    """
+    process_tz(tz)
+
+    # Sanity-check that the chosen zone really is offset from UTC in this
+    # process, so the assertions below are actually exercising the skew guard.
+    assert time.timezone != 0 or time.altzone != 0
+
+    aware = datetime(2026, 6, 2, 12, 0, 0, tzinfo=timezone.utc)
+    naive = aware.replace(tzinfo=None)
+
+    assert _as_utc_timestamp(naive) == aware.timestamp()
+    assert _as_utc_timestamp(naive) == _as_utc_timestamp(aware)
+
+    just_before = aware.timestamp() - 1
+    just_after = aware.timestamp() + 1
+    assert is_session_invalidated(login_at=just_before, invalidated_at=naive) is True
+    assert is_session_invalidated(login_at=just_after, invalidated_at=naive) is False
+    # The naive column and its aware equivalent invalidate identically.
+    assert is_session_invalidated(
+        login_at=just_before, invalidated_at=naive
+    ) is is_session_invalidated(login_at=just_before, invalidated_at=aware)
 
 
 MODULE = "superset.security.session_invalidation"
