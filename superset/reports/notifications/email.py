@@ -22,11 +22,11 @@ from email.utils import make_msgid, parseaddr
 from io import BytesIO
 from typing import IO, Optional
 from zipfile import BadZipFile, ZipFile
+from zoneinfo import ZoneInfo
 
 import nh3
 from flask import current_app
 from flask_babel import gettext as __
-from pytz import timezone
 
 from superset import is_feature_enabled
 from superset.exceptions import SupersetErrorsException
@@ -127,7 +127,7 @@ class EmailNotification(BaseNotification):  # pylint: disable=too-few-public-met
         # date rendered into the subject (when DATE_FORMAT_IN_EMAIL_SUBJECT is
         # enabled) therefore tracks the dispatch time. A module- or class-level
         # value would instead freeze on the first import in a long-running worker.
-        self.now = datetime.now(timezone("UTC"))
+        self.now = datetime.now(ZoneInfo("UTC"))
 
     @property
     def _name(self) -> str:
