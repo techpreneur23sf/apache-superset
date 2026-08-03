@@ -230,7 +230,7 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "waiting_ticks": 3
+      "waiting_ticks": 4
     },
     "12": {
       "acus_consumed": 0.0,
@@ -1166,7 +1166,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 8
+      "waiting_ticks": 9
     },
     "7": {
       "acus_consumed": 0.0,
@@ -1403,5 +1403,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785791202
+  "updated_at": 1785791651
 }
