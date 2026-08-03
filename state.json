@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785791716,
+  "updated_at": 1785793101,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -421,8 +421,8 @@
       "state": "needs_human",
       "session_id": "1840f0947921425abdf510a2e07f7e40",
       "session_url": "https://app.devin.ai/sessions/1840f0947921425abdf510a2e07f7e40",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/39",
       "pr_number": 39,
       "pr_state": "open",
@@ -507,8 +507,8 @@
         {
           "at": 1785791711,
           "from": "review_pending",
-          "to": "needs_human",
-          "reason": "Devin Review raised 1 finding(s)"
+          "reason": "Devin Review raised 1 finding(s)",
+          "to": "needs_human"
         }
       ]
     },
@@ -833,11 +833,11 @@
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "state": "needs_human",
+      "state": "failed",
       "session_id": "c1f03db112b741179c8fd0b4eccff904",
       "session_url": "https://app.devin.ai/sessions/c1f03db112b741179c8fd0b4eccff904",
-      "session_status": "running",
-      "session_status_detail": "waiting_for_user",
+      "session_status": "suspended",
+      "session_status_detail": "inactivity",
       "pr_url": null,
       "pr_number": null,
       "pr_state": null,
@@ -868,7 +868,7 @@
       "created_at": 1785630544,
       "dispatched_at": 1785790625,
       "pr_opened_at": null,
-      "terminal_at": 1785791191,
+      "terminal_at": 1785793094,
       "failure_category": "no_pr",
       "last_error": null,
       "waiting_ticks": 5,
@@ -897,6 +897,12 @@
           "from": "dispatched",
           "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
           "to": "needs_human"
+        },
+        {
+          "at": 1785793094,
+          "from": "needs_human",
+          "to": "failed",
+          "reason": "session ended (suspended) without a pull request"
         }
       ]
     },
