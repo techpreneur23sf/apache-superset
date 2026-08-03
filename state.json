@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785793101,
+  "updated_at": 1785794299,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -901,8 +901,8 @@
         {
           "at": 1785793094,
           "from": "needs_human",
-          "to": "failed",
-          "reason": "session ended (suspended) without a pull request"
+          "reason": "session ended (suspended) without a pull request",
+          "to": "failed"
         }
       ]
     },
