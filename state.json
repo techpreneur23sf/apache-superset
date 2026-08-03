@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785796782,
+  "updated_at": 1785799561,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -97,21 +97,21 @@
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
-        "outcome": "fixed",
-        "summary": "Replaced pytz with stdlib zoneinfo in superset/tasks/cron_util.py: ZoneInfo(timezone) with fallback to datetime.timezone.utc on ZoneInfoNotFoundError/ValueError, same warning log, still yielding naive UTC datetimes. Offsets are only ever attached via astimezone(), so no localize()/normalize() equivalent is needed and DST-spanning windows behave correctly. Existing DST parametrisations pass unchanged (36 passed). pre-commit (mypy/ruff/pylint) clean on the file.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "superset/tasks/cron_util.py"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/18",
+        "summary": "Replaced pytz with stdlib zoneinfo in superset/tasks/cron_util.py: ZoneInfo(timezone) with fallback to datetime.timezone.utc on ZoneInfoNotFoundError/ValueError, same warning log, still yielding naive UTC datetimes. Offsets are only ever attached via astimezone(), so no localize()/normalize() equivalent is needed and DST-spanning windows behave correctly. Existing DST parametrisations pass unchanged (36 passed). pre-commit (mypy/ruff/pylint) clean on the file.",
+        "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/tasks/test_cron_util.py -q",
           "pre-commit run --files superset/tasks/cron_util.py"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -178,27 +178,27 @@
       "ci_status": "red",
       "review_status": "comments",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
-        "outcome": "fixed",
-        "summary": "pytz replaced with stdlib zoneinfo: schemas.py now uses module-level TIMEZONES = tuple(sorted(available_timezones())) for both OneOf validators (deterministic choices/error message); email.py uses ZoneInfo(\"UTC\"). zoneinfo's set is a strict superset of pytz.all_timezones (597 vs 599, zero removals). schemas_test.py (34) and all tests/unit_tests/reports (145) pass; ruff clean. The issue's 2nd verification command fails identically on master (module not importable outside a Flask app), so an equivalent source-level pytz check was used; explained in a PR comment.",
         "blockers": [
           "swarm verify reports 2/3: `python -c \"import superset.reports.schemas as s; ...\"` raises 'App not initialized yet. Please call init_app first' \u2014 pre-existing on master (verified by stashing the diff), not caused by this change",
           "The repo's `verify` GitHub Action fails with 'DEVIN_API_KEY and DEVIN_ORG_ID are required in live mode' (missing repo secrets), unrelated to this diff"
         ],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "superset/reports/schemas.py",
           "superset/reports/notifications/email.py"
         ],
         "human_review_reason": "The issue's second verification command is unsatisfiable as written (module cannot be imported standalone on master either); a human may want to amend that check.",
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/25",
+        "summary": "pytz replaced with stdlib zoneinfo: schemas.py now uses module-level TIMEZONES = tuple(sorted(available_timezones())) for both OneOf validators (deterministic choices/error message); email.py uses ZoneInfo(\"UTC\"). zoneinfo's set is a strict superset of pytz.all_timezones (597 vs 599, zero removals). schemas_test.py (34) and all tests/unit_tests/reports (145) pass; ruff clean. The issue's 2nd verification command fails identically on master (module not importable outside a Flask app), so an equivalent source-level pytz check was used; explained in a PR comment.",
+        "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/reports/schemas_test.py -q (34 passed)",
           "python -m pytest tests/unit_tests/reports/ -q (145 passed)",
           "ruff check superset/reports/schemas.py superset/reports/notifications/email.py (All checks passed)",
           "python -c \"import importlib.util; p=importlib.util.find_spec('superset.reports.schemas').origin; assert 'pytz' not in open(p).read(); print('ok')\" (ok)"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -430,24 +430,24 @@
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/39",
-        "outcome": "fixed",
-        "summary": "Removed the deprecated DRILL_TO_DETAIL flag (and the now-empty DEPRECATED section header) from DEFAULT_FEATURE_FLAGS in superset/config.py and from tests/integration_tests/superset_test_config.py. No backend consumer read it, so no dead branches and no behaviour change for anyone who set it False. Diff kept inside the declared scope; regenerating docs/static/feature-flags.json and an UPDATING.md note are noted as follow-ups. No frontend files touched. Verification commands pass locally and CI is green.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [
           "superset/config.py",
           "tests/integration_tests/superset_test_config.py"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/39",
+        "summary": "Removed the deprecated DRILL_TO_DETAIL flag (and the now-empty DEPRECATED section header) from DEFAULT_FEATURE_FLAGS in superset/config.py and from tests/integration_tests/superset_test_config.py. No backend consumer read it, so no dead branches and no behaviour change for anyone who set it False. Diff kept inside the declared scope; regenerating docs/static/feature-flags.json and an UPDATING.md note are noted as follow-ups. No frontend files touched. Verification commands pass locally and CI is green.",
+        "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/feature_flag_test.py tests/unit_tests/config_test.py -q",
           "grep -rn 'DRILL_TO_DETAIL' superset/ || echo 'no backend references remain'",
           "python -c 'import superset.config'",
           "pre-commit run (staged files)"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -531,25 +531,25 @@
       "ci_status": "red",
       "review_status": "clean",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
-        "outcome": "fixed",
-        "summary": "Replaced yaml.load(..., Loader=yaml.Loader) with yaml.safe_load in load_configs_from_directory (superset/examples/utils.py) and removed the # noqa: S506 suppression; SafeLoader still resolves the !!timestamp metadata.yaml uses. Added a regression test that fails on master ('DID NOT RAISE') plus one pinning timestamp/type-stripping. Verification command passes in CI (6 passed). The 'swarm verify' scope check fails with 'out of scope: tests/unit_tests/examples/utils_test.py' \u2014 the issue's touch_scope omits the test file that its own acceptance criteria require; noted in a PR comment.",
         "blockers": [
           "swarm verify scope check fails: issue #7 touch_scope lists only superset/examples/utils.py, but its acceptance criteria require a new test in tests/unit_tests/examples/utils_test.py. Not resolvable without dropping the required regression test; needs a human/issue-metadata fix."
         ],
         "confidence": "high",
-        "tests_added": 2,
         "files_changed": [
           "superset/examples/utils.py",
           "tests/unit_tests/examples/utils_test.py"
         ],
         "human_review_reason": "Security-class change (never auto-merged) and the swarm scope check contradicts the issue's acceptance criteria about the test file.",
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
+        "summary": "Replaced yaml.load(..., Loader=yaml.Loader) with yaml.safe_load in load_configs_from_directory (superset/examples/utils.py) and removed the # noqa: S506 suppression; SafeLoader still resolves the !!timestamp metadata.yaml uses. Added a regression test that fails on master ('DID NOT RAISE') plus one pinning timestamp/type-stripping. Verification command passes in CI (6 passed). The 'swarm verify' scope check fails with 'out of scope: tests/unit_tests/examples/utils_test.py' \u2014 the issue's touch_scope omits the test file that its own acceptance criteria require; noted in a PR comment.",
+        "tests_added": 2,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/examples/utils_test.py -q",
           "python -m pytest tests/unit_tests/examples/utils_test.py -q -k python_object_tags (with fix reverted, to show the failing before-state)",
           "ruff check superset/examples/utils.py tests/unit_tests/examples/utils_test.py"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -609,23 +609,23 @@
       "ci_status": "red",
       "review_status": "comments",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/30",
-        "outcome": "fixed",
-        "summary": "PickleKeyValueCodec.decode now uses a RestrictedUnpickler with a module/name allow-list and raises KeyValueCodecDecodeException for disallowed globals; encode path and wire format unchanged. Regression test (os.system payload) fails without the fix. Verification command passes locally and in CI (11 passed). The 'swarm verify' scope gate fails because its touch_scope omits the test file the issue's acceptance criteria require.",
         "blockers": [
           "swarm verify scope gate lists only superset/key_value/types.py, so the required regression test in tests/unit_tests/key_value/codec_test.py is flagged out of scope"
         ],
         "confidence": "high",
-        "tests_added": 1,
         "files_changed": [
           "superset/key_value/types.py",
           "tests/unit_tests/key_value/codec_test.py"
         ],
         "human_review_reason": "Security-class change: allow-list reflects the value types Superset stores today; deployments pickling custom types into the metastore cache would now fail to decode. Also the CI scope gate needs widening to include the test file.",
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/30",
+        "summary": "PickleKeyValueCodec.decode now uses a RestrictedUnpickler with a module/name allow-list and raises KeyValueCodecDecodeException for disallowed globals; encode path and wire format unchanged. Regression test (os.system payload) fails without the fix. Verification command passes locally and in CI (11 passed). The 'swarm verify' scope gate fails because its touch_scope omits the test file the issue's acceptance criteria require.",
+        "tests_added": 1,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/key_value/codec_test.py -q"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -685,21 +685,21 @@
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
-        "outcome": "fixed",
-        "summary": "Added parametrized unit tests pinning the naive/aware UTC boundary in session_invalidation: a process_tz fixture sets TZ to non-UTC zones (LA, Kolkata, Berlin, Chatham) via time.tzset, and asserts naive-UTC and aware-UTC inputs yield identical epoch seconds and identical is_session_invalidated boundaries. No production module changed. Opened PR #23 with 'Closes #9'.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 4,
         "files_changed": [
           "tests/unit_tests/security/test_session_invalidation.py"
         ],
         "human_review_reason": null,
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/23",
+        "summary": "Added parametrized unit tests pinning the naive/aware UTC boundary in session_invalidation: a process_tz fixture sets TZ to non-UTC zones (LA, Kolkata, Berlin, Chatham) via time.tzset, and asserts naive-UTC and aware-UTC inputs yield identical epoch seconds and identical is_session_invalidated boundaries. No production module changed. Opened PR #23 with 'Closes #9'.",
+        "tests_added": 4,
         "verification_commands_run": [
           "python -m pytest tests/unit_tests/security -q",
           "ruff check tests/unit_tests/security/test_session_invalidation.py"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -768,21 +768,21 @@
       "ci_status": "green",
       "review_status": "comments",
       "structured_output": {
-        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/26",
-        "outcome": "fixed",
-        "summary": "Bumped flask 2.3.3 -> 3.1.3 in requirements/base.txt and requirements/development.txt (flask is not named in requirements/*.in, so no .in change needed). Diff limited to the two pins. Verification grep confirms both pins at 3.1.3. Note: major-version bump applied pin-only per touch scope; Superset call-site compatibility with Flask 3 not verified.",
         "blockers": [],
         "confidence": "medium",
-        "tests_added": 0,
         "files_changed": [
           "requirements/base.txt",
           "requirements/development.txt"
         ],
         "human_review_reason": "Flask 2.x -> 3.x is a major bump; touch scope forbade code/call-site changes, so runtime compatibility is unverified.",
-        "verification_passed": true,
+        "outcome": "fixed",
+        "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/26",
+        "summary": "Bumped flask 2.3.3 -> 3.1.3 in requirements/base.txt and requirements/development.txt (flask is not named in requirements/*.in, so no .in change needed). Diff limited to the two pins. Verification grep confirms both pins at 3.1.3. Note: major-version bump applied pin-only per touch scope; Superset call-site compatibility with Flask 3 not verified.",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^flask==' requirements/"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -845,21 +845,21 @@
       "ci_status": null,
       "review_status": null,
       "structured_output": {
-        "pr_url": null,
-        "outcome": "partial",
-        "summary": "No patch/minor bump can remediate PYSEC-2026-2858 / GHSA-r374-rxx8-8654: OSV marks paramiko affected through 4.0.0 (last_affected 4.0.0), so the first clean release is 5.0.0. Moving to 5.x is outside a pin-only change: pyproject.toml declares 'paramiko>=3.4.0, <4.0' plus uv constraint 'paramiko = \"3\"', and sshtunnel 0.4.0 (latest, unmaintained) references paramiko.DSSKey, removed in paramiko 4.0. Issue is mis-classified as dep-bump-patch; left pin at 3.5.1 and opened no PR. Severity of the finding is LOW (SHA-1 allowed in rsakey.py).",
         "blockers": [
           "Only non-vulnerable paramiko version is 5.0.0; requires editing pyproject.toml constraints (outside declared touch scope)",
           "sshtunnel 0.4.0 uses paramiko.DSSKey (removed in paramiko 4.0) - needs replacement/vendoring, a human decision"
         ],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [],
         "human_review_reason": "Remediation requires a major paramiko upgrade (3.5.1 -> 5.0.0) plus resolving sshtunnel's dependence on the removed paramiko.DSSKey, which exceeds the issue's patch-bump scope.",
-        "verification_passed": true,
+        "outcome": "partial",
+        "pr_url": null,
+        "summary": "No patch/minor bump can remediate PYSEC-2026-2858 / GHSA-r374-rxx8-8654: OSV marks paramiko affected through 4.0.0 (last_affected 4.0.0), so the first clean release is 5.0.0. Moving to 5.x is outside a pin-only change: pyproject.toml declares 'paramiko>=3.4.0, <4.0' plus uv constraint 'paramiko = \"3\"', and sshtunnel 0.4.0 (latest, unmaintained) references paramiko.DSSKey, removed in paramiko 4.0. Issue is mis-classified as dep-bump-patch; left pin at 3.5.1 and opened no PR. Severity of the finding is LOW (SHA-1 allowed in rsakey.py).",
+        "tests_added": 0,
         "verification_commands_run": [
           "grep -rn '^paramiko==' requirements/"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -1433,18 +1433,18 @@
       "ci_status": null,
       "review_status": null,
       "structured_output": {
-        "pr_url": null,
-        "outcome": "wont_fix",
-        "summary": "MD5 use in superset/key_value/utils.py is an already-remediated legacy path: HASH_ALGORITHM defaults to sha256 and _uuid_namespace_from_md5 runs only on explicit operator opt-in or the documented HASH_ALGORITHM_FALLBACKS read path for pre-migration key_value entries (it already logs a deprecation warning and carries noqa S324). The namespace is consumed by uuid3, which is MD5-based per RFC 4122 regardless, so removing the call is cosmetic; removing the path breaks lookups of existing permalinks/shared entries, wider than the issue. Baseline verification green; no code change made.",
         "blockers": [],
         "confidence": "high",
-        "tests_added": 0,
         "files_changed": [],
         "human_review_reason": "A human must decide whether Superset wants to drop the md5 HASH_ALGORITHM / HASH_ALGORITHM_FALLBACKS compatibility path (a breaking change for deployments with pre-SHA256 key_value entries) or accept the semgrep finding as out of scope per SECURITY.md (fail-closed sha256 default + documented opt-in, non-cryptographic namespace derivation). I could not verify real-world deployments still relying on md5 fallback lookups, nor whether the scanner allowlist should be updated instead.",
-        "verification_passed": true,
+        "outcome": "wont_fix",
+        "pr_url": null,
+        "summary": "MD5 use in superset/key_value/utils.py is an already-remediated legacy path: HASH_ALGORITHM defaults to sha256 and _uuid_namespace_from_md5 runs only on explicit operator opt-in or the documented HASH_ALGORITHM_FALLBACKS read path for pre-migration key_value entries (it already logs a deprecation warning and carries noqa S324). The namespace is consumed by uuid3, which is MD5-based per RFC 4122 regardless, so removing the call is cosmetic; removing the path breaks lookups of existing permalinks/shared entries, wider than the issue. Baseline verification green; no code change made.",
+        "tests_added": 0,
         "verification_commands_run": [
           "python -m pytest -q tests/unit_tests -k utils (1541 passed, 1 skipped, 9879 deselected)"
-        ]
+        ],
+        "verification_passed": true
       },
       "acus_consumed": 0.0,
       "session_size": "xs",
@@ -1474,8 +1474,8 @@
         {
           "at": 1785796775,
           "from": "running",
-          "to": "wont_fix",
-          "reason": "MD5 use in superset/key_value/utils.py is an already-remediated legacy path: HASH_ALGORITHM defaults to sha256 and _uuid_namespace_from_md5 runs only on explicit operator opt-in or the documented HASH_ALGORITHM_FALLBACKS read path for pre-migration key_value entries (it already logs a deprecation warning and carries noqa S324). The namespace is consumed by uuid3, which is MD5-based per RFC 4122 regardless, so removing the call is cosmetic; removing the path breaks lookups of existing permalinks/shared entries, wider than the issue. Baseline verification green; no code change made."
+          "reason": "MD5 use in superset/key_value/utils.py is an already-remediated legacy path: HASH_ALGORITHM defaults to sha256 and _uuid_namespace_from_md5 runs only on explicit operator opt-in or the documented HASH_ALGORITHM_FALLBACKS read path for pre-migration key_value entries (it already logs a deprecation warning and carries noqa S324). The namespace is consumed by uuid3, which is MD5-based per RFC 4122 regardless, so removing the call is cosmetic; removing the path breaks lookups of existing permalinks/shared entries, wider than the issue. Baseline verification green; no code change made.",
+          "to": "wont_fix"
         }
       ]
     }
