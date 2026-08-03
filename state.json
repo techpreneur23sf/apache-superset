@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785791652,
+  "updated_at": 1785791716,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -418,7 +418,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "state": "review_pending",
+      "state": "needs_human",
       "session_id": "1840f0947921425abdf510a2e07f7e40",
       "session_url": "https://app.devin.ai/sessions/1840f0947921425abdf510a2e07f7e40",
       "session_status": "running",
@@ -428,7 +428,7 @@
       "pr_state": "open",
       "merged_by": null,
       "ci_status": "green",
-      "review_status": "pending",
+      "review_status": "comments",
       "structured_output": {
         "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/39",
         "outcome": "fixed",
@@ -456,10 +456,10 @@
       "created_at": 1785629739,
       "dispatched_at": 1785790629,
       "pr_opened_at": 1785790826,
-      "terminal_at": 1785790826,
+      "terminal_at": 1785791711,
       "failure_category": "no_pr",
       "last_error": "AttributeError: 'int' object has no attribute 'lower'",
-      "waiting_ticks": 9,
+      "waiting_ticks": 10,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -503,6 +503,12 @@
           "from": "pr_open",
           "reason": "Devin Review requested",
           "to": "review_pending"
+        },
+        {
+          "at": 1785791711,
+          "from": "review_pending",
+          "to": "needs_human",
+          "reason": "Devin Review raised 1 finding(s)"
         }
       ]
     },
@@ -865,7 +871,7 @@
       "terminal_at": 1785791191,
       "failure_category": "no_pr",
       "last_error": null,
-      "waiting_ticks": 4,
+      "waiting_ticks": 5,
       "ever_waited_for_user": true,
       "history": [
         {
