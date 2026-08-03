@@ -992,7 +992,7 @@
       "attempts": 1,
       "ci_status": null,
       "created_at": 1785794746,
-      "devin_messages": 0,
+      "devin_messages": 1,
       "dispatched_at": 1785794747,
       "ever_waited_for_user": false,
       "failure_category": null,
@@ -1002,6 +1002,12 @@
           "from": "queued",
           "reason": "session 4f4ff1e5ab524108b85a88f3521e17a1 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785794901,
+          "from": "dispatched",
+          "reason": "session is working",
+          "to": "running"
         }
       ],
       "issue_class": "security",
@@ -1015,11 +1021,11 @@
       "pr_url": null,
       "review_status": null,
       "session_id": "4f4ff1e5ab524108b85a88f3521e17a1",
-      "session_size": null,
-      "session_status": "new",
-      "session_status_detail": null,
+      "session_size": "xs",
+      "session_status": "running",
+      "session_status_detail": "working",
       "session_url": "https://app.devin.ai/sessions/4f4ff1e5ab524108b85a88f3521e17a1",
-      "state": "dispatched",
+      "state": "running",
       "structured_output": null,
       "terminal_at": null,
       "touch_scope": [
@@ -1455,5 +1461,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785794748
+  "updated_at": 1785794906
 }
