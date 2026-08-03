@@ -15,17 +15,17 @@ on:
         type: boolean
         default: false
       tools:
-        description: "Scanners to run. Add semgrep for code-level findings."
+        description: "Scanners to run"
         type: choice
-        default: osv-scanner,pip-audit
+        default: osv-scanner,pip-audit,semgrep
         options:
-          - osv-scanner,pip-audit
           - osv-scanner,pip-audit,semgrep
+          - osv-scanner,pip-audit
           - semgrep
       limit:
         description: "Maximum issues to file in one run"
         type: string
-        default: "25"
+        default: "8"
 
 concurrency:
   group: swarm-scan
@@ -38,7 +38,7 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -59,6 +59,6 @@ jobs:
           SWARM_REPO: ${{ github.repository }}
         run: >
           swarm scan --repo-dir .
-          --tools ${{ inputs.tools || 'osv-scanner,pip-audit' }}
-          --limit ${{ inputs.limit || '25' }}
+          --tools ${{ inputs.tools || 'osv-scanner,pip-audit,semgrep' }}
+          --limit ${{ inputs.limit || '8' }}
           ${{ inputs.auto_label && '--auto-label' || '' }}
