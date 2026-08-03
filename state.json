@@ -182,6 +182,12 @@
           "from": "failed",
           "reason": "session c1f03db112b741179c8fd0b4eccff904 created",
           "to": "dispatched"
+        },
+        {
+          "at": 1785791191,
+          "from": "dispatched",
+          "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
+          "to": "needs_human"
         }
       ],
       "issue_class": "dep-bump-patch",
@@ -199,7 +205,7 @@
       "session_status": "running",
       "session_status_detail": "waiting_for_user",
       "session_url": "https://app.devin.ai/sessions/c1f03db112b741179c8fd0b4eccff904",
-      "state": "dispatched",
+      "state": "needs_human",
       "structured_output": {
         "blockers": [
           "Only non-vulnerable paramiko version is 5.0.0; requires editing pyproject.toml constraints (outside declared touch scope)",
@@ -217,14 +223,14 @@
         ],
         "verification_passed": true
       },
-      "terminal_at": 1785635956,
+      "terminal_at": 1785791191,
       "touch_scope": [
         "requirements/base.txt",
         "requirements/development.txt",
         "requirements/base.in",
         "requirements/development.in"
       ],
-      "waiting_ticks": 2
+      "waiting_ticks": 3
     },
     "12": {
       "acus_consumed": 0.0,
@@ -1160,7 +1166,7 @@
         "superset/config.py",
         "tests/integration_tests/superset_test_config.py"
       ],
-      "waiting_ticks": 7
+      "waiting_ticks": 8
     },
     "7": {
       "acus_consumed": 0.0,
@@ -1397,5 +1403,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785791156
+  "updated_at": 1785791202
 }
