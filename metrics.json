@@ -1,7 +1,8 @@
 {
-  "acus_on_merged_tasks": 0.0,
-  "acus_per_merged_pr": 0.0,
-  "acus_per_pr_opened": 0.0,
+  "acus_metered": false,
+  "acus_on_merged_tasks": null,
+  "acus_per_merged_pr": null,
+  "acus_per_pr_opened": null,
   "acus_total": 0.0,
   "autonomy_rate": 0.143,
   "by_class": {
@@ -55,6 +56,14 @@
     "queued": 0,
     "tasks": 17,
     "wont_fix": 1
+  },
+  "effort": {
+    "devin_messages_total": 43,
+    "median_session_hours": 0.79,
+    "median_session_hours_merged": 0.43,
+    "session_sizes": {
+      "xs": 17
+    }
   },
   "failures": {
     "no_pr": 2
