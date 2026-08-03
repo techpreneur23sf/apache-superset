@@ -987,6 +987,46 @@
       ],
       "waiting_ticks": 4
     },
+    "47": {
+      "acus_consumed": 0.0,
+      "attempts": 1,
+      "ci_status": null,
+      "created_at": 1785794746,
+      "devin_messages": 0,
+      "dispatched_at": 1785794747,
+      "ever_waited_for_user": false,
+      "failure_category": null,
+      "history": [
+        {
+          "at": 1785794747,
+          "from": "queued",
+          "reason": "session 4f4ff1e5ab524108b85a88f3521e17a1 created",
+          "to": "dispatched"
+        }
+      ],
+      "issue_class": "security",
+      "issue_number": 47,
+      "issue_title": "[medium] insecure-hash-algorithm-md5 in superset/key_value/utils.py",
+      "last_error": null,
+      "merged_by": null,
+      "pr_number": null,
+      "pr_opened_at": null,
+      "pr_state": null,
+      "pr_url": null,
+      "review_status": null,
+      "session_id": "4f4ff1e5ab524108b85a88f3521e17a1",
+      "session_size": null,
+      "session_status": "new",
+      "session_status_detail": null,
+      "session_url": "https://app.devin.ai/sessions/4f4ff1e5ab524108b85a88f3521e17a1",
+      "state": "dispatched",
+      "structured_output": null,
+      "terminal_at": null,
+      "touch_scope": [
+        "superset/key_value/utils.py"
+      ],
+      "waiting_ticks": 0
+    },
     "5": {
       "acus_consumed": 0.0,
       "attempts": 1,
@@ -1415,5 +1455,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785794298
+  "updated_at": 1785794748
 }
