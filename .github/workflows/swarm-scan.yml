@@ -14,6 +14,18 @@ on:
         description: "Label new issues devin:auto (dispatches them immediately)"
         type: boolean
         default: false
+      tools:
+        description: "Scanners to run. Add semgrep for code-level findings."
+        type: choice
+        default: osv-scanner,pip-audit
+        options:
+          - osv-scanner,pip-audit
+          - osv-scanner,pip-audit,semgrep
+          - semgrep
+      limit:
+        description: "Maximum issues to file in one run"
+        type: string
+        default: "25"
 
 concurrency:
   group: swarm-scan
@@ -36,7 +48,7 @@ jobs:
 
       - name: Install the swarm and the scanners
         run: |
-          pip install --quiet "git+https://github.com/techpreneur23sf/devin-backlog-swarm@main" pip-audit
+          pip install --quiet "git+https://github.com/techpreneur23sf/devin-backlog-swarm@main" pip-audit semgrep
           curl -sSfL https://github.com/google/osv-scanner/releases/download/v2.4.0/osv-scanner_linux_amd64 \
             -o /usr/local/bin/osv-scanner
           chmod +x /usr/local/bin/osv-scanner
@@ -46,5 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SWARM_GITHUB_TOKEN }}
           SWARM_REPO: ${{ github.repository }}
         run: >
-          swarm scan --repo-dir . --tools osv-scanner,pip-audit
+          swarm scan --repo-dir .
+          --tools ${{ inputs.tools || 'osv-scanner,pip-audit' }}
+          --limit ${{ inputs.limit || '25' }}
           ${{ inputs.auto_label && '--auto-label' || '' }}
