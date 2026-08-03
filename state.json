@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785788634,
+  "updated_at": 1785790392,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -40,6 +40,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 4,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629022,
@@ -112,6 +114,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785628617,
       "dispatched_at": 1785628617,
@@ -197,6 +201,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785629739,
       "dispatched_at": 1785629740,
@@ -275,6 +281,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 3,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629024,
@@ -352,6 +360,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 4,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629026,
@@ -437,6 +447,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785629739,
       "dispatched_at": 1785629742,
@@ -507,6 +519,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785630543,
       "dispatched_at": 1785630544,
@@ -581,6 +595,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 3,
       "attempts": 1,
       "created_at": 1785630547,
       "dispatched_at": 1785630547,
@@ -653,6 +669,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629027,
@@ -734,6 +752,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 3,
       "attempts": 1,
       "created_at": 1785630548,
       "dispatched_at": 1785630549,
@@ -810,6 +830,8 @@
         ]
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785630544,
       "dispatched_at": 1785630544,
@@ -873,6 +895,8 @@
         "verification_passed": false
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785629739,
       "dispatched_at": 1785636082,
@@ -939,6 +963,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 3,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785629020,
@@ -1017,6 +1043,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785633530,
       "dispatched_at": 1785633531,
@@ -1113,6 +1141,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785633528,
       "dispatched_at": 1785633528,
@@ -1210,6 +1240,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 2,
       "attempts": 1,
       "created_at": 1785629739,
       "dispatched_at": 1785637237,
@@ -1288,6 +1320,8 @@
         "verification_passed": true
       },
       "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 3,
       "attempts": 1,
       "created_at": 1785629020,
       "dispatched_at": 1785630531,
