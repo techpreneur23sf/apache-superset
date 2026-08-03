@@ -45,13 +45,13 @@
   "counts": {
     "abandoned": 0,
     "dispatched": 17,
-    "failed": 0,
+    "failed": 1,
     "in_flight": 0,
     "merged": 8,
     "merged_by_human": 1,
     "merged_by_swarm": 4,
     "merged_without_human_input": 2,
-    "needs_human": 7,
+    "needs_human": 6,
     "prs_opened": 15,
     "queued": 0,
     "tasks": 17,
@@ -59,7 +59,7 @@
   },
   "effort": {
     "devin_messages_total": 43,
-    "median_session_hours": 0.59,
+    "median_session_hours": 0.7,
     "median_session_hours_merged": 0.43,
     "session_sizes": {
       "xs": 17
@@ -72,8 +72,9 @@
   "merge_rate": 0.471,
   "pr_rate": 0.882,
   "states": {
+    "failed": 1,
     "merged": 8,
-    "needs_human": 7,
+    "needs_human": 6,
     "review_clean": 1,
     "wont_fix": 1
   }
