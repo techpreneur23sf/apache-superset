@@ -937,15 +937,6 @@ DEFAULT_FEATURE_FLAGS: dict[str, bool] = {
     # @lifecycle: stable
     # @category: internal
     "ENABLE_FACTORY_RESET_COMMAND": False,
-    # =================================================================
-    # DEPRECATED
-    # =================================================================
-    # These flags default to True and will be removed in a future major
-    # release. Set to True in your config to avoid unexpected changes.
-    # -----------------------------------------------------------------
-    # Enable drill-to-detail functionality in charts
-    # @lifecycle: deprecated
-    "DRILL_TO_DETAIL": True,
 }
 
 # ------------------------------
