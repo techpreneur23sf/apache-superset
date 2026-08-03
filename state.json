@@ -157,11 +157,11 @@
     },
     "11": {
       "acus_consumed": 0.0,
-      "attempts": 1,
+      "attempts": 2,
       "ci_status": null,
       "created_at": 1785630544,
       "devin_messages": 2,
-      "dispatched_at": 1785630544,
+      "dispatched_at": 1785790625,
       "ever_waited_for_user": false,
       "failure_category": "no_pr",
       "history": [
@@ -176,6 +176,12 @@
           "from": "dispatched",
           "reason": "session ended (suspended) without a pull request",
           "to": "failed"
+        },
+        {
+          "at": 1785790625,
+          "from": "failed",
+          "reason": "session c1f03db112b741179c8fd0b4eccff904 created",
+          "to": "dispatched"
         }
       ],
       "issue_class": "dep-bump-patch",
@@ -188,12 +194,12 @@
       "pr_state": null,
       "pr_url": null,
       "review_status": null,
-      "session_id": "18d3351346b547c3a074d0e7c3ffc0fe",
+      "session_id": "c1f03db112b741179c8fd0b4eccff904",
       "session_size": "xs",
-      "session_status": "suspended",
+      "session_status": "new",
       "session_status_detail": "inactivity",
-      "session_url": "https://app.devin.ai/sessions/18d3351346b547c3a074d0e7c3ffc0fe",
-      "state": "failed",
+      "session_url": "https://app.devin.ai/sessions/c1f03db112b741179c8fd0b4eccff904",
+      "state": "dispatched",
       "structured_output": {
         "blockers": [
           "Only fixed version (5.0.0) is outside pyproject constraint paramiko>=3.4.0,<4.0",
@@ -1365,5 +1371,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785790391
+  "updated_at": 1785790627
 }
