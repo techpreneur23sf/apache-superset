@@ -406,6 +406,13 @@
         "category": "runtime_config"
       }
     ],
-    "deprecated": []
+    "deprecated": [
+      {
+        "name": "DRILL_TO_DETAIL",
+        "default": true,
+        "lifecycle": "deprecated",
+        "description": "Enable drill-to-detail functionality in charts"
+      }
+    ]
   }
 }
