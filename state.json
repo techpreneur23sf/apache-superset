@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785794299,
+  "updated_at": 1785794907,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -1411,6 +1411,52 @@
           "from": "review_clean",
           "reason": "satisfies tier 'auto_merge'",
           "to": "merged"
+        }
+      ]
+    },
+    "47": {
+      "issue_number": 47,
+      "issue_title": "[medium] insecure-hash-algorithm-md5 in superset/key_value/utils.py",
+      "issue_class": "security",
+      "touch_scope": [
+        "superset/key_value/utils.py"
+      ],
+      "state": "running",
+      "session_id": "4f4ff1e5ab524108b85a88f3521e17a1",
+      "session_url": "https://app.devin.ai/sessions/4f4ff1e5ab524108b85a88f3521e17a1",
+      "session_status": "running",
+      "session_status_detail": "working",
+      "pr_url": null,
+      "pr_number": null,
+      "pr_state": null,
+      "merged_by": null,
+      "ci_status": null,
+      "review_status": null,
+      "structured_output": null,
+      "acus_consumed": 0.0,
+      "session_size": "xs",
+      "devin_messages": 1,
+      "attempts": 1,
+      "created_at": 1785794746,
+      "dispatched_at": 1785794747,
+      "pr_opened_at": null,
+      "terminal_at": null,
+      "failure_category": null,
+      "last_error": null,
+      "waiting_ticks": 0,
+      "ever_waited_for_user": false,
+      "history": [
+        {
+          "at": 1785794747,
+          "from": "queued",
+          "reason": "session 4f4ff1e5ab524108b85a88f3521e17a1 created",
+          "to": "dispatched"
+        },
+        {
+          "at": 1785794901,
+          "from": "dispatched",
+          "to": "running",
+          "reason": "session is working"
         }
       ]
     }
