@@ -51,7 +51,7 @@
     "merged_by_human": 1,
     "merged_by_swarm": 4,
     "merged_without_human_input": 2,
-    "needs_human": 6,
+    "needs_human": 7,
     "prs_opened": 15,
     "queued": 0,
     "tasks": 17,
@@ -73,9 +73,8 @@
   "pr_rate": 0.882,
   "states": {
     "merged": 8,
-    "needs_human": 6,
+    "needs_human": 7,
     "review_clean": 1,
-    "review_pending": 1,
     "wont_fix": 1
   }
 }
