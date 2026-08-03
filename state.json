@@ -1069,11 +1069,11 @@
     },
     "6": {
       "acus_consumed": 0.0,
-      "attempts": 1,
+      "attempts": 2,
       "ci_status": null,
       "created_at": 1785629739,
       "devin_messages": 2,
-      "dispatched_at": 1785629742,
+      "dispatched_at": 1785790629,
       "ever_waited_for_user": true,
       "failure_category": "no_pr",
       "history": [
@@ -1094,6 +1094,12 @@
           "from": "needs_human",
           "reason": "session ended (suspended) without a pull request",
           "to": "failed"
+        },
+        {
+          "at": 1785790629,
+          "from": "failed",
+          "reason": "session 1840f0947921425abdf510a2e07f7e40 created",
+          "to": "dispatched"
         }
       ],
       "issue_class": "code-quality",
@@ -1106,12 +1112,12 @@
       "pr_state": null,
       "pr_url": null,
       "review_status": null,
-      "session_id": "2708236784de43acb71bbc9a34a16d9a",
+      "session_id": "1840f0947921425abdf510a2e07f7e40",
       "session_size": "xs",
-      "session_status": "suspended",
+      "session_status": "new",
       "session_status_detail": "inactivity",
-      "session_url": "https://app.devin.ai/sessions/2708236784de43acb71bbc9a34a16d9a",
-      "state": "failed",
+      "session_url": "https://app.devin.ai/sessions/1840f0947921425abdf510a2e07f7e40",
+      "state": "dispatched",
       "structured_output": {
         "blockers": [
           "Removing the backend flag would disable drill-to-detail in the UI because the frontend gates on the same key via isFeatureEnabled; fixing that requires frontend edits, forbidden by acceptance criteria."
@@ -1371,5 +1377,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1785790627
+  "updated_at": 1785790630
 }
