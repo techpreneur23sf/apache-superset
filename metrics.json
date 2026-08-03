@@ -39,14 +39,14 @@
       "merge_rate": 0.0,
       "merged": 0,
       "pr": 2,
-      "total": 2
+      "total": 3
     }
   },
   "counts": {
     "abandoned": 0,
-    "dispatched": 17,
+    "dispatched": 18,
     "failed": 1,
-    "in_flight": 0,
+    "in_flight": 1,
     "merged": 8,
     "merged_by_human": 1,
     "merged_by_swarm": 4,
@@ -54,28 +54,29 @@
     "needs_human": 6,
     "prs_opened": 15,
     "queued": 0,
-    "tasks": 17,
+    "tasks": 18,
     "wont_fix": 1
   },
   "effort": {
-    "devin_messages_total": 43,
+    "devin_messages_total": 44,
     "median_session_hours": 0.7,
     "median_session_hours_merged": 0.43,
     "session_sizes": {
-      "xs": 17
+      "xs": 18
     }
   },
   "failures": {
     "no_pr": 2
   },
   "median_issue_to_pr_hours": 0.08,
-  "merge_rate": 0.471,
-  "pr_rate": 0.882,
+  "merge_rate": 0.444,
+  "pr_rate": 0.833,
   "states": {
     "failed": 1,
     "merged": 8,
     "needs_human": 6,
     "review_clean": 1,
+    "running": 1,
     "wont_fix": 1
   }
 }
