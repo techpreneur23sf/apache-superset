@@ -16,13 +16,13 @@
 # under the License.
 import re
 from typing import Any, Optional, Union
+from zoneinfo import available_timezones
 
 from croniter import croniter
 from flask import current_app
 from flask_babel import gettext as _
 from marshmallow import EXCLUDE, fields, Schema, validate, validates, validates_schema
 from marshmallow.validate import Length, Range, ValidationError
-from pytz import all_timezones
 
 from superset.reports.models import (
     ReportCreationMethod,
@@ -31,6 +31,10 @@ from superset.reports.models import (
     ReportScheduleType,
     ReportScheduleValidatorType,
 )
+
+# ``available_timezones()`` returns an unordered set; sort it so that the
+# accepted values (and the validation error message listing them) are stable.
+TIMEZONES = tuple(sorted(available_timezones()))
 
 openapi_spec_methods_override = {
     "get": {"get": {"summary": "Get a report schedule"}},
@@ -220,7 +224,7 @@ class ReportSchedulePostSchema(Schema):
     timezone = fields.String(
         metadata={"description": timezone_description},
         dump_default="UTC",
-        validate=validate.OneOf(choices=tuple(all_timezones)),
+        validate=validate.OneOf(choices=TIMEZONES),
     )
     sql = fields.String(
         metadata={
@@ -377,7 +381,7 @@ class ReportSchedulePutSchema(Schema):
     timezone = fields.String(
         metadata={"description": timezone_description},
         dump_default="UTC",
-        validate=validate.OneOf(choices=tuple(all_timezones)),
+        validate=validate.OneOf(choices=TIMEZONES),
     )
     sql = fields.String(
         metadata={
