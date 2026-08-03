@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": 1785791204,
+  "updated_at": 1785791652,
   "repo": "techpreneur23sf/apache-superset",
   "tasks": {
     "1": {
@@ -459,7 +459,7 @@
       "terminal_at": 1785790826,
       "failure_category": "no_pr",
       "last_error": "AttributeError: 'int' object has no attribute 'lower'",
-      "waiting_ticks": 8,
+      "waiting_ticks": 9,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -865,7 +865,7 @@
       "terminal_at": 1785791191,
       "failure_category": "no_pr",
       "last_error": null,
-      "waiting_ticks": 3,
+      "waiting_ticks": 4,
       "ever_waited_for_user": true,
       "history": [
         {
@@ -889,8 +889,8 @@
         {
           "at": 1785791191,
           "from": "dispatched",
-          "to": "needs_human",
-          "reason": "session idle in waiting_for_user; terminated to stop ACU drain"
+          "reason": "session idle in waiting_for_user; terminated to stop ACU drain",
+          "to": "needs_human"
         }
       ]
     },
