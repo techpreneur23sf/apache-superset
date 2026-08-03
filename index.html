@@ -3,69 +3,218 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Backlog swarm — techpreneur23sf/apache-superset</title>
 <style>
-:root { color-scheme: dark; }
-body { margin:0; background:#0b1020; color:#e2e8f0; font:14px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
-header { padding:28px 32px 8px; border-bottom:1px solid #1e293b; }
-h1 { margin:0 0 4px; font-size:20px; }
-.sub { color:#94a3b8; font-size:13px; }
-main { padding:24px 32px 64px; max-width:1180px; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:20px 0 28px; }
-.card { background:#111827; border:1px solid #1f2937; border-radius:10px; padding:14px 16px; }
-.card .k { color:#94a3b8; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
-.card .v { font-size:26px; font-weight:600; margin:6px 0 2px; }
-.card .s { color:#64748b; font-size:12px; }
-h2 { font-size:15px; margin:28px 0 10px; color:#cbd5e1; }
+:root {
+  color-scheme: light;
+  --bg:#f7f8fa; --panel:#fff; --line:#e8eaee; --line-2:#f1f2f5;
+  --ink:#111827; --ink-2:#4b5563; --ink-3:#8a94a6; --accent:#2563eb;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 1px 3px rgba(16,24,40,.04);
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font:14px/1.55 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.muted { color:var(--ink-3); }
+header { background:var(--panel); border-bottom:1px solid var(--line); }
+.wrap { max-width:1240px; margin:0 auto; padding:0 28px; }
+.hd { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; padding:22px 0 20px; flex-wrap:wrap; }
+h1 { margin:0; font-size:19px; font-weight:650; letter-spacing:-.01em; }
+.sub { color:var(--ink-2); font-size:13px; margin-top:4px; max-width:640px; }
+.live { display:inline-flex; align-items:center; gap:7px; background:#f0fdf4; color:#15803d;
+  border:1px solid #bbf7d0; border-radius:999px; padding:4px 11px; font-size:12px; font-weight:550; white-space:nowrap; }
+.live .dot { width:7px; height:7px; }
+main { padding:24px 0 72px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(196px,1fr)); gap:14px; margin:4px 0 26px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; box-shadow:var(--shadow); }
+.card .k { color:var(--ink-2); font-size:12px; font-weight:550; }
+.card .v { font-size:28px; font-weight:640; letter-spacing:-.02em; margin:8px 0 4px; }
+.card .s { color:var(--ink-3); font-size:12px; line-height:1.45; }
+section { background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); margin-bottom:22px; overflow:hidden; }
+.sh { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 18px; border-bottom:1px solid var(--line-2); flex-wrap:wrap; }
+.sh h2 { margin:0; font-size:14px; font-weight:600; }
+.sh p { margin:2px 0 0; font-size:12.5px; color:var(--ink-3); }
+.tools { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+input[type=search] { font:inherit; font-size:13px; padding:6px 11px; border:1px solid var(--line);
+  border-radius:8px; background:var(--bg); min-width:210px; color:var(--ink); }
+input[type=search]:focus { outline:2px solid #dbeafe; border-color:#93c5fd; }
+.chip { font:inherit; font-size:12px; padding:5px 10px; border:1px solid var(--line); background:var(--panel);
+  border-radius:999px; cursor:pointer; color:var(--ink-2); display:inline-flex; gap:6px; align-items:center; }
+.chip:hover { background:var(--bg); }
+.chip[aria-pressed=true] { background:#eff6ff; border-color:#bfdbfe; color:#1d4ed8; }
+.chip .ct { color:var(--ink-3); font-variant-numeric:tabular-nums; }
+.chip[aria-pressed=true] .ct { color:#3b82f6; }
 table { width:100%; border-collapse:collapse; font-size:13px; }
-th,td { text-align:left; padding:7px 10px; border-bottom:1px solid #1e293b; vertical-align:top; }
-th { color:#94a3b8; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
-td.title { max-width:380px; }
-code { background:#1e293b; padding:1px 5px; border-radius:4px; font-size:12px; }
-.pill { display:inline-block; padding:2px 8px; border-radius:999px; color:#0b1020; font-weight:600; font-size:11px; }
-a { color:#7dd3fc; text-decoration:none; } a:hover { text-decoration:underline; }
-footer { color:#64748b; font-size:12px; margin-top:32px; border-top:1px solid #1e293b; padding-top:14px; }
+th, td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--line-2); vertical-align:middle; }
+tbody tr:last-child td { border-bottom:none; }
+tbody tr:hover { background:#fafbfc; }
+th { color:var(--ink-2); font-weight:550; font-size:12px; background:#fcfcfd; position:sticky; top:0; z-index:1;
+  border-bottom:1px solid var(--line); white-space:nowrap; }
+th.sortable { cursor:pointer; user-select:none; }
+th.sortable:hover { color:var(--ink); }
+th.sortable::after { content:"↕"; opacity:.28; margin-left:6px; font-size:10px; }
+th[data-dir=asc]::after { content:"↑"; opacity:.9; }
+th[data-dir=desc]::after { content:"↓"; opacity:.9; }
+td.num, th.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.title { max-width:340px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tag { display:inline-block; padding:2px 8px; border-radius:6px; background:#f1f5f9; color:#475569;
+  font-size:11.5px; font-weight:550; white-space:nowrap; }
+.pill { display:inline-block; padding:2px 9px; border-radius:999px; border:1px solid; font-size:11.5px;
+  font-weight:600; white-space:nowrap; }
+.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; vertical-align:middle; }
+.dot-l { font-size:12.5px; color:var(--ink-2); }
+.conf { font-size:11.5px; font-weight:600; }
+.conf-high { color:#15803d; } .conf-medium { color:#b45309; } .conf-low { color:#b91c1c; }
+.ext { font-size:12.5px; }
+.bar { display:flex; align-items:center; gap:9px; }
+.bar .track { width:92px; height:6px; border-radius:999px; background:#eef0f4; overflow:hidden; }
+.bar .fill { height:100%; background:#22c55e; border-radius:999px; }
+.bar span { font-size:12px; color:var(--ink-2); font-variant-numeric:tabular-nums; }
+.chart { padding:6px 10px 12px; }
+.note { padding:16px 18px; font-size:13px; color:var(--ink-2); }
+.note code { background:#f1f5f9; padding:1px 5px; border-radius:4px; font-size:12px; }
+.empty { padding:22px 18px; color:var(--ink-3); font-size:13px; }
+footer { color:var(--ink-3); font-size:12px; padding:6px 0 0; }
+footer code { background:#eef0f4; padding:1px 5px; border-radius:4px; }
+@media (max-width:720px) { .wrap { padding:0 16px; } td.title { max-width:170px; } }
 </style></head>
 <body>
-<header>
-  <h1>Autonomous backlog swarm — <a href="https://github.com/techpreneur23sf/apache-superset">techpreneur23sf/apache-superset</a></h1>
-  <div class="sub">Generated 2026-08-03 22:39 UTC by the reconciler. Every figure is derived from the Devin and GitHub
-  APIs; the source data is published next to this page as
-  <a href="state.json">state.json</a> and <a href="metrics.json">metrics.json</a>.</div>
-</header>
-<main>
-  <div class="cards"><div class="card"><div class="k">Cost per merged PR</div><div class="v">not metered</div><div class="s">this plan bills usage, not ACUs — see below</div></div>
-<div class="card"><div class="k">Median issue → PR</div><div class="v">0.08 h</div><div class="s">against a backlog measured in weeks</div></div>
-<div class="card"><div class="k">Autonomy rate</div><div class="v">13%</div><div class="s">finished with zero human input</div></div>
+<header><div class="wrap"><div class="hd">
+  <div>
+    <h1>Autonomous backlog swarm · <a href="https://github.com/techpreneur23sf/apache-superset">techpreneur23sf/apache-superset</a></h1>
+    <div class="sub">Scanners file the work, Devin sessions do it, policy decides what merges.
+    Every figure is derived from the Devin and GitHub APIs — the source data is published beside
+    this page as <a href="state.json">state.json</a> and <a href="metrics.json">metrics.json</a>.</div>
+  </div>
+  <div class="live"><span class="dot" style="background:#16a34a"></span>Updated 2026-08-03 23:26 UTC</div>
+</div></div></header>
+
+<main><div class="wrap">
+  <div class="cards"><div class="card"><div class="k">Merged</div><div class="v">8</div><div class="s">4 by the swarm · 1 by a human · 3 unattributed</div></div>
+<div class="card"><div class="k">Autonomy rate</div><div class="v">13%</div><div class="s">of PRs opened, landed with no human input</div></div>
 <div class="card"><div class="k">Merge rate</div><div class="v">44%</div><div class="s">of dispatched sessions</div></div>
-<div class="card"><div class="k">PRs opened</div><div class="v">15</div><div class="s">8 merged, 6 awaiting a human</div></div>
-<div class="card"><div class="k">Median session</div><div class="v">0.69 h</div><div class="s">dispatch → finish · sizes 18×xs</div></div></div>
+<div class="card"><div class="k">Awaiting a human</div><div class="v">6</div><div class="s">parked by policy or by review</div></div>
+<div class="card"><div class="k">Median issue → PR</div><div class="v">0.08 h</div><div class="s">against a backlog measured in weeks</div></div>
+<div class="card"><div class="k">Median session</div><div class="v">0.69 h</div><div class="s">dispatch → finish · 18×xs</div></div></div>
 
-  <h2>Backlog burndown</h2>
-  <svg viewBox="0 0 1100 120" width="100%" height="120" role="img" aria-label="open swarm tasks over time"><path d="M10.0,103.1 L12.6,96.2 L12.6,89.2 L12.6,82.3 L12.6,75.4 L12.6,68.5 L12.6,61.5 L17.3,54.6 L17.3,47.7 L17.3,40.8 L17.3,33.8 L21.9,40.8 L21.9,47.7 L21.9,54.6 L22.5,47.7 L22.5,40.8 L22.5,33.8 L22.6,26.9 L41.1,33.8 L41.9,26.9 L41.9,20.0 L52.7,26.9 L52.8,33.8 L52.8,40.8 L75.4,47.7 L1090.0,40.8" fill="none" stroke="#38bdf8" stroke-width="2"/><text x="10" y="14" fill="#64748b" font-size="11">open swarm tasks (peak 13)</text></svg>
+  <section>
+    <div class="sh"><div><h2>Open work over time</h2>
+      <p>Tasks the swarm is carrying, from the ledger's own timestamps.</p></div></div>
+    <div class="chart"><svg viewBox="0 0 1100 150" width="100%" height="150" role="img" preserveAspectRatio="none" aria-label="open swarm tasks over time"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563eb" stop-opacity=".16"/><stop offset="100%" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs><line x1="12" x2="1088" y1="124.0" y2="124.0" stroke="#eef0f4" stroke-width="1"/><line x1="12" x2="1088" y1="75.0" y2="75.0" stroke="#eef0f4" stroke-width="1"/><line x1="12" x2="1088" y1="26.0" y2="26.0" stroke="#eef0f4" stroke-width="1"/><path d="M12.0,116.5 L14.6,108.9 L14.6,101.4 L14.6,93.8 L14.6,86.3 L14.6,78.8 L14.6,71.2 L19.3,63.7 L19.3,56.2 L19.3,48.6 L19.3,41.1 L23.9,48.6 L23.9,56.2 L23.9,63.7 L24.5,56.2 L24.5,48.6 L24.5,41.1 L24.5,33.5 L43.0,41.1 L43.8,33.5 L43.8,26.0 L54.6,33.5 L54.6,41.1 L54.6,48.6 L77.2,56.2 L1088.0,48.6 L1088.0,124.0 L12.0,124.0 Z" fill="url(#g)"/><path d="M12.0,116.5 L14.6,108.9 L14.6,101.4 L14.6,93.8 L14.6,86.3 L14.6,78.8 L14.6,71.2 L19.3,63.7 L19.3,56.2 L19.3,48.6 L19.3,41.1 L23.9,48.6 L23.9,56.2 L23.9,63.7 L24.5,56.2 L24.5,48.6 L24.5,41.1 L24.5,33.5 L43.0,41.1 L43.8,33.5 L43.8,26.0 L54.6,33.5 L54.6,41.1 L54.6,48.6 L77.2,56.2 L1088.0,48.6" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="12" y="16" fill="#8a94a6" font-size="11" font-family="system-ui">open tasks · peak 13</text><text x="1088" y="142" fill="#8a94a6" font-size="11" font-family="system-ui" text-anchor="end">now</text><text x="12" y="142" fill="#8a94a6" font-size="11" font-family="system-ui">first task</text></svg></div>
+  </section>
 
-  <h2>Tasks</h2>
-  <table><thead><tr><th>Issue</th><th>Title</th><th>Class</th><th>State</th><th>PR</th><th>CI</th>
-  <th>Review</th><th>Confidence</th><th>Size</th><th>Devin msgs</th><th>Session</th></tr></thead>
-  <tbody><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/1">#1</a></td><td class="title">Replace pytz with the stdlib zoneinfo in superset/utils/dates.py</td><td><code>deprecation</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/20">#20</a></td><td>green</td><td>pending</td><td>high</td><td>xs</td><td>4</td><td><a href="https://app.devin.ai/sessions/b9384faa460e4d96a7ea7e6a5d6db896">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/2">#2</a></td><td class="title">Replace pytz with zoneinfo in the alert/report cron window, preserving DST behaviour</td><td><code>deprecation</code></td><td><span class="pill" style="background:#f59e0b">needs_human</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/18">#18</a></td><td>green</td><td>comments</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/3">#3</a></td><td class="title">Drop pytz from the report schemas and email notification timezone handling</td><td><code>deprecation</code></td><td><span class="pill" style="background:#f59e0b">needs_human</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/25">#25</a></td><td>red</td><td>comments</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/4">#4</a></td><td class="title">Use datetime.timezone.utc instead of pytz.utc in model helpers</td><td><code>deprecation</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/21">#21</a></td><td>green</td><td>pending</td><td>high</td><td>xs</td><td>3</td><td><a href="https://app.devin.ai/sessions/0c13b096a4bf4075ab3f52d1a0b18f40">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/5">#5</a></td><td class="title">Modernise typing imports to PEP 585 builtin generics in three modules</td><td><code>code-quality</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/22">#22</a></td><td>green</td><td>clean</td><td>high</td><td>xs</td><td>4</td><td><a href="https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/6">#6</a></td><td class="title">Retire the deprecated DRILL_TO_DETAIL feature flag and its dead branches</td><td><code>code-quality</code></td><td><span class="pill" style="background:#f59e0b">needs_human</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/39">#39</a></td><td>green</td><td>comments</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/1840f0947921425abdf510a2e07f7e40">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/7">#7</a></td><td class="title">Example import loads YAML metadata with the unsafe loader</td><td><code>security</code></td><td><span class="pill" style="background:#818cf8">review_clean</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/29">#29</a></td><td>red</td><td>clean</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/f617079e216a4537bd4a15a07fa68a58">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/8">#8</a></td><td class="title">PickleKeyValueCodec deserialises stored values with unrestricted pickle</td><td><code>security</code></td><td><span class="pill" style="background:#f59e0b">needs_human</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/30">#30</a></td><td>red</td><td>comments</td><td>high</td><td>xs</td><td>3</td><td><a href="https://app.devin.ai/sessions/cb2799c898be44069ee8819c1f3c3af0">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/9">#9</a></td><td class="title">Cover the naive/aware boundary in session invalidation with explicit tests</td><td><code>code-quality</code></td><td><span class="pill" style="background:#f59e0b">needs_human</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/23">#23</a></td><td>green</td><td>comments</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/10">#10</a></td><td class="title">[high] flask 2.3.3 → 3.1.3: PYSEC-2026-2151 (+1 more)</td><td><code>dep-bump-major</code></td><td><span class="pill" style="background:#f59e0b">needs_human</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/26">#26</a></td><td>green</td><td>comments</td><td>medium</td><td>xs</td><td>3</td><td><a href="https://app.devin.ai/sessions/35034f9d8caa416980035490f2067435">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/11">#11</a></td><td class="title">[high] paramiko 3.5.1: PYSEC-2026-2858 (+1 more)</td><td><code>dep-bump-patch</code></td><td><span class="pill" style="background:#ef4444">failed</span></td><td>—</td><td>—</td><td>—</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/c1f03db112b741179c8fd0b4eccff904">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/12">#12</a></td><td class="title">[high] setuptools 80.9.0 → 83.0.0: PYSEC-2026-3447 (+1 more)</td><td><code>dep-bump-major</code></td><td><span class="pill" style="background:#6b7280">wont_fix</span></td><td>—</td><td>—</td><td>—</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/13">#13</a></td><td class="title">[high] jaraco-context 6.0.1 → 6.1.0: PYSEC-2026-1469 (+1 more)</td><td><code>dep-bump-patch</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/19">#19</a></td><td>green</td><td>pending</td><td>high</td><td>xs</td><td>3</td><td><a href="https://app.devin.ai/sessions/f3f377a33e4a4d18bf973b13968842c8">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/14">#14</a></td><td class="title">[high] mcp 1.24.0 → 1.28.1: PYSEC-2026-3481 (+5 more)</td><td><code>dep-bump-patch</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/31">#31</a></td><td>green</td><td>clean</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/15">#15</a></td><td class="title">[moderate] pip 25.1.1 → 26.1.2: PYSEC-2026-1795 (+9 more)</td><td><code>dep-bump-major</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/32">#32</a></td><td>green</td><td>clean</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/16">#16</a></td><td class="title">[high] pytest 7.4.4 → 9.0.3: PYSEC-2026-1845 (+1 more)</td><td><code>dep-bump-major</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/36">#36</a></td><td>green</td><td>clean</td><td>high</td><td>xs</td><td>2</td><td><a href="https://app.devin.ai/sessions/c6425b69f36546279a39dc7fc4212202">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/17">#17</a></td><td class="title">[high] python-multipart 0.0.29 → 0.0.31: PYSEC-2026-3036 (+7 more)</td><td><code>dep-bump-patch</code></td><td><span class="pill" style="background:#22c55e">merged</span></td><td><a href="https://github.com/techpreneur23sf/apache-superset/pull/27">#27</a></td><td>green</td><td>clean</td><td>high</td><td>xs</td><td>3</td><td><a href="https://app.devin.ai/sessions/c3952d6432bb459ea2cb14e2869a2176">session</a></td></tr><tr><td><a href="https://github.com/techpreneur23sf/apache-superset/issues/47">#47</a></td><td class="title">[medium] insecure-hash-algorithm-md5 in superset/key_value/utils.py</td><td><code>security</code></td><td><span class="pill" style="background:#6b7280">wont_fix</span></td><td>—</td><td>—</td><td>—</td><td>high</td><td>xs</td><td>1</td><td><a href="https://app.devin.ai/sessions/4f4ff1e5ab524108b85a88f3521e17a1">session</a></td></tr></tbody></table>
+  <section>
+    <div class="sh">
+      <div><h2>Tasks</h2><p>18 tracked · click a column to sort</p></div>
+      <div class="tools">
+        <input type="search" id="q" placeholder="Filter tasks…" aria-label="Filter tasks">
+        <button class="chip" data-filter="" aria-pressed="true">all<span class="ct">18</span></button>
+        <button class="chip" data-filter="merged">merged<span class="ct">8</span></button><button class="chip" data-filter="needs_human">needs human<span class="ct">6</span></button><button class="chip" data-filter="wont_fix">wont fix<span class="ct">2</span></button><button class="chip" data-filter="review_clean">review clean<span class="ct">1</span></button><button class="chip" data-filter="failed">failed<span class="ct">1</span></button>
+      </div>
+    </div>
+    <table id="tasks"><thead><tr>
+      <th class="sortable num" data-type="num">Issue</th>
+      <th class="sortable">Title</th>
+      <th class="sortable">Class</th>
+      <th class="sortable">State</th>
+      <th class="sortable num" data-type="num">PR</th>
+      <th class="sortable">CI</th>
+      <th class="sortable">Review</th>
+      <th class="sortable">Confidence</th>
+      <th class="sortable num">Size</th>
+      <th class="sortable num" data-type="num">Msgs</th>
+      <th>Session</th>
+    </tr></thead>
+    <tbody><tr data-state="merged" data-q="1 replace pytz with the stdlib zoneinfo in superset/utils/dates.py deprecation merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/1">#1</a></td><td class="title" title="Replace pytz with the stdlib zoneinfo in superset/utils/dates.py">Replace pytz with the stdlib zoneinfo in superset/utils/dates.py</td><td><span class="tag">deprecation</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/20">#20</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#cbd5e1"></span><span class="dot-l">pending</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">4</td><td><a class="ext" href="https://app.devin.ai/sessions/b9384faa460e4d96a7ea7e6a5d6db896" title="Devin session">session ↗</a></td></tr><tr data-state="needs_human" data-q="2 replace pytz with zoneinfo in the alert/report cron window, preserving dst behaviour deprecation needs_human"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/2">#2</a></td><td class="title" title="Replace pytz with zoneinfo in the alert/report cron window, preserving DST behaviour">Replace pytz with zoneinfo in the alert/report cron window, preserving DST behaviour</td><td><span class="tag">deprecation</span></td><td><span class="pill" style="color:#b45309;background:#fef3c7;border-color:#fde68a">needs human</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/18">#18</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#d97706"></span><span class="dot-l">comments</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/081c24c00d994ca3a8df78813277c419" title="Devin session">session ↗</a></td></tr><tr data-state="needs_human" data-q="3 drop pytz from the report schemas and email notification timezone handling deprecation needs_human"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/3">#3</a></td><td class="title" title="Drop pytz from the report schemas and email notification timezone handling">Drop pytz from the report schemas and email notification timezone handling</td><td><span class="tag">deprecation</span></td><td><span class="pill" style="color:#b45309;background:#fef3c7;border-color:#fde68a">needs human</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/25">#25</a></td><td><span class="dot" style="background:#dc2626"></span><span class="dot-l">red</span></td><td><span class="dot" style="background:#d97706"></span><span class="dot-l">comments</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/b79c2813999c483bb4dc09b2c64d3161" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="4 use datetime.timezone.utc instead of pytz.utc in model helpers deprecation merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/4">#4</a></td><td class="title" title="Use datetime.timezone.utc instead of pytz.utc in model helpers">Use datetime.timezone.utc instead of pytz.utc in model helpers</td><td><span class="tag">deprecation</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/21">#21</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#cbd5e1"></span><span class="dot-l">pending</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">3</td><td><a class="ext" href="https://app.devin.ai/sessions/0c13b096a4bf4075ab3f52d1a0b18f40" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="5 modernise typing imports to pep 585 builtin generics in three modules code-quality merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/5">#5</a></td><td class="title" title="Modernise typing imports to PEP 585 builtin generics in three modules">Modernise typing imports to PEP 585 builtin generics in three modules</td><td><span class="tag">code-quality</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/22">#22</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">clean</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">4</td><td><a class="ext" href="https://app.devin.ai/sessions/9038f48fd0764477b708bd5b0b75a4c8" title="Devin session">session ↗</a></td></tr><tr data-state="needs_human" data-q="6 retire the deprecated drill_to_detail feature flag and its dead branches code-quality needs_human"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/6">#6</a></td><td class="title" title="Retire the deprecated DRILL_TO_DETAIL feature flag and its dead branches">Retire the deprecated DRILL_TO_DETAIL feature flag and its dead branches</td><td><span class="tag">code-quality</span></td><td><span class="pill" style="color:#b45309;background:#fef3c7;border-color:#fde68a">needs human</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/39">#39</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#d97706"></span><span class="dot-l">comments</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/1840f0947921425abdf510a2e07f7e40" title="Devin session">session ↗</a></td></tr><tr data-state="review_clean" data-q="7 example import loads yaml metadata with the unsafe loader security review_clean"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/7">#7</a></td><td class="title" title="Example import loads YAML metadata with the unsafe loader">Example import loads YAML metadata with the unsafe loader</td><td><span class="tag">security</span></td><td><span class="pill" style="color:#4338ca;background:#eef2ff;border-color:#e0e7ff">review clean</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/29">#29</a></td><td><span class="dot" style="background:#dc2626"></span><span class="dot-l">red</span></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">clean</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/f617079e216a4537bd4a15a07fa68a58" title="Devin session">session ↗</a></td></tr><tr data-state="needs_human" data-q="8 picklekeyvaluecodec deserialises stored values with unrestricted pickle security needs_human"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/8">#8</a></td><td class="title" title="PickleKeyValueCodec deserialises stored values with unrestricted pickle">PickleKeyValueCodec deserialises stored values with unrestricted pickle</td><td><span class="tag">security</span></td><td><span class="pill" style="color:#b45309;background:#fef3c7;border-color:#fde68a">needs human</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/30">#30</a></td><td><span class="dot" style="background:#dc2626"></span><span class="dot-l">red</span></td><td><span class="dot" style="background:#d97706"></span><span class="dot-l">comments</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">3</td><td><a class="ext" href="https://app.devin.ai/sessions/cb2799c898be44069ee8819c1f3c3af0" title="Devin session">session ↗</a></td></tr><tr data-state="needs_human" data-q="9 cover the naive/aware boundary in session invalidation with explicit tests code-quality needs_human"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/9">#9</a></td><td class="title" title="Cover the naive/aware boundary in session invalidation with explicit tests">Cover the naive/aware boundary in session invalidation with explicit tests</td><td><span class="tag">code-quality</span></td><td><span class="pill" style="color:#b45309;background:#fef3c7;border-color:#fde68a">needs human</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/23">#23</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#d97706"></span><span class="dot-l">comments</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/29ab115a7eb04aed848fc159d86683f2" title="Devin session">session ↗</a></td></tr><tr data-state="needs_human" data-q="10 [high] flask 2.3.3 → 3.1.3: pysec-2026-2151 (+1 more) dep-bump-major needs_human"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/10">#10</a></td><td class="title" title="[high] flask 2.3.3 → 3.1.3: PYSEC-2026-2151 (+1 more)">[high] flask 2.3.3 → 3.1.3: PYSEC-2026-2151 (+1 more)</td><td><span class="tag">dep-bump-major</span></td><td><span class="pill" style="color:#b45309;background:#fef3c7;border-color:#fde68a">needs human</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/26">#26</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#d97706"></span><span class="dot-l">comments</span></td><td><span class="conf conf-medium">medium</span></td><td class="num">xs</td><td class="num">3</td><td><a class="ext" href="https://app.devin.ai/sessions/35034f9d8caa416980035490f2067435" title="Devin session">session ↗</a></td></tr><tr data-state="failed" data-q="11 [high] paramiko 3.5.1: pysec-2026-2858 (+1 more) dep-bump-patch failed"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/11">#11</a></td><td class="title" title="[high] paramiko 3.5.1: PYSEC-2026-2858 (+1 more)">[high] paramiko 3.5.1: PYSEC-2026-2858 (+1 more)</td><td><span class="tag">dep-bump-patch</span></td><td><span class="pill" style="color:#b91c1c;background:#fee2e2;border-color:#fecaca">failed</span></td><td class="num"><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/c1f03db112b741179c8fd0b4eccff904" title="Devin session">session ↗</a></td></tr><tr data-state="wont_fix" data-q="12 [high] setuptools 80.9.0 → 83.0.0: pysec-2026-3447 (+1 more) dep-bump-major wont_fix"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/12">#12</a></td><td class="title" title="[high] setuptools 80.9.0 → 83.0.0: PYSEC-2026-3447 (+1 more)">[high] setuptools 80.9.0 → 83.0.0: PYSEC-2026-3447 (+1 more)</td><td><span class="tag">dep-bump-major</span></td><td><span class="pill" style="color:#475569;background:#f1f5f9;border-color:#e2e8f0">wont fix</span></td><td class="num"><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/36b45643222b4302802d5daebbaa7359" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="13 [high] jaraco-context 6.0.1 → 6.1.0: pysec-2026-1469 (+1 more) dep-bump-patch merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/13">#13</a></td><td class="title" title="[high] jaraco-context 6.0.1 → 6.1.0: PYSEC-2026-1469 (+1 more)">[high] jaraco-context 6.0.1 → 6.1.0: PYSEC-2026-1469 (+1 more)</td><td><span class="tag">dep-bump-patch</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/19">#19</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#cbd5e1"></span><span class="dot-l">pending</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">3</td><td><a class="ext" href="https://app.devin.ai/sessions/f3f377a33e4a4d18bf973b13968842c8" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="14 [high] mcp 1.24.0 → 1.28.1: pysec-2026-3481 (+5 more) dep-bump-patch merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/14">#14</a></td><td class="title" title="[high] mcp 1.24.0 → 1.28.1: PYSEC-2026-3481 (+5 more)">[high] mcp 1.24.0 → 1.28.1: PYSEC-2026-3481 (+5 more)</td><td><span class="tag">dep-bump-patch</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/31">#31</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">clean</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/707bafdd5c784128a86a09e1a2a36421" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="15 [moderate] pip 25.1.1 → 26.1.2: pysec-2026-1795 (+9 more) dep-bump-major merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/15">#15</a></td><td class="title" title="[moderate] pip 25.1.1 → 26.1.2: PYSEC-2026-1795 (+9 more)">[moderate] pip 25.1.1 → 26.1.2: PYSEC-2026-1795 (+9 more)</td><td><span class="tag">dep-bump-major</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/32">#32</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">clean</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/0ef4dac6345f41b19665e97ba8422f3a" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="16 [high] pytest 7.4.4 → 9.0.3: pysec-2026-1845 (+1 more) dep-bump-major merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/16">#16</a></td><td class="title" title="[high] pytest 7.4.4 → 9.0.3: PYSEC-2026-1845 (+1 more)">[high] pytest 7.4.4 → 9.0.3: PYSEC-2026-1845 (+1 more)</td><td><span class="tag">dep-bump-major</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/36">#36</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">clean</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">2</td><td><a class="ext" href="https://app.devin.ai/sessions/c6425b69f36546279a39dc7fc4212202" title="Devin session">session ↗</a></td></tr><tr data-state="merged" data-q="17 [high] python-multipart 0.0.29 → 0.0.31: pysec-2026-3036 (+7 more) dep-bump-patch merged"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/17">#17</a></td><td class="title" title="[high] python-multipart 0.0.29 → 0.0.31: PYSEC-2026-3036 (+7 more)">[high] python-multipart 0.0.29 → 0.0.31: PYSEC-2026-3036 (+7 more)</td><td><span class="tag">dep-bump-patch</span></td><td><span class="pill" style="color:#15803d;background:#dcfce7;border-color:#bbf7d0">merged</span></td><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/pull/27">#27</a></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">green</span></td><td><span class="dot" style="background:#16a34a"></span><span class="dot-l">clean</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">3</td><td><a class="ext" href="https://app.devin.ai/sessions/c3952d6432bb459ea2cb14e2869a2176" title="Devin session">session ↗</a></td></tr><tr data-state="wont_fix" data-q="47 [medium] insecure-hash-algorithm-md5 in superset/key_value/utils.py security wont_fix"><td class="num"><a href="https://github.com/techpreneur23sf/apache-superset/issues/47">#47</a></td><td class="title" title="[medium] insecure-hash-algorithm-md5 in superset/key_value/utils.py">[medium] insecure-hash-algorithm-md5 in superset/key_value/utils.py</td><td><span class="tag">security</span></td><td><span class="pill" style="color:#475569;background:#f1f5f9;border-color:#e2e8f0">wont fix</span></td><td class="num"><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="conf conf-high">high</span></td><td class="num">xs</td><td class="num">1</td><td><a class="ext" href="https://app.devin.ai/sessions/4f4ff1e5ab524108b85a88f3521e17a1" title="Devin session">session ↗</a></td></tr></tbody></table>
+    <div class="empty" id="none" hidden>Nothing matches that filter.</div>
+  </section>
 
-  <h2>Cost</h2>
-  <p class="sub"><code>acus_consumed</code> is <code>0.0</code> on every session here and <code>GET /consumption/daily</code> reports <code>total_acus: 0.0</code>: ACUs are the Enterprise billing unit, and this account is billed for usage as included quota plus on-demand credits, which the API does not expose per session. Rather than print a fabricated unit cost, effort is reported in the units the API does return — Devin's own session size classification (18×xs), 44 Devin messages, and wall-clock session time. The daily budget cap still binds: each dispatch reserves its class's per-session ACU limit up front instead of trusting an unmetered zero.</p>
+  <section>
+    <div class="sh"><div><h2>By issue class</h2>
+      <p>Which kinds of work the swarm actually lands — and which it hands back.</p></div></div>
+    <table><thead><tr><th>Class</th><th class="num">Tasks</th><th class="num">PRs</th>
+      <th class="num">Merged</th><th>Merge rate</th></tr></thead>
+    <tbody><tr><td><span class="tag">code-quality</span></td><td class="num">3</td><td class="num">3</td><td class="num">1</td><td><span class="bar"><span class="track"><span class="fill" style="width:33%"></span></span><span>33%</span></span></td></tr>
+<tr><td><span class="tag">dep-bump-major</span></td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td><span class="bar"><span class="track"><span class="fill" style="width:50%"></span></span><span>50%</span></span></td></tr>
+<tr><td><span class="tag">dep-bump-patch</span></td><td class="num">4</td><td class="num">3</td><td class="num">3</td><td><span class="bar"><span class="track"><span class="fill" style="width:75%"></span></span><span>75%</span></span></td></tr>
+<tr><td><span class="tag">deprecation</span></td><td class="num">4</td><td class="num">4</td><td class="num">2</td><td><span class="bar"><span class="track"><span class="fill" style="width:50%"></span></span><span>50%</span></span></td></tr>
+<tr><td><span class="tag">security</span></td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td><span class="bar"><span class="track"><span class="fill" style="width:0%"></span></span><span>0%</span></span></td></tr></tbody></table>
+  </section>
 
-  <h2>By issue class</h2>
-  <table><thead><tr><th>Class</th><th>Tasks</th><th>PRs</th><th>Merged</th><th>Merge rate</th></tr></thead>
-  <tbody><tr><td><code>code-quality</code></td><td>3</td><td>3</td><td>1</td><td>33%</td></tr>
-<tr><td><code>dep-bump-major</code></td><td>4</td><td>3</td><td>2</td><td>50%</td></tr>
-<tr><td><code>dep-bump-patch</code></td><td>4</td><td>3</td><td>3</td><td>75%</td></tr>
-<tr><td><code>deprecation</code></td><td>4</td><td>4</td><td>2</td><td>50%</td></tr>
-<tr><td><code>security</code></td><td>3</td><td>2</td><td>0</td><td>0%</td></tr></tbody></table>
+  <section>
+    <div class="sh"><div><h2>Failure taxonomy</h2>
+      <p>Separates "the agent is bad" from "our configuration is bad" — usually the latter.</p></div></div>
+    <table><thead><tr><th>Category</th><th class="num">Tasks</th></tr></thead><tbody><tr><td><span class="tag">no_pr</span></td><td class="num">2</td></tr></tbody></table>
+  </section>
 
-  <h2>Failure taxonomy</h2>
-  <p class="sub">Separates "the agent is bad" from "our configuration is bad" — usually the latter.</p>
-  <table><thead><tr><th>Category</th><th>Tasks</th></tr></thead><tbody><tr><td><code>no_pr</code></td><td>2</td></tr></tbody></table>
+  <section>
+    <div class="sh"><div><h2>How this is measured</h2></div></div>
+    <div class="note"><strong>There is no cost metric on this page because this account does not report one.</strong> ACUs are the Enterprise billing unit; here <code>acus_consumed</code> is <code>0.0</code> on every session and <code>GET /consumption/daily</code> reports <code>total_acus: 0.0</code>, because the plan bills included quota plus on-demand credits, which the API does not expose per session. Rather than print a fabricated unit cost, effort is reported in the units the API does return: Devin's own session size classification (18×xs), 44 Devin messages, and wall-clock session time. The daily budget cap still binds — each dispatch reserves its class's per-session ACU limit up front instead of trusting an unmetered zero.</div>
+  </section>
 
   <footer>
-    Reconciler run <code>reconcile-30859467466</code> ·
+    Reconciler run <code>dashboard-refresh</code> ·
     ledger schema v1 ·
-    18 tasks tracked · no server, no database: this page is a file on the
-    <code>gh-pages</code> branch.
+    no server, no database: this page is a file on the <code>gh-pages</code> branch.
   </footer>
-</main></body></html>
+</div></main>
+
+<script>
+(function () {
+  var table = document.getElementById('tasks');
+  if (!table) return;
+  var body = table.tBodies[0];
+  var rows = Array.prototype.slice.call(body.rows);
+  var q = document.getElementById('q');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var none = document.getElementById('none');
+  var state = '';
+
+  function apply() {
+    var needle = (q.value || '').toLowerCase().trim();
+    var shown = 0;
+    rows.forEach(function (r) {
+      var ok = (!state || r.dataset.state === state) &&
+               (!needle || (r.dataset.q || '').indexOf(needle) !== -1);
+      r.hidden = !ok;
+      if (ok) shown++;
+    });
+    none.hidden = shown !== 0;
+  }
+
+  q.addEventListener('input', apply);
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      state = chip.dataset.filter;
+      chips.forEach(function (o) { o.setAttribute('aria-pressed', String(o === chip)); });
+      apply();
+    });
+  });
+
+  // Sorting: numeric columns on their digits, everything else on visible text.
+  Array.prototype.slice.call(table.tHead.rows[0].cells).forEach(function (th, i) {
+    if (th.className.indexOf('sortable') === -1) return;
+    th.addEventListener('click', function () {
+      var dir = th.dataset.dir === 'asc' ? 'desc' : 'asc';
+      Array.prototype.slice.call(table.tHead.rows[0].cells)
+        .forEach(function (o) { delete o.dataset.dir; });
+      th.dataset.dir = dir;
+      var numeric = th.dataset.type === 'num';
+      var sign = dir === 'asc' ? 1 : -1;
+      rows.sort(function (a, b) {
+        var x = a.cells[i].innerText.trim(), y = b.cells[i].innerText.trim();
+        if (numeric) {
+          var nx = parseFloat(x.replace(/[^0-9.\-]/g, '')), ny = parseFloat(y.replace(/[^0-9.\-]/g, ''));
+          if (isNaN(nx)) return 1;            // blanks sort last in both directions
+          if (isNaN(ny)) return -1;
+          return (nx - ny) * sign;
+        }
+        if (x === '—') return 1;
+        if (y === '—') return -1;
+        return x.localeCompare(y) * sign;
+      });
+      rows.forEach(function (r) { body.appendChild(r); });
+    });
+  });
+})();
+</script>
+</body></html>
