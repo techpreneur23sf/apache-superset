@@ -46,7 +46,7 @@
     "abandoned": 0,
     "dispatched": 18,
     "failed": 1,
-    "in_flight": 1,
+    "in_flight": 0,
     "merged": 8,
     "merged_by_human": 1,
     "merged_by_swarm": 4,
@@ -55,11 +55,11 @@
     "prs_opened": 15,
     "queued": 0,
     "tasks": 18,
-    "wont_fix": 1
+    "wont_fix": 2
   },
   "effort": {
     "devin_messages_total": 44,
-    "median_session_hours": 0.7,
+    "median_session_hours": 0.69,
     "median_session_hours_merged": 0.43,
     "session_sizes": {
       "xs": 18
@@ -76,7 +76,6 @@
     "merged": 8,
     "needs_human": 6,
     "review_clean": 1,
-    "running": 1,
-    "wont_fix": 1
+    "wont_fix": 2
   }
 }
