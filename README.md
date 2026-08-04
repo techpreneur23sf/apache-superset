@@ -17,6 +17,14 @@ specific language governing permissions and limitations
 under the License.
 -->
 
+> **This fork is a demonstration target for an autonomous backlog swarm.**
+> The maintenance backlog lives in [Issues](https://github.com/techpreneur23sf/apache-superset/issues) —
+> some hand-curated, the rest filed by `osv-scanner`, `pip-audit` and `semgrep` on a weekly cron.
+> Devin sessions remediate them and open the PRs; live state and metrics are on the
+> [dashboard](https://techpreneur23sf.github.io/apache-superset/), and the system that drives it all
+> is [`devin-backlog-swarm`](https://github.com/techpreneur23sf/devin-backlog-swarm).
+> Upstream Superset is unaffected; nothing here is proposed to `apache/superset`.
+
 # Superset
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/license/apache-2-0)
