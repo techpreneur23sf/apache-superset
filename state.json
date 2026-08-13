@@ -1289,7 +1289,7 @@
       "pr_opened_at": 1785633107,
       "pr_state": "open",
       "pr_url": "https://github.com/techpreneur23sf/apache-superset/pull/29",
-      "review_status": "pending",
+      "review_status": "clean",
       "session_id": "f617079e216a4537bd4a15a07fa68a58",
       "session_size": "xs",
       "session_status": "suspended",
@@ -1480,5 +1480,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1786596283
+  "updated_at": 1786598581
 }
