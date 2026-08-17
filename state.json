@@ -1283,7 +1283,7 @@
       "issue_class": "security",
       "issue_number": 7,
       "issue_title": "Example import loads YAML metadata with the unsafe loader",
-      "last_error": null,
+      "last_error": "HttpError: GET https://api.github.com/repos/techpreneur23sf/apache-superset/pulls/29/reviews?page=1&per_page=100 -> 500: null",
       "merged_by": null,
       "pr_number": 29,
       "pr_opened_at": 1785633107,
@@ -1480,5 +1480,5 @@
       "waiting_ticks": 5
     }
   },
-  "updated_at": 1786973146
+  "updated_at": 1786975275
 }
